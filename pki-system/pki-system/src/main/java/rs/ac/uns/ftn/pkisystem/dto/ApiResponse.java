@@ -31,8 +31,9 @@ public class ApiResponse<T> {
     }
 
     public static <T> ApiResponse<T> error(String message) {
-        ApiResponse<T> response = new ApiResponse<>(false, message);
-        response.setError(message);
+        ApiResponse<T> response = new ApiResponse<>();
+        response.setSuccess(false);
+        response.setMessage(message);
         return response;
     }
 
@@ -48,4 +49,9 @@ public class ApiResponse<T> {
 
     public String getError() { return error; }
     public void setError(String error) { this.error = error; }
+
+    public ApiResponse<T> data(T data) {
+        this.data = data;
+        return this;
+    }
 }

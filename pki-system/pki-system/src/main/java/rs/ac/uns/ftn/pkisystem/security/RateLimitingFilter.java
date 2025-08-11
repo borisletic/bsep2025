@@ -43,7 +43,7 @@ public class RateLimitingFilter extends OncePerRequestFilter {
         lastRequestTimes.put(key, currentTime);
 
         if (count.incrementAndGet() > MAX_REQUESTS_PER_MINUTE) {
-            response.setStatus(HttpServletResponse.SC_TOO_MANY_REQUESTS);
+            response.setStatus(429); // 429 Too Many Requests
             response.getWriter().write("{\"error\":\"Rate limit exceeded\"}");
             return;
         }

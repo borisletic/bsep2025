@@ -42,13 +42,16 @@ public interface CertificateRepository extends JpaRepository<Certificate, Long> 
     List<Certificate> findByOrganization(@Param("organization") String organization);
 
     // Get certificate chain
-    @Query("WITH RECURSIVE cert_chain AS (" +
-            "SELECT c.id, c.serial_number, c.common_name, c.issuer_id, 0 as level " +
-            "FROM certificates c WHERE c.id = :certificateId " +
-            "UNION ALL " +
-            "SELECT c.id, c.serial_number, c.common_name, c.issuer_id, cc.level + 1 " +
-            "FROM certificates c INNER JOIN cert_chain cc ON c.id = cc.issuer_id) " +
-            "SELECT * FROM cert_chain ORDER BY level DESC", nativeQuery = true)
+    @Query(
+            value = "WITH RECURSIVE cert_chain AS (" +
+                    "SELECT c.id, c.serial_number, c.common_name, c.issuer_id, 0 as level " +
+                    "FROM certificates c WHERE c.id = :certificateId " +
+                    "UNION ALL " +
+                    "SELECT c.id, c.serial_number, c.common_name, c.issuer_id, cc.level + 1 " +
+                    "FROM certificates c INNER JOIN cert_chain cc ON c.id = cc.issuer_id) " +
+                    "SELECT * FROM cert_chain ORDER BY level DESC",
+            nativeQuery = true
+    )
     List<Object[]> getCertificateChain(@Param("certificateId") Long certificateId);
 
     // Get all certificates that user can access (for CA users)

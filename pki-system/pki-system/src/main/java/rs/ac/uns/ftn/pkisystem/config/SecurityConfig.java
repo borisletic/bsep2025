@@ -58,11 +58,12 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.cors().and().csrf().disable()
-                .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+        http
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+                .csrf(csrf -> csrf.disable())
+                .exceptionHandling(exception -> exception.authenticationEntryPoint(jwtAuthenticationEntryPoint))
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authz -> authz
-                        // Public endpoints
                         .requestMatchers(
                                 "/api/auth/login",
                                 "/api/auth/register",
@@ -75,27 +76,13 @@ public class SecurityConfig {
                                 "/v3/api-docs/**",
                                 "/actuator/health"
                         ).permitAll()
-
-                        // Admin only endpoints
                         .requestMatchers("/api/admin/**").hasRole("ADMIN")
-
-                        // CA User endpoints
                         .requestMatchers("/api/ca/**").hasAnyRole("ADMIN", "CA_USER")
-
-                        // Certificate templates
                         .requestMatchers("/api/templates/**").hasAnyRole("ADMIN", "CA_USER")
-
-                        // Password manager endpoints (END_USER and above)
                         .requestMatchers("/api/passwords/**").hasAnyRole("ADMIN", "CA_USER", "END_USER")
-
-                        // Certificate endpoints
                         .requestMatchers("/api/certificates/**").hasAnyRole("ADMIN", "CA_USER", "END_USER")
-
-                        // User profile endpoints
                         .requestMatchers("/api/users/profile").hasAnyRole("ADMIN", "CA_USER", "END_USER")
                         .requestMatchers("/api/users/tokens").hasAnyRole("ADMIN", "CA_USER", "END_USER")
-
-                        // All other requests require authentication
                         .anyRequest().authenticated()
                 );
 

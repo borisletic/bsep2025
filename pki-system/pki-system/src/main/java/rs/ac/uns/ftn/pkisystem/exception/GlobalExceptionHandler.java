@@ -74,7 +74,8 @@ public class GlobalExceptionHandler {
             String errorMessage = error.getDefaultMessage();
             errors.put(fieldName, errorMessage);
         });
-        return ResponseEntity.badRequest().body(ApiResponse.error("Validation failed").data(errors));
+        return ResponseEntity.badRequest()
+                .body(ApiResponse.<Map<String, String>>error("Validation failed").data(errors));
     }
 
     @ExceptionHandler(Exception.class)

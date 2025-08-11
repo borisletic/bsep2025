@@ -20,6 +20,7 @@ import rs.ac.uns.ftn.pkisystem.dto.CertificateDTO;
 import rs.ac.uns.ftn.pkisystem.dto.CertificateRequest;
 import rs.ac.uns.ftn.pkisystem.dto.RevokeCertificateRequest;
 import rs.ac.uns.ftn.pkisystem.entity.*;
+import rs.ac.uns.ftn.pkisystem.entity.Certificate;
 import rs.ac.uns.ftn.pkisystem.exception.CertificateOperationException;
 import rs.ac.uns.ftn.pkisystem.exception.ResourceNotFoundException;
 import rs.ac.uns.ftn.pkisystem.repository.CertificateRepository;
@@ -118,7 +119,7 @@ public class CertificateService {
                 Date.from(validFrom.atZone(ZoneId.systemDefault()).toInstant()),
                 Date.from(validTo.atZone(ZoneId.systemDefault()).toInstant()),
                 csr.getSubject(),
-                org.bouncycastle.openssl.jcajce.JcaPEMKeyConverter.getPublicKey(csr.getSubjectPublicKeyInfo())
+                new org.bouncycastle.openssl.jcajce.JcaPEMKeyConverter().getPublicKey(csr.getSubjectPublicKeyInfo())
         );
 
         // Add extensions
