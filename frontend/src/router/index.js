@@ -5,13 +5,14 @@ import store from '@/store'
 import HomeView from '../views/HomeView.vue'
 import Login from '../views/auth/Login.vue'
 import Register from '../views/auth/Register.vue'
-import Dashboard from '../views/Dashboard.vue'
-import Certificates from '../views/Certificates.vue'
-import Passwords from '../views/Passwords.vue'
-import Templates from '../views/Templates.vue'
-import Admin from '../views/Admin.vue'
-import Profile from '../views/Profile.vue'
-import Sessions from '../views/Sessions.vue'
+// Instead of direct imports, use:
+const Dashboard = () => import('../views/Dashboard.vue')
+const Certificates = () => import('../views/Certificates.vue')
+const Passwords = () => import('../views/Passwords.vue')
+const Templates = () => import('../views/Templates.vue')
+const Admin = () => import('../views/Admin.vue')
+const Profile = () => import('../views/Profile.vue')
+const Sessions = () => import('../views/Sessions.vue')
 
 const routes = [
   {
