@@ -38,6 +38,30 @@ public class EmailService {
 
             String htmlContent = templateEngine.process("activation-email", context);
 
+            helper.setFrom(fromEmail);
+            helper.setTo(toEmail);
+            helper.setSubject("PKI System - Account Activation");
+            helper.setText(htmlContent, true);
+
+            mailSender.send(message);
+        } catch (MessagingException e) {
+            // Fallback to simple email
+            sendSimpleActivationEmail(toEmail, activationToken);
+        }
+    }
+
+    public void sendPasswordResetEmail(String toEmail, String resetToken) {
+        try {
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+
+            Context context = new Context();
+            context.setVariable("resetLink", frontendUrl + "/password-reset/" + resetToken);
+            context.setVariable("email", toEmail);
+
+            String htmlContent = templateEngine.process("password-reset-email", context);
+
+            helper.setFrom(fromEmail);
             helper.setTo(toEmail);
             helper.setSubject("PKI System - Password Reset");
             helper.setText(htmlContent, true);

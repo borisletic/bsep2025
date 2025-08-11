@@ -252,6 +252,113 @@ public class CertificateService {
         return convertToDTO(certificate);
     }
 
+    public List<CertificateDTO> getAllCertificates() {
+        User currentUser = SecurityUtils.getCurrentUser()
+                .orElseThrow(() -> new SecurityException("User not authenticated"));
+
+        return getCertificatesForUser(currentUser);
+    }
+
+    public byte[] downloadCertificate(Long certificateId) {
+        User currentUser = SecurityUtils.getCurrentUser()
+                .orElseThrow(() -> new SecurityException("User not authenticated"));
+
+        Certificate certificate = certificateRepository.findById(certificateId)
+                .orElseThrow(() -> new ResourceNotFoundException("Certificate not found"));
+
+        if (!canAccessCertificate(certificate, currentUser)) {
+            throw new SecurityException("Access denied to certificate");
+        }
+
+        auditService.logEvent("CERTIFICATE_DOWNLOADED",
+                "Certificate downloaded: " + certificate.getCommonName(),
+                "CERTIFICATE", certificate.getId());
+
+        return Base64.getDecoder().decode(certificate.getCertificateData());
+    }
+
+    public List<CertificateDTO> getCACertificates() {
+        User currentUser = SecurityUtils.getCurrentUser()
+                .orElseThrow(() -> new SecurityException("User not authenticated"));
+
+        List<Certificate> caCertificates = certificateRepository.findByOwnerAndCertificateType(
+                currentUser, CertificateType.INTERMEDIATE);
+        List<Certificate> rootCertificates = certificateRepository.findByOwnerAndCertificateType(
+                currentUser, CertificateType.ROOT);
+
+        caCertificates.addAll(rootCertificates);
+
+        return caCertificates.stream()
+                .filter(cert -> !cert.isRevoked())
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
+    public boolean verifyCertificateChain(Long certificateId) {
+        Certificate certificate = certificateRepository.findById(certificateId)
+                .orElseThrow(() -> new ResourceNotFoundException("Certificate not found"));
+
+        try {
+            return verifyCertificateChainRecursive(certificate);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    private boolean verifyCertificateChainRecursive(Certificate certificate) throws Exception {
+        if (certificate.isRevoked()) {
+            return false;
+        }
+
+        if (!certificate.isValid()) {
+            return false;
+        }
+
+        // Root certificate - verify self-signed
+        if (certificate.getCertificateType() == CertificateType.ROOT) {
+            return verifySelfSignedCertificate(certificate);
+        }
+
+        // Non-root certificate - verify with issuer
+        if (certificate.getIssuer() != null) {
+            if (!verifyCertificateChainRecursive(certificate.getIssuer())) {
+                return false;
+            }
+            return verifyCertificateWithIssuer(certificate, certificate.getIssuer());
+        }
+
+        return false;
+    }
+
+    private boolean verifySelfSignedCertificate(Certificate certificate) throws Exception {
+        // Implementation for self-signed certificate verification
+        X509Certificate x509Cert = convertToX509Certificate(certificate);
+        try {
+            x509Cert.verify(x509Cert.getPublicKey());
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    private boolean verifyCertificateWithIssuer(Certificate certificate, Certificate issuer) throws Exception {
+        X509Certificate x509Cert = convertToX509Certificate(certificate);
+        X509Certificate issuerX509Cert = convertToX509Certificate(issuer);
+
+        try {
+            x509Cert.verify(issuerX509Cert.getPublicKey());
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    private X509Certificate convertToX509Certificate(Certificate certificate) throws Exception {
+        byte[] certBytes = Base64.getDecoder().decode(certificate.getCertificateData());
+        return (X509Certificate) java.security.cert.CertificateFactory.getInstance("X.509")
+                .generateCertificate(new java.io.ByteArrayInputStream(certBytes));
+    }
+
     // Helper methods
 
     private void validateCertificateRequest(CertificateRequest request, User currentUser) {
@@ -264,6 +371,11 @@ public class CertificateService {
         // Validate validity period
         if (request.getValidityDays() <= 0 || request.getValidityDays() > 3650) {
             throw new IllegalArgumentException("Invalid validity period");
+        }
+
+        // Validate required fields
+        if (request.getCommonName() == null || request.getCommonName().trim().isEmpty()) {
+            throw new IllegalArgumentException("Common Name is required");
         }
     }
 
@@ -354,7 +466,7 @@ public class CertificateService {
         certificate.setLocality(request.getLocality());
         certificate.setEmail(request.getEmail());
         certificate.setCertificateType(request.getCertificateType());
-        certificate.setValidFrom(request.getValidityDays() != null ? LocalDateTime.now() : LocalDateTime.now());
+        certificate.setValidFrom(LocalDateTime.now());
         certificate.setValidTo(LocalDateTime.now().plusDays(request.getValidityDays()));
         certificate.setIssuer(issuer);
         certificate.setOwner(owner);
@@ -408,27 +520,4 @@ public class CertificateService {
 
         return dto;
     }
-}To(toEmail);
-            helper.setSubject("PKI System - Account Activation");
-            helper.setText(htmlContent, true);
-
-            mailSender.send(message);
-        } catch (MessagingException e) {
-// Fallback to simple email
-sendSimpleActivationEmail(toEmail, activationToken);
-        }
-                }
-
-public void sendPasswordResetEmail(String toEmail, String resetToken) {
-    try {
-        MimeMessage message = mailSender.createMimeMessage();
-        MimeMessageHelper helper = new MimeMessageHelper(message, true);
-
-        Context context = new Context();
-        context.setVariable("resetLink", frontendUrl + "/password-reset/" + resetToken);
-        context.setVariable("email", toEmail);
-
-        String htmlContent = templateEngine.process("password-reset-email", context);
-
-        helper.setFrom(fromEmail);
-        helper.set
+}
