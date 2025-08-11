@@ -4,7 +4,7 @@
     <ConfirmDialog />
     
     <!-- Navigation Bar -->
-    <nav class="navbar" v-if="$store.getters.isAuthenticated">
+    <nav class="navbar" v-if="$store.getters['auth/isAuthenticated']">
       <div class="navbar-content">
         <div class="navbar-brand">
           <router-link to="/dashboard" class="brand-link">
@@ -55,7 +55,7 @@
     </nav>
 
     <!-- Main Content -->
-    <div class="main-content" :class="{ 'with-navbar': $store.getters.isAuthenticated }">
+    <div class="main-content" :class="{ 'with-navbar': $store.getters['auth/isAuthenticated'] }">
       <router-view />
     </div>
   </div>
@@ -66,10 +66,10 @@ export default {
   name: 'App',
   computed: {
     userRole() {
-      return this.$store.getters.userRole
+      return this.$store.getters['auth/userRole']
     },
     userName() {
-      const user = this.$store.getters.currentUser
+      const user = this.$store.getters['auth/currentUser']
       return user ? `${user.firstName} ${user.lastName}` : 'User'
     },
     userMenuItems() {
@@ -101,7 +101,7 @@ export default {
     },
     async logout() {
       try {
-        await this.$store.dispatch('logout')
+        await this.$store.dispatch('auth/logout')
         this.$router.push('/login')
         this.$toast.add({
           severity: 'success',
@@ -116,12 +116,12 @@ export default {
   },
   async created() {
     // Initialize authentication state
-    if (this.$store.getters.isAuthenticated) {
+    if (this.$store.getters['auth/isAuthenticated']) {
       try {
-        await this.$store.dispatch('fetchUserProfile')
+        await this.$store.dispatch('auth/fetchUserProfile')
       } catch (error) {
         console.error('Failed to fetch user profile:', error)
-        this.$store.dispatch('logout')
+        this.$store.dispatch('auth/logout')
         this.$router.push('/login')
       }
     }

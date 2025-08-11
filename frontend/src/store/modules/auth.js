@@ -123,7 +123,7 @@ const actions = {
 }
 
 export default {
-  namespaced: false, // Keep global for backward compatibility
+  namespaced: true, // Enable namespacing
   state,
   getters,
   mutations,

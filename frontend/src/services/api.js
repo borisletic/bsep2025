@@ -10,7 +10,9 @@ const api = axios.create({
   timeout: 30000,
   headers: {
     'Content-Type': 'application/json'
-  }
+  },
+  // Handle self-signed certificates in development
+  httpsAgent: false
 })
 
 // Request interceptor
