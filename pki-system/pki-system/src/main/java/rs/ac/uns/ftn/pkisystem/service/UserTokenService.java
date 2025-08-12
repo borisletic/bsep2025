@@ -95,4 +95,94 @@ public class UserTokenService {
         }
         return request.getRemoteAddr();
     }
+
+    // Dodati ove metode u postojeći UserTokenService.java
+
+    public void revokeAllOtherTokensForUser(User user, String currentJti) {
+        List<UserToken> allTokens = userTokenRepository.findActiveTokensByUser(user, LocalDateTime.now());
+
+        for (UserToken token : allTokens) {
+            if (!token.getTokenId().equals(currentJti)) {
+                token.setRevoked(true);
+                userTokenRepository.save(token);
+            }
+        }
+    }
+
+    public void saveTokenWithDeviceInfo(User user, String jti, String token, HttpServletRequest request) {
+        LocalDateTime expiresAt = LocalDateTime.now().plusDays(1); // 24 hours
+
+        UserToken userToken = new UserToken(user, jti, expiresAt);
+
+        // Extract device information from request
+        String userAgent = request.getHeader("User-Agent");
+        userToken.setUserAgent(userAgent);
+        userToken.setIpAddress(getClientIpAddress(request));
+
+        // Parse user agent to get device info
+        DeviceInfo deviceInfo = parseUserAgent(userAgent);
+        userToken.setDeviceType(deviceInfo.getDeviceType());
+        userToken.setBrowser(deviceInfo.getBrowser());
+        userToken.setOperatingSystem(deviceInfo.getOperatingSystem());
+
+        userTokenRepository.save(userToken);
+    }
+
+    private DeviceInfo parseUserAgent(String userAgent) {
+        if (userAgent == null) {
+            return new DeviceInfo("Unknown", "Unknown", "Unknown");
+        }
+
+        String deviceType = "Desktop";
+        String browser = "Unknown";
+        String os = "Unknown";
+
+        // Simple user agent parsing
+        if (userAgent.contains("Mobile") || userAgent.contains("Android") || userAgent.contains("iPhone")) {
+            deviceType = "Mobile";
+        } else if (userAgent.contains("Tablet") || userAgent.contains("iPad")) {
+            deviceType = "Tablet";
+        }
+
+        if (userAgent.contains("Chrome")) {
+            browser = "Chrome";
+        } else if (userAgent.contains("Firefox")) {
+            browser = "Firefox";
+        } else if (userAgent.contains("Safari") && !userAgent.contains("Chrome")) {
+            browser = "Safari";
+        } else if (userAgent.contains("Edge")) {
+            browser = "Edge";
+        }
+
+        if (userAgent.contains("Windows")) {
+            os = "Windows";
+        } else if (userAgent.contains("Mac")) {
+            os = "macOS";
+        } else if (userAgent.contains("Linux")) {
+            os = "Linux";
+        } else if (userAgent.contains("Android")) {
+            os = "Android";
+        } else if (userAgent.contains("iOS")) {
+            os = "iOS";
+        }
+
+        return new DeviceInfo(deviceType, browser, os);
+    }
+
+    // Helper class for device information
+    private static class DeviceInfo {
+        private final String deviceType;
+        private final String browser;
+        private final String operatingSystem;
+
+        public DeviceInfo(String deviceType, String browser, String operatingSystem) {
+            this.deviceType = deviceType;
+            this.browser = browser;
+            this.operatingSystem = operatingSystem;
+        }
+
+        public String getDeviceType() { return deviceType; }
+        public String getBrowser() { return browser; }
+        public String getOperatingSystem() { return operatingSystem; }
+    }
 }

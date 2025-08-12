@@ -5,6 +5,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -85,5 +86,27 @@ public class JwtUtil {
 
     public String generateJti() {
         return UUID.randomUUID().toString();
+    }
+
+    // Dodati ovu metodu u postojeći JwtUtil.java
+
+    public String getJtiFromAuthentication(Authentication authentication) {
+        if (authentication.getCredentials() instanceof String) {
+            String token = (String) authentication.getCredentials();
+            return getJtiFromToken(token);
+        }
+        return null;
+    }
+
+    public String getJtiFromToken(String token) {
+        try {
+            Claims claims = Jwts.parser()
+                    .setSigningKey(secret)
+                    .parseClaimsJws(token)
+                    .getBody();
+            return claims.getId();
+        } catch (Exception e) {
+            return null;
+        }
     }
 }
