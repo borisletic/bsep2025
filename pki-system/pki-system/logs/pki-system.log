@@ -6912,3 +6912,1025 @@ Caused by: java.security.InvalidAlgorithmParameterException: the trustAnchors pa
 2025-08-13 15:13:07.612 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 2025-08-13 15:13:07.613 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2025-08-13 15:13:07.618 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-08-13 20:26:43.726 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Starting PkiSystemApplication using Java 24.0.1 with PID 23492 (C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system\target\classes started by Win 11 in C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system)
+2025-08-13 20:26:43.727 [restartedMain] DEBUG r.a.u.f.p.PkiSystemApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-13 20:26:43.727 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-13 20:26:43.751 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-08-13 20:26:43.751 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-08-13 20:26:44.241 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-13 20:26:44.281 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 34 ms. Found 6 JPA repository interfaces.
+2025-08-13 20:26:44.693 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (https)
+2025-08-13 20:26:44.701 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-13 20:26:44.701 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-13 20:26:44.726 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-13 20:26:44.726 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 975 ms
+2025-08-13 20:26:44.842 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-13 20:26:44.864 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2025-08-13 20:26:44.880 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-08-13 20:26:45.031 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-13 20:26:45.045 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-08-13 20:26:45.219 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@540a617a
+2025-08-13 20:26:45.220 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-08-13 20:26:45.247 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-13 20:26:45.248 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-08-13 20:26:45.255 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-13 20:26:45.835 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-13 20:26:45.899 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-13 20:26:46.108 [restartedMain] DEBUG r.a.u.f.p.security.JwtRequestFilter - Filter 'jwtRequestFilter' configured for use
+2025-08-13 20:26:46.236 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-08-13 20:26:46.502 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-08-13 20:26:46.502 [restartedMain] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-08-13 20:26:46.590 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-13 20:26:46.810 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+2025-08-13 20:26:46.877 [restartedMain] DEBUG o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtRequestFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-08-13 20:26:47.072 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-08-13 20:26:47.170 [restartedMain] INFO  o.a.t.u.net.NioEndpoint.certificate - Connector [https-jsse-nio-8080], TLS virtual host [_default_], certificate type [UNDEFINED] configured from keystore [C:\Users\Win 11\.keystore] using alias [server] with trust store [null]
+2025-08-13 20:26:47.179 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (https) with context path '/'
+2025-08-13 20:26:47.185 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Started PkiSystemApplication in 3.688 seconds (process running for 4.104)
+2025-08-13 20:26:47.571 [RMI TCP Connection(1)-192.168.0.10] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-13 20:26:47.571 [RMI TCP Connection(1)-192.168.0.10] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-13 20:26:47.572 [RMI TCP Connection(1)-192.168.0.10] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-08-13 20:27:12.305 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/captcha/generate
+2025-08-13 20:27:12.332 [https-jsse-nio-8080-exec-9] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:27:12.341 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/captcha/generate
+2025-08-13 20:27:23.847 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-08-13 20:27:23.849 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-08-13 20:27:23.853 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-13 20:27:23.854 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-08-13 20:27:23.856 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-08-13 20:27:27.619 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Starting PkiSystemApplication using Java 24.0.1 with PID 18188 (C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system\target\classes started by Win 11 in C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system)
+2025-08-13 20:27:27.620 [restartedMain] DEBUG r.a.u.f.p.PkiSystemApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-13 20:27:27.620 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-13 20:27:27.644 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-08-13 20:27:27.644 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-08-13 20:27:28.155 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-13 20:27:28.194 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 34 ms. Found 6 JPA repository interfaces.
+2025-08-13 20:27:28.597 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (https)
+2025-08-13 20:27:28.609 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-13 20:27:28.610 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-13 20:27:28.633 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-13 20:27:28.634 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 990 ms
+2025-08-13 20:27:28.752 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-13 20:27:28.775 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2025-08-13 20:27:28.790 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-08-13 20:27:28.940 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-13 20:27:28.954 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-08-13 20:27:29.122 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@71f217aa
+2025-08-13 20:27:29.123 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-08-13 20:27:29.143 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-13 20:27:29.144 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-08-13 20:27:29.151 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-13 20:27:29.648 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-13 20:27:29.698 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-13 20:27:29.918 [restartedMain] DEBUG r.a.u.f.p.security.JwtRequestFilter - Filter 'jwtRequestFilter' configured for use
+2025-08-13 20:27:30.048 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-08-13 20:27:30.333 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-08-13 20:27:30.333 [restartedMain] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-08-13 20:27:30.415 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-13 20:27:30.597 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+2025-08-13 20:27:30.669 [restartedMain] DEBUG o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtRequestFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-08-13 20:27:30.853 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-08-13 20:27:30.951 [restartedMain] INFO  o.a.t.u.net.NioEndpoint.certificate - Connector [https-jsse-nio-8080], TLS virtual host [_default_], certificate type [UNDEFINED] configured from keystore [C:\Users\Win 11\.keystore] using alias [server] with trust store [null]
+2025-08-13 20:27:30.960 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (https) with context path '/'
+2025-08-13 20:27:30.965 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Started PkiSystemApplication in 3.621 seconds (process running for 3.982)
+2025-08-13 20:27:31.313 [RMI TCP Connection(1)-192.168.0.10] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-13 20:27:31.313 [RMI TCP Connection(1)-192.168.0.10] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-13 20:27:31.314 [RMI TCP Connection(1)-192.168.0.10] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2025-08-13 20:27:37.103 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/captcha/generate
+2025-08-13 20:27:37.118 [https-jsse-nio-8080-exec-10] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:27:37.121 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/captcha/generate
+2025-08-13 20:28:57.648 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/auth/login
+2025-08-13 20:28:57.655 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/login
+2025-08-13 20:28:57.655 [https-jsse-nio-8080-exec-9] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:28:57.655 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/login
+2025-08-13 20:28:57.671 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing POST /error
+2025-08-13 20:28:57.676 [https-jsse-nio-8080-exec-9] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:28:57.677 [https-jsse-nio-8080-exec-9] DEBUG o.s.s.w.a.Http403ForbiddenEntryPoint - Pre-authenticated entry point called. Rejecting access
+2025-08-13 20:28:57.692 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/captcha/generate
+2025-08-13 20:28:57.692 [https-jsse-nio-8080-exec-2] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:28:57.695 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/captcha/generate
+2025-08-13 20:30:49.553 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/auth/register
+2025-08-13 20:30:49.560 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/register
+2025-08-13 20:30:49.560 [https-jsse-nio-8080-exec-6] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:30:49.560 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/register
+2025-08-13 20:30:49.567 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing POST /error
+2025-08-13 20:30:49.567 [https-jsse-nio-8080-exec-6] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:30:49.567 [https-jsse-nio-8080-exec-6] DEBUG o.s.s.w.a.Http403ForbiddenEntryPoint - Pre-authenticated entry point called. Rejecting access
+2025-08-13 20:31:35.538 [https-jsse-nio-8080-exec-7] DEBUG o.s.security.web.FilterChainProxy - Securing GET /actuator/health
+2025-08-13 20:31:35.538 [https-jsse-nio-8080-exec-7] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:31:35.538 [https-jsse-nio-8080-exec-7] DEBUG o.s.security.web.FilterChainProxy - Secured GET /actuator/health
+2025-08-13 20:31:36.267 [https-jsse-nio-8080-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing GET /favicon.ico
+2025-08-13 20:31:36.267 [https-jsse-nio-8080-exec-8] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:31:36.267 [https-jsse-nio-8080-exec-8] DEBUG o.s.s.w.a.Http403ForbiddenEntryPoint - Pre-authenticated entry point called. Rejecting access
+2025-08-13 20:31:36.274 [https-jsse-nio-8080-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing GET /error
+2025-08-13 20:31:36.274 [https-jsse-nio-8080-exec-8] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:31:36.274 [https-jsse-nio-8080-exec-8] DEBUG o.s.s.w.a.Http403ForbiddenEntryPoint - Pre-authenticated entry point called. Rejecting access
+2025-08-13 20:32:24.573 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-08-13 20:32:24.575 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-08-13 20:32:24.579 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-13 20:32:24.581 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-08-13 20:32:24.583 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-08-13 20:33:25.124 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Starting PkiSystemApplication using Java 24.0.1 with PID 24396 (C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system\target\classes started by Win 11 in C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system)
+2025-08-13 20:33:25.125 [restartedMain] DEBUG r.a.u.f.p.PkiSystemApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-13 20:33:25.125 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-13 20:33:25.150 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-08-13 20:33:25.150 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-08-13 20:33:25.655 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-13 20:33:25.694 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 34 ms. Found 6 JPA repository interfaces.
+2025-08-13 20:33:26.083 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (https)
+2025-08-13 20:33:26.095 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-13 20:33:26.095 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-13 20:33:26.122 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-13 20:33:26.122 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 972 ms
+2025-08-13 20:33:26.235 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-13 20:33:26.259 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2025-08-13 20:33:26.274 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-08-13 20:33:26.407 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-13 20:33:26.424 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-08-13 20:33:26.589 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3b6b8385
+2025-08-13 20:33:26.590 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-08-13 20:33:26.610 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-13 20:33:26.611 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-08-13 20:33:26.619 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-13 20:33:27.115 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-13 20:33:27.163 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-13 20:33:27.373 [restartedMain] DEBUG r.a.u.f.p.security.JwtRequestFilter - Filter 'jwtRequestFilter' configured for use
+2025-08-13 20:33:27.501 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-08-13 20:33:27.783 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-08-13 20:33:27.783 [restartedMain] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-08-13 20:33:27.863 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-13 20:33:28.044 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+2025-08-13 20:33:28.110 [restartedMain] DEBUG o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtRequestFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-08-13 20:33:28.296 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-08-13 20:33:28.390 [restartedMain] INFO  o.a.t.u.net.NioEndpoint.certificate - Connector [https-jsse-nio-8080], TLS virtual host [_default_], certificate type [UNDEFINED] configured from keystore [C:\Users\Win 11\.keystore] using alias [server] with trust store [null]
+2025-08-13 20:33:28.398 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (https) with context path '/'
+2025-08-13 20:33:28.404 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Started PkiSystemApplication in 3.495 seconds (process running for 3.874)
+2025-08-13 20:33:28.742 [RMI TCP Connection(1)-192.168.0.10] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-13 20:33:28.743 [RMI TCP Connection(1)-192.168.0.10] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-13 20:33:28.743 [RMI TCP Connection(1)-192.168.0.10] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2025-08-13 20:33:35.625 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/captcha/generate
+2025-08-13 20:33:35.665 [https-jsse-nio-8080-exec-9] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:33:35.674 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/captcha/generate
+2025-08-13 20:34:04.620 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/auth/login
+2025-08-13 20:34:04.627 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/login
+2025-08-13 20:34:04.627 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:34:04.627 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/login
+2025-08-13 20:34:04.634 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing POST /error
+2025-08-13 20:34:04.641 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:34:04.641 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.w.a.Http403ForbiddenEntryPoint - Pre-authenticated entry point called. Rejecting access
+2025-08-13 20:34:04.654 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/captcha/generate
+2025-08-13 20:34:04.654 [https-jsse-nio-8080-exec-2] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:34:04.654 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/captcha/generate
+2025-08-13 20:34:31.669 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/auth/login
+2025-08-13 20:34:31.672 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/login
+2025-08-13 20:34:31.672 [https-jsse-nio-8080-exec-6] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:34:31.672 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/login
+2025-08-13 20:34:31.674 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing POST /error
+2025-08-13 20:34:31.674 [https-jsse-nio-8080-exec-6] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:34:31.674 [https-jsse-nio-8080-exec-6] DEBUG o.s.s.w.a.Http403ForbiddenEntryPoint - Pre-authenticated entry point called. Rejecting access
+2025-08-13 20:34:31.682 [https-jsse-nio-8080-exec-5] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/captcha/generate
+2025-08-13 20:34:31.682 [https-jsse-nio-8080-exec-5] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:34:31.683 [https-jsse-nio-8080-exec-5] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/captcha/generate
+2025-08-13 20:35:39.026 [https-jsse-nio-8080-exec-5] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/auth/login
+2025-08-13 20:35:39.028 [https-jsse-nio-8080-exec-7] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/login
+2025-08-13 20:35:39.029 [https-jsse-nio-8080-exec-7] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:35:39.029 [https-jsse-nio-8080-exec-7] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/login
+2025-08-13 20:35:39.031 [https-jsse-nio-8080-exec-7] DEBUG o.s.security.web.FilterChainProxy - Securing POST /error
+2025-08-13 20:35:39.032 [https-jsse-nio-8080-exec-7] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:35:39.032 [https-jsse-nio-8080-exec-7] DEBUG o.s.s.w.a.Http403ForbiddenEntryPoint - Pre-authenticated entry point called. Rejecting access
+2025-08-13 20:35:39.038 [https-jsse-nio-8080-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/captcha/generate
+2025-08-13 20:35:39.040 [https-jsse-nio-8080-exec-8] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:35:39.041 [https-jsse-nio-8080-exec-8] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/captcha/generate
+2025-08-13 20:35:58.849 [https-jsse-nio-8080-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/auth/login
+2025-08-13 20:35:58.853 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/login
+2025-08-13 20:35:58.853 [https-jsse-nio-8080-exec-9] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:35:58.854 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/login
+2025-08-13 20:35:58.855 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing POST /error
+2025-08-13 20:35:58.855 [https-jsse-nio-8080-exec-9] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:35:58.856 [https-jsse-nio-8080-exec-9] DEBUG o.s.s.w.a.Http403ForbiddenEntryPoint - Pre-authenticated entry point called. Rejecting access
+2025-08-13 20:35:58.861 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/captcha/generate
+2025-08-13 20:35:58.862 [https-jsse-nio-8080-exec-10] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:35:58.862 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/captcha/generate
+2025-08-13 20:36:36.569 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-08-13 20:36:36.571 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-08-13 20:36:36.575 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-13 20:36:36.577 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-08-13 20:36:36.578 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-08-13 20:36:39.037 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Starting PkiSystemApplication using Java 24.0.1 with PID 22536 (C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system\target\classes started by Win 11 in C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system)
+2025-08-13 20:36:39.038 [restartedMain] DEBUG r.a.u.f.p.PkiSystemApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-13 20:36:39.038 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-13 20:36:39.061 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-08-13 20:36:39.061 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-08-13 20:36:39.566 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-13 20:36:39.603 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 31 ms. Found 6 JPA repository interfaces.
+2025-08-13 20:36:39.996 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (https)
+2025-08-13 20:36:40.004 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-13 20:36:40.004 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-13 20:36:40.026 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-13 20:36:40.026 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 965 ms
+2025-08-13 20:36:40.136 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-13 20:36:40.158 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2025-08-13 20:36:40.173 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-08-13 20:36:40.307 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-13 20:36:40.321 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-08-13 20:36:40.498 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7973a9b3
+2025-08-13 20:36:40.499 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-08-13 20:36:40.520 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-13 20:36:40.521 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-08-13 20:36:40.529 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-13 20:36:41.035 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-13 20:36:41.086 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-13 20:36:41.294 [restartedMain] DEBUG r.a.u.f.p.security.JwtRequestFilter - Filter 'jwtRequestFilter' configured for use
+2025-08-13 20:36:41.429 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-08-13 20:36:41.709 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-08-13 20:36:41.709 [restartedMain] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-08-13 20:36:41.788 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-13 20:36:41.975 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+2025-08-13 20:36:42.048 [restartedMain] DEBUG o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtRequestFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-08-13 20:36:42.226 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-08-13 20:36:42.321 [restartedMain] INFO  o.a.t.u.net.NioEndpoint.certificate - Connector [https-jsse-nio-8080], TLS virtual host [_default_], certificate type [UNDEFINED] configured from keystore [C:\Users\Win 11\.keystore] using alias [server] with trust store [null]
+2025-08-13 20:36:42.333 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (https) with context path '/'
+2025-08-13 20:36:42.342 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Started PkiSystemApplication in 3.531 seconds (process running for 3.898)
+2025-08-13 20:36:42.651 [RMI TCP Connection(3)-192.168.0.10] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-13 20:36:42.651 [RMI TCP Connection(3)-192.168.0.10] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-13 20:36:42.652 [RMI TCP Connection(3)-192.168.0.10] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-08-13 20:36:45.580 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/captcha/generate
+2025-08-13 20:36:45.595 [https-jsse-nio-8080-exec-3] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:36:45.598 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/captcha/generate
+2025-08-13 20:36:54.952 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/auth/login
+2025-08-13 20:36:54.959 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/login
+2025-08-13 20:36:54.959 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:36:54.959 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/login
+2025-08-13 20:36:54.973 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing POST /error
+2025-08-13 20:36:54.973 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:36:54.980 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.w.a.Http403ForbiddenEntryPoint - Pre-authenticated entry point called. Rejecting access
+2025-08-13 20:36:54.990 [https-jsse-nio-8080-exec-5] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/captcha/generate
+2025-08-13 20:36:54.991 [https-jsse-nio-8080-exec-5] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:36:54.991 [https-jsse-nio-8080-exec-5] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/captcha/generate
+2025-08-13 20:43:18.644 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-08-13 20:43:18.660 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-08-13 20:43:18.660 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-13 20:43:18.671 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-08-13 20:43:18.676 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-08-13 20:44:43.372 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Starting PkiSystemApplication using Java 24.0.1 with PID 23012 (C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system\target\classes started by Win 11 in C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system)
+2025-08-13 20:44:43.373 [restartedMain] DEBUG r.a.u.f.p.PkiSystemApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-13 20:44:43.373 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-13 20:44:43.398 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-08-13 20:44:43.398 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-08-13 20:44:43.904 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-13 20:44:43.944 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 34 ms. Found 6 JPA repository interfaces.
+2025-08-13 20:44:44.346 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (https)
+2025-08-13 20:44:44.358 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-13 20:44:44.359 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-13 20:44:44.386 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-13 20:44:44.387 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 989 ms
+2025-08-13 20:44:44.503 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-13 20:44:44.525 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2025-08-13 20:44:44.542 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-08-13 20:44:44.686 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-13 20:44:44.700 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-08-13 20:44:44.870 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@157bad3d
+2025-08-13 20:44:44.871 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-08-13 20:44:44.893 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-13 20:44:44.893 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-08-13 20:44:44.901 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-13 20:44:45.425 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-13 20:44:45.477 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-13 20:44:45.701 [restartedMain] DEBUG r.a.u.f.p.security.JwtRequestFilter - Filter 'jwtRequestFilter' configured for use
+2025-08-13 20:44:45.742 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-08-13 20:44:45.742 [restartedMain] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-08-13 20:44:45.868 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-08-13 20:44:46.212 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-13 20:44:46.392 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+2025-08-13 20:44:46.461 [restartedMain] DEBUG o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtRequestFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-08-13 20:44:46.636 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-08-13 20:44:46.731 [restartedMain] INFO  o.a.t.u.net.NioEndpoint.certificate - Connector [https-jsse-nio-8080], TLS virtual host [_default_], certificate type [UNDEFINED] configured from keystore [C:\Users\Win 11\.keystore] using alias [server] with trust store [null]
+2025-08-13 20:44:46.740 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (https) with context path '/'
+2025-08-13 20:44:46.746 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Started PkiSystemApplication in 3.587 seconds (process running for 4.027)
+2025-08-13 20:44:46.862 [RMI TCP Connection(2)-192.168.0.10] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-13 20:44:46.862 [RMI TCP Connection(2)-192.168.0.10] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-13 20:44:46.863 [RMI TCP Connection(2)-192.168.0.10] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-08-13 20:44:53.925 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/captcha/generate
+2025-08-13 20:44:53.939 [https-jsse-nio-8080-exec-2] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:44:53.943 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/captcha/generate
+2025-08-13 20:45:04.946 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/auth/login
+2025-08-13 20:45:04.949 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/login
+2025-08-13 20:45:04.949 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:45:04.950 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/login
+2025-08-13 20:45:05.107 [https-jsse-nio-8080-exec-1] WARN  o.s.s.c.bcrypt.BCryptPasswordEncoder - Encoded password does not look like BCrypt
+2025-08-13 20:45:05.107 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.a.d.DaoAuthenticationProvider - Failed to authenticate since password does not match stored value
+2025-08-13 20:45:05.107 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.authentication.ProviderManager - Authentication failed with provider DaoAuthenticationProvider since Bad credentials
+2025-08-13 20:45:05.160 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/captcha/generate
+2025-08-13 20:45:05.160 [https-jsse-nio-8080-exec-10] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:45:05.161 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/captcha/generate
+2025-08-13 20:45:28.228 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-08-13 20:45:28.231 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-08-13 20:45:28.234 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-13 20:45:28.236 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-08-13 20:45:28.238 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-08-13 20:45:30.530 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Starting PkiSystemApplication using Java 24.0.1 with PID 24220 (C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system\target\classes started by Win 11 in C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system)
+2025-08-13 20:45:30.531 [restartedMain] DEBUG r.a.u.f.p.PkiSystemApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-13 20:45:30.531 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-13 20:45:30.560 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-08-13 20:45:30.560 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-08-13 20:45:31.069 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-13 20:45:31.110 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 36 ms. Found 6 JPA repository interfaces.
+2025-08-13 20:45:31.510 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (https)
+2025-08-13 20:45:31.522 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-13 20:45:31.522 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-13 20:45:31.550 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-13 20:45:31.550 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 990 ms
+2025-08-13 20:45:31.667 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-13 20:45:31.690 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2025-08-13 20:45:31.707 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-08-13 20:45:31.860 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-13 20:45:31.874 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-08-13 20:45:32.053 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2f6e3589
+2025-08-13 20:45:32.054 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-08-13 20:45:32.075 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-13 20:45:32.076 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-08-13 20:45:32.087 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-13 20:45:32.640 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-13 20:45:32.703 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-13 20:45:32.939 [restartedMain] DEBUG r.a.u.f.p.security.JwtRequestFilter - Filter 'jwtRequestFilter' configured for use
+2025-08-13 20:45:32.977 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-08-13 20:45:32.977 [restartedMain] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-08-13 20:45:33.109 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-08-13 20:45:33.443 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-13 20:45:33.625 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+2025-08-13 20:45:33.698 [restartedMain] DEBUG o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtRequestFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-08-13 20:45:33.876 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-08-13 20:45:33.977 [restartedMain] INFO  o.a.t.u.net.NioEndpoint.certificate - Connector [https-jsse-nio-8080], TLS virtual host [_default_], certificate type [UNDEFINED] configured from keystore [C:\Users\Win 11\.keystore] using alias [server] with trust store [null]
+2025-08-13 20:45:33.985 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (https) with context path '/'
+2025-08-13 20:45:33.990 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Started PkiSystemApplication in 3.715 seconds (process running for 4.085)
+2025-08-13 20:45:34.113 [RMI TCP Connection(2)-192.168.0.10] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-13 20:45:34.113 [RMI TCP Connection(2)-192.168.0.10] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-13 20:45:34.114 [RMI TCP Connection(2)-192.168.0.10] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-08-13 20:45:43.297 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/captcha/generate
+2025-08-13 20:45:43.320 [https-jsse-nio-8080-exec-9] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:45:43.326 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/captcha/generate
+2025-08-13 20:45:55.739 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/auth/login
+2025-08-13 20:45:55.742 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/login
+2025-08-13 20:45:55.742 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:45:55.743 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/login
+2025-08-13 20:45:55.957 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.a.d.DaoAuthenticationProvider - Failed to authenticate since password does not match stored value
+2025-08-13 20:45:55.957 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.authentication.ProviderManager - Authentication failed with provider DaoAuthenticationProvider since Bad credentials
+2025-08-13 20:45:56.003 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/captcha/generate
+2025-08-13 20:45:56.004 [https-jsse-nio-8080-exec-10] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:45:56.004 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/captcha/generate
+2025-08-13 20:48:42.007 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-08-13 20:48:42.012 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-08-13 20:48:42.012 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-13 20:48:42.012 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-08-13 20:48:42.028 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-08-13 20:48:44.403 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Starting PkiSystemApplication using Java 24.0.1 with PID 7864 (C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system\target\classes started by Win 11 in C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system)
+2025-08-13 20:48:44.404 [restartedMain] DEBUG r.a.u.f.p.PkiSystemApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-13 20:48:44.404 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-13 20:48:44.430 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-08-13 20:48:44.430 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-08-13 20:48:44.948 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-13 20:48:44.985 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 32 ms. Found 6 JPA repository interfaces.
+2025-08-13 20:48:45.386 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (https)
+2025-08-13 20:48:45.394 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-13 20:48:45.394 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-13 20:48:45.420 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-13 20:48:45.420 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 989 ms
+2025-08-13 20:48:45.541 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-13 20:48:45.565 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2025-08-13 20:48:45.581 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-08-13 20:48:45.731 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-13 20:48:45.745 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-08-13 20:48:45.915 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@566a989e
+2025-08-13 20:48:45.916 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-08-13 20:48:45.938 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-13 20:48:45.939 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-08-13 20:48:45.946 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-13 20:48:46.472 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-13 20:48:46.518 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-13 20:48:46.727 [restartedMain] DEBUG r.a.u.f.p.security.JwtRequestFilter - Filter 'jwtRequestFilter' configured for use
+2025-08-13 20:48:46.763 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-08-13 20:48:46.763 [restartedMain] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-08-13 20:48:46.891 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-08-13 20:48:47.213 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-13 20:48:47.389 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+2025-08-13 20:48:47.459 [restartedMain] DEBUG o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtRequestFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-08-13 20:48:47.642 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-08-13 20:48:47.740 [restartedMain] INFO  o.a.t.u.net.NioEndpoint.certificate - Connector [https-jsse-nio-8080], TLS virtual host [_default_], certificate type [UNDEFINED] configured from keystore [C:\Users\Win 11\.keystore] using alias [server] with trust store [null]
+2025-08-13 20:48:47.750 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (https) with context path '/'
+2025-08-13 20:48:47.756 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Started PkiSystemApplication in 3.571 seconds (process running for 3.939)
+2025-08-13 20:48:47.976 [RMI TCP Connection(2)-192.168.0.10] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-13 20:48:47.977 [RMI TCP Connection(2)-192.168.0.10] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-13 20:48:47.977 [RMI TCP Connection(2)-192.168.0.10] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2025-08-13 20:48:51.931 [https-jsse-nio-8080-exec-5] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/auth/generate-hash/admin123
+2025-08-13 20:48:51.938 [https-jsse-nio-8080-exec-5] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:48:51.941 [https-jsse-nio-8080-exec-5] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/auth/generate-hash/admin123
+2025-08-13 20:48:51.952 [https-jsse-nio-8080-exec-5] DEBUG o.s.security.web.FilterChainProxy - Securing GET /error
+2025-08-13 20:48:51.953 [https-jsse-nio-8080-exec-5] DEBUG o.s.security.web.FilterChainProxy - Secured GET /error
+2025-08-13 20:48:51.972 [https-jsse-nio-8080-exec-5] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:48:52.047 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing GET /favicon.ico
+2025-08-13 20:48:52.047 [https-jsse-nio-8080-exec-6] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:48:52.050 [https-jsse-nio-8080-exec-6] DEBUG o.s.s.w.a.Http403ForbiddenEntryPoint - Pre-authenticated entry point called. Rejecting access
+2025-08-13 20:48:52.050 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing GET /error
+2025-08-13 20:48:52.051 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Secured GET /error
+2025-08-13 20:48:52.062 [https-jsse-nio-8080-exec-6] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:49:47.707 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-08-13 20:49:47.720 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-08-13 20:49:47.720 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-13 20:49:47.720 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-08-13 20:49:47.736 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-08-13 20:49:51.273 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Starting PkiSystemApplication using Java 24.0.1 with PID 8056 (C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system\target\classes started by Win 11 in C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system)
+2025-08-13 20:49:51.274 [restartedMain] DEBUG r.a.u.f.p.PkiSystemApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-13 20:49:51.275 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-13 20:49:51.299 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-08-13 20:49:51.299 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-08-13 20:49:51.811 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-13 20:49:51.848 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 32 ms. Found 6 JPA repository interfaces.
+2025-08-13 20:49:52.259 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (https)
+2025-08-13 20:49:52.270 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-13 20:49:52.270 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-13 20:49:52.297 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-13 20:49:52.297 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 998 ms
+2025-08-13 20:49:52.412 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-13 20:49:52.435 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2025-08-13 20:49:52.451 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-08-13 20:49:52.591 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-13 20:49:52.605 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-08-13 20:49:52.810 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@d729b12
+2025-08-13 20:49:52.812 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-08-13 20:49:52.855 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-13 20:49:52.856 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-08-13 20:49:52.865 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-13 20:49:53.405 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-13 20:49:53.457 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-13 20:49:53.664 [restartedMain] DEBUG r.a.u.f.p.security.JwtRequestFilter - Filter 'jwtRequestFilter' configured for use
+2025-08-13 20:49:53.699 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-08-13 20:49:53.700 [restartedMain] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-08-13 20:49:53.825 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-08-13 20:49:54.158 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-13 20:49:54.336 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+2025-08-13 20:49:54.410 [restartedMain] DEBUG o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtRequestFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-08-13 20:49:54.584 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-08-13 20:49:54.683 [restartedMain] INFO  o.a.t.u.net.NioEndpoint.certificate - Connector [https-jsse-nio-8080], TLS virtual host [_default_], certificate type [UNDEFINED] configured from keystore [C:\Users\Win 11\.keystore] using alias [server] with trust store [null]
+2025-08-13 20:49:54.691 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (https) with context path '/'
+2025-08-13 20:49:54.697 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Started PkiSystemApplication in 3.665 seconds (process running for 4.058)
+2025-08-13 20:49:54.810 [RMI TCP Connection(1)-192.168.0.10] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-13 20:49:54.810 [RMI TCP Connection(1)-192.168.0.10] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-13 20:49:54.811 [RMI TCP Connection(1)-192.168.0.10] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-08-13 20:50:01.139 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/captcha/generate
+2025-08-13 20:50:01.154 [https-jsse-nio-8080-exec-9] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:50:01.158 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/captcha/generate
+2025-08-13 20:50:01.927 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/captcha/generate
+2025-08-13 20:50:01.928 [https-jsse-nio-8080-exec-10] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:50:01.928 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/captcha/generate
+2025-08-13 20:50:17.541 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/auth/login
+2025-08-13 20:50:17.544 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/login
+2025-08-13 20:50:17.545 [https-jsse-nio-8080-exec-3] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:50:17.545 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/login
+2025-08-13 20:50:17.750 [https-jsse-nio-8080-exec-3] DEBUG o.s.s.a.d.DaoAuthenticationProvider - Failed to authenticate since password does not match stored value
+2025-08-13 20:50:17.750 [https-jsse-nio-8080-exec-3] DEBUG o.s.s.authentication.ProviderManager - Authentication failed with provider DaoAuthenticationProvider since Bad credentials
+2025-08-13 20:50:17.797 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/captcha/generate
+2025-08-13 20:50:17.798 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:50:17.799 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/captcha/generate
+2025-08-13 20:52:04.336 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-08-13 20:52:04.338 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-08-13 20:52:04.347 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-13 20:52:04.349 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-08-13 20:52:04.352 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-08-13 20:52:05.543 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Starting PkiSystemApplication using Java 24.0.1 with PID 22824 (C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system\target\classes started by Win 11 in C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system)
+2025-08-13 20:52:05.543 [restartedMain] DEBUG r.a.u.f.p.PkiSystemApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-13 20:52:05.544 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-13 20:52:05.571 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-08-13 20:52:05.571 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-08-13 20:52:06.065 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-13 20:52:06.102 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 31 ms. Found 6 JPA repository interfaces.
+2025-08-13 20:52:06.510 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (https)
+2025-08-13 20:52:06.517 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-13 20:52:06.518 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-13 20:52:06.546 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-13 20:52:06.546 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 975 ms
+2025-08-13 20:52:06.651 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-13 20:52:06.674 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2025-08-13 20:52:06.690 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-08-13 20:52:06.835 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-13 20:52:06.849 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-08-13 20:52:07.024 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5a6f25ee
+2025-08-13 20:52:07.025 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-08-13 20:52:07.047 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-13 20:52:07.047 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-08-13 20:52:07.056 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-13 20:52:07.560 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-13 20:52:07.609 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-13 20:52:07.828 [restartedMain] DEBUG r.a.u.f.p.security.JwtRequestFilter - Filter 'jwtRequestFilter' configured for use
+2025-08-13 20:52:07.864 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-08-13 20:52:07.865 [restartedMain] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-08-13 20:52:07.992 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-08-13 20:52:08.338 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-13 20:52:08.517 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+2025-08-13 20:52:08.601 [restartedMain] DEBUG o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtRequestFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-08-13 20:52:08.789 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-08-13 20:52:08.890 [restartedMain] INFO  o.a.t.u.net.NioEndpoint.certificate - Connector [https-jsse-nio-8080], TLS virtual host [_default_], certificate type [UNDEFINED] configured from keystore [C:\Users\Win 11\.keystore] using alias [server] with trust store [null]
+2025-08-13 20:52:08.903 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (https) with context path '/'
+2025-08-13 20:52:08.912 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Started PkiSystemApplication in 3.628 seconds (process running for 4.037)
+2025-08-13 20:52:09.079 [RMI TCP Connection(4)-192.168.0.10] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-13 20:52:09.079 [RMI TCP Connection(4)-192.168.0.10] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-13 20:52:09.080 [RMI TCP Connection(4)-192.168.0.10] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-08-13 20:52:14.265 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/captcha/generate
+2025-08-13 20:52:14.280 [https-jsse-nio-8080-exec-9] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:52:14.284 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/captcha/generate
+2025-08-13 20:52:36.296 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/auth/login
+2025-08-13 20:52:36.298 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/login
+2025-08-13 20:52:36.299 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:52:36.299 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/login
+2025-08-13 20:52:36.507 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.a.d.DaoAuthenticationProvider - Failed to authenticate since password does not match stored value
+2025-08-13 20:52:36.507 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.authentication.ProviderManager - Authentication failed with provider DaoAuthenticationProvider since Bad credentials
+2025-08-13 20:52:36.564 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/captcha/generate
+2025-08-13 20:52:36.565 [https-jsse-nio-8080-exec-10] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:52:36.565 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/captcha/generate
+2025-08-13 20:54:29.674 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/auth/login
+2025-08-13 20:54:29.676 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/login
+2025-08-13 20:54:29.676 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:54:29.677 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/login
+2025-08-13 20:54:29.732 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.a.d.DaoAuthenticationProvider - Failed to authenticate since password does not match stored value
+2025-08-13 20:54:29.732 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.authentication.ProviderManager - Authentication failed with provider DaoAuthenticationProvider since Bad credentials
+2025-08-13 20:54:29.754 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/captcha/generate
+2025-08-13 20:54:29.754 [https-jsse-nio-8080-exec-10] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:54:29.755 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/captcha/generate
+2025-08-13 20:56:15.803 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-08-13 20:56:15.806 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-08-13 20:56:15.809 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-13 20:56:15.811 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-08-13 20:56:15.813 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-08-13 20:56:21.298 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Starting PkiSystemApplication using Java 24.0.1 with PID 5000 (C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system\target\classes started by Win 11 in C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system)
+2025-08-13 20:56:21.299 [restartedMain] DEBUG r.a.u.f.p.PkiSystemApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-13 20:56:21.299 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-13 20:56:21.322 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-08-13 20:56:21.323 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-08-13 20:56:21.846 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-13 20:56:21.885 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 34 ms. Found 6 JPA repository interfaces.
+2025-08-13 20:56:22.325 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (https)
+2025-08-13 20:56:22.336 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-13 20:56:22.337 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-13 20:56:22.365 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-13 20:56:22.365 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1042 ms
+2025-08-13 20:56:22.477 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-13 20:56:22.500 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2025-08-13 20:56:22.516 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-08-13 20:56:22.673 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-13 20:56:22.686 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-08-13 20:56:22.854 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6185e1c1
+2025-08-13 20:56:22.855 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-08-13 20:56:22.877 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-13 20:56:22.877 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-08-13 20:56:22.885 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-13 20:56:23.401 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-13 20:56:23.450 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-13 20:56:23.683 [restartedMain] DEBUG r.a.u.f.p.security.JwtRequestFilter - Filter 'jwtRequestFilter' configured for use
+2025-08-13 20:56:23.718 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-08-13 20:56:23.719 [restartedMain] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-08-13 20:56:23.847 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-08-13 20:56:24.185 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-13 20:56:24.380 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+2025-08-13 20:56:24.459 [restartedMain] DEBUG o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtRequestFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-08-13 20:56:24.635 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-08-13 20:56:24.732 [restartedMain] INFO  o.a.t.u.net.NioEndpoint.certificate - Connector [https-jsse-nio-8080], TLS virtual host [_default_], certificate type [UNDEFINED] configured from keystore [C:\Users\Win 11\.keystore] using alias [server] with trust store [null]
+2025-08-13 20:56:24.740 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (https) with context path '/'
+2025-08-13 20:56:24.747 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Started PkiSystemApplication in 3.67 seconds (process running for 4.041)
+2025-08-13 20:56:24.883 [RMI TCP Connection(2)-192.168.0.10] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-13 20:56:24.883 [RMI TCP Connection(2)-192.168.0.10] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-13 20:56:24.883 [RMI TCP Connection(2)-192.168.0.10] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2025-08-13 20:56:28.601 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/captcha/generate
+2025-08-13 20:56:28.615 [https-jsse-nio-8080-exec-9] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:56:28.618 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/captcha/generate
+2025-08-13 20:56:47.679 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/auth/login
+2025-08-13 20:56:47.683 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/login
+2025-08-13 20:56:47.684 [https-jsse-nio-8080-exec-10] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:56:47.685 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/login
+2025-08-13 20:56:48.088 [https-jsse-nio-8080-exec-10] DEBUG o.s.s.a.d.DaoAuthenticationProvider - Failed to authenticate since password does not match stored value
+2025-08-13 20:56:48.088 [https-jsse-nio-8080-exec-10] DEBUG o.s.s.authentication.ProviderManager - Authentication failed with provider DaoAuthenticationProvider since Bad credentials
+2025-08-13 20:56:48.173 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/captcha/generate
+2025-08-13 20:56:48.175 [https-jsse-nio-8080-exec-9] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:56:48.176 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/captcha/generate
+2025-08-13 20:57:06.299 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-08-13 20:57:06.301 [Thread-5] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-08-13 20:57:06.304 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-08-13 20:57:06.308 [Thread-5] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-13 20:57:06.310 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-08-13 20:57:06.312 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-08-13 20:57:06.360 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Starting PkiSystemApplication using Java 24.0.1 with PID 5000 (C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system\target\classes started by Win 11 in C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system)
+2025-08-13 20:57:06.360 [restartedMain] DEBUG r.a.u.f.p.PkiSystemApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-13 20:57:06.360 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-13 20:57:06.513 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-13 20:57:06.527 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 13 ms. Found 6 JPA repository interfaces.
+2025-08-13 20:57:06.608 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (https)
+2025-08-13 20:57:06.609 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-13 20:57:06.609 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-13 20:57:06.624 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-13 20:57:06.624 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 263 ms
+2025-08-13 20:57:06.660 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-13 20:57:06.661 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-08-13 20:57:06.665 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-13 20:57:06.666 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2025-08-13 20:57:06.673 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@522448de
+2025-08-13 20:57:06.673 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2025-08-13 20:57:06.674 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-13 20:57:06.674 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-08-13 20:57:06.674 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-13 20:57:06.739 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-13 20:57:06.756 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-13 20:57:06.827 [restartedMain] DEBUG r.a.u.f.p.security.JwtRequestFilter - Filter 'jwtRequestFilter' configured for use
+2025-08-13 20:57:06.848 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-08-13 20:57:06.848 [restartedMain] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-08-13 20:57:06.908 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-13 20:57:06.995 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+2025-08-13 20:57:07.026 [restartedMain] DEBUG o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtRequestFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-08-13 20:57:07.098 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-08-13 20:57:07.153 [restartedMain] INFO  o.a.t.u.net.NioEndpoint.certificate - Connector [https-jsse-nio-8080], TLS virtual host [_default_], certificate type [UNDEFINED] configured from keystore [C:\Users\Win 11\.keystore] using alias [server] with trust store [null]
+2025-08-13 20:57:07.154 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (https) with context path '/'
+2025-08-13 20:57:07.157 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Started PkiSystemApplication in 0.811 seconds (process running for 46.451)
+2025-08-13 20:57:07.159 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-08-13 20:58:29.363 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-08-13 20:58:29.363 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-08-13 20:58:29.363 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-13 20:58:29.363 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2025-08-13 20:58:29.363 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2025-08-13 20:58:31.086 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Starting PkiSystemApplication using Java 24.0.1 with PID 20476 (C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system\target\classes started by Win 11 in C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system)
+2025-08-13 20:58:31.087 [restartedMain] DEBUG r.a.u.f.p.PkiSystemApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-13 20:58:31.087 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-13 20:58:31.112 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-08-13 20:58:31.113 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-08-13 20:58:31.612 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-13 20:58:31.648 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 32 ms. Found 6 JPA repository interfaces.
+2025-08-13 20:58:32.052 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (https)
+2025-08-13 20:58:32.060 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-13 20:58:32.060 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-13 20:58:32.091 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-13 20:58:32.092 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 979 ms
+2025-08-13 20:58:32.209 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-13 20:58:32.234 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2025-08-13 20:58:32.251 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-08-13 20:58:32.393 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-13 20:58:32.407 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-08-13 20:58:32.576 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6e9ca266
+2025-08-13 20:58:32.577 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-08-13 20:58:32.599 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-13 20:58:32.599 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-08-13 20:58:32.607 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-13 20:58:33.117 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-13 20:58:33.165 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-13 20:58:33.376 [restartedMain] DEBUG r.a.u.f.p.security.JwtRequestFilter - Filter 'jwtRequestFilter' configured for use
+2025-08-13 20:58:33.411 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-08-13 20:58:33.411 [restartedMain] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-08-13 20:58:33.538 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-08-13 20:58:33.879 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-13 20:58:34.056 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+2025-08-13 20:58:34.140 [restartedMain] DEBUG o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtRequestFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-08-13 20:58:34.320 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-08-13 20:58:34.416 [restartedMain] INFO  o.a.t.u.net.NioEndpoint.certificate - Connector [https-jsse-nio-8080], TLS virtual host [_default_], certificate type [UNDEFINED] configured from keystore [C:\Users\Win 11\.keystore] using alias [server] with trust store [null]
+2025-08-13 20:58:34.424 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (https) with context path '/'
+2025-08-13 20:58:34.429 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Started PkiSystemApplication in 3.578 seconds (process running for 4.009)
+2025-08-13 20:58:34.602 [RMI TCP Connection(4)-192.168.0.10] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-13 20:58:34.603 [RMI TCP Connection(4)-192.168.0.10] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-13 20:58:34.604 [RMI TCP Connection(4)-192.168.0.10] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-08-13 20:58:40.994 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/captcha/generate
+2025-08-13 20:58:41.009 [https-jsse-nio-8080-exec-9] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:58:41.012 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/captcha/generate
+2025-08-13 20:58:49.316 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/auth/login
+2025-08-13 20:58:49.322 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/login
+2025-08-13 20:58:49.322 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:58:49.322 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/login
+2025-08-13 20:58:49.851 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.a.d.DaoAuthenticationProvider - Authenticated user
+2025-08-13 20:58:49.962 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/captcha/generate
+2025-08-13 20:58:49.962 [https-jsse-nio-8080-exec-10] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:58:49.962 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/captcha/generate
+2025-08-13 20:59:02.840 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/auth/login
+2025-08-13 20:59:02.844 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/login
+2025-08-13 20:59:02.844 [https-jsse-nio-8080-exec-2] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:59:02.844 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/login
+2025-08-13 20:59:03.003 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/captcha/generate
+2025-08-13 20:59:03.003 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:59:03.003 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/captcha/generate
+2025-08-13 20:59:07.466 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/login
+2025-08-13 20:59:07.466 [https-jsse-nio-8080-exec-2] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:59:07.466 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/login
+2025-08-13 20:59:07.688 [https-jsse-nio-8080-exec-2] DEBUG o.s.s.a.d.DaoAuthenticationProvider - Authenticated user
+2025-08-13 20:59:07.733 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/captcha/generate
+2025-08-13 20:59:07.734 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 20:59:07.735 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/captcha/generate
+2025-08-13 21:00:05.060 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-08-13 21:00:05.063 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-08-13 21:00:05.067 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-13 21:00:05.068 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-08-13 21:00:05.071 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-08-13 21:00:28.548 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Starting PkiSystemApplication using Java 24.0.1 with PID 24180 (C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system\target\classes started by Win 11 in C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system)
+2025-08-13 21:00:28.549 [restartedMain] DEBUG r.a.u.f.p.PkiSystemApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-13 21:00:28.549 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-13 21:00:28.574 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-08-13 21:00:28.574 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-08-13 21:00:29.056 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-13 21:00:29.093 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 32 ms. Found 6 JPA repository interfaces.
+2025-08-13 21:00:29.493 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (https)
+2025-08-13 21:00:29.502 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-13 21:00:29.502 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-13 21:00:29.527 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-13 21:00:29.527 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 952 ms
+2025-08-13 21:00:29.647 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-13 21:00:29.670 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2025-08-13 21:00:29.686 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-08-13 21:00:29.869 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-13 21:00:29.883 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-08-13 21:00:30.054 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2a6b40c4
+2025-08-13 21:00:30.055 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-08-13 21:00:30.075 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-13 21:00:30.076 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-08-13 21:00:30.083 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-13 21:00:30.654 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-13 21:00:30.701 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-13 21:00:30.918 [restartedMain] DEBUG r.a.u.f.p.security.JwtRequestFilter - Filter 'jwtRequestFilter' configured for use
+2025-08-13 21:00:30.958 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-08-13 21:00:30.958 [restartedMain] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-08-13 21:00:31.082 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-08-13 21:00:31.440 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-13 21:00:31.626 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+2025-08-13 21:00:31.696 [restartedMain] DEBUG o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtRequestFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-08-13 21:00:31.890 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-08-13 21:00:31.986 [restartedMain] INFO  o.a.t.u.net.NioEndpoint.certificate - Connector [https-jsse-nio-8080], TLS virtual host [_default_], certificate type [UNDEFINED] configured from keystore [C:\Users\Win 11\.keystore] using alias [server] with trust store [null]
+2025-08-13 21:00:31.994 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (https) with context path '/'
+2025-08-13 21:00:32.001 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Started PkiSystemApplication in 3.675 seconds (process running for 4.067)
+2025-08-13 21:00:32.137 [RMI TCP Connection(4)-192.168.0.10] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-13 21:00:32.138 [RMI TCP Connection(4)-192.168.0.10] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-13 21:00:32.138 [RMI TCP Connection(4)-192.168.0.10] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2025-08-13 21:00:35.204 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/captcha/generate
+2025-08-13 21:00:35.219 [https-jsse-nio-8080-exec-9] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 21:00:35.223 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/captcha/generate
+2025-08-13 21:00:42.493 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/auth/login
+2025-08-13 21:00:42.500 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/login
+2025-08-13 21:00:42.500 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 21:00:42.500 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/login
+2025-08-13 21:00:43.126 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.a.d.DaoAuthenticationProvider - Authenticated user
+2025-08-13 21:01:03.536 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/users/profile
+2025-08-13 21:01:03.542 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/users/profile
+2025-08-13 21:01:03.564 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/captcha/generate
+2025-08-13 21:01:03.570 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/captcha/generate
+2025-08-13 21:01:03.614 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/captcha/generate
+2025-08-13 21:01:03.615 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/users/profile
+2025-08-13 21:01:03.616 [https-jsse-nio-8080-exec-3] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.UserController.getCurrentUserProfile(); target is of class [rs.ac.uns.ftn.pkisystem.controller.UserController]
+2025-08-13 21:01:03.639 [https-jsse-nio-8080-exec-3] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.UserController.getCurrentUserProfile(); target is of class [rs.ac.uns.ftn.pkisystem.controller.UserController]
+2025-08-13 21:01:17.119 [https-jsse-nio-8080-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/auth/login
+2025-08-13 21:01:17.125 [https-jsse-nio-8080-exec-7] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/login
+2025-08-13 21:01:17.146 [https-jsse-nio-8080-exec-7] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/login
+2025-08-13 21:01:17.352 [https-jsse-nio-8080-exec-7] DEBUG o.s.s.a.d.DaoAuthenticationProvider - Authenticated user
+2025-08-13 21:01:21.679 [https-jsse-nio-8080-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/login
+2025-08-13 21:01:21.700 [https-jsse-nio-8080-exec-8] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/login
+2025-08-13 21:01:21.812 [https-jsse-nio-8080-exec-5] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/captcha/generate
+2025-08-13 21:01:21.818 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/captcha/generate
+2025-08-13 21:01:21.838 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/captcha/generate
+2025-08-13 21:01:25.648 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/auth/login
+2025-08-13 21:01:25.655 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/login
+2025-08-13 21:01:25.676 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/login
+2025-08-13 21:01:25.836 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.a.d.DaoAuthenticationProvider - Authenticated user
+2025-08-13 21:03:21.596 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/users/profile
+2025-08-13 21:03:21.599 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/users/profile
+2025-08-13 21:03:21.615 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/users/profile
+2025-08-13 21:03:21.616 [https-jsse-nio-8080-exec-2] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.UserController.getCurrentUserProfile(); target is of class [rs.ac.uns.ftn.pkisystem.controller.UserController]
+2025-08-13 21:03:21.616 [https-jsse-nio-8080-exec-2] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.UserController.getCurrentUserProfile(); target is of class [rs.ac.uns.ftn.pkisystem.controller.UserController]
+2025-08-13 21:03:21.673 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/certificates
+2025-08-13 21:03:21.676 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/certificates
+2025-08-13 21:03:21.687 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/certificates
+2025-08-13 21:03:21.687 [https-jsse-nio-8080-exec-3] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-13 21:03:21.688 [https-jsse-nio-8080-exec-3] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-13 21:03:21.700 [https-jsse-nio-8080-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/passwords
+2025-08-13 21:03:21.702 [https-jsse-nio-8080-exec-7] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/passwords
+2025-08-13 21:03:21.713 [https-jsse-nio-8080-exec-7] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/passwords
+2025-08-13 21:03:21.719 [https-jsse-nio-8080-exec-7] DEBUG o.s.security.web.FilterChainProxy - Securing GET /error
+2025-08-13 21:03:21.720 [https-jsse-nio-8080-exec-7] DEBUG o.s.security.web.FilterChainProxy - Secured GET /error
+2025-08-13 21:03:21.723 [https-jsse-nio-8080-exec-7] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 21:04:01.348 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-08-13 21:04:01.351 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-08-13 21:04:01.354 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-13 21:04:01.356 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-08-13 21:04:01.358 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-08-13 21:04:03.982 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Starting PkiSystemApplication using Java 24.0.1 with PID 21812 (C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system\target\classes started by Win 11 in C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system)
+2025-08-13 21:04:03.983 [restartedMain] DEBUG r.a.u.f.p.PkiSystemApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-13 21:04:03.983 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-13 21:04:04.007 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-08-13 21:04:04.007 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-08-13 21:04:04.503 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-13 21:04:04.541 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 33 ms. Found 6 JPA repository interfaces.
+2025-08-13 21:04:04.958 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (https)
+2025-08-13 21:04:04.971 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-13 21:04:04.971 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-13 21:04:05.000 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-13 21:04:05.000 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 992 ms
+2025-08-13 21:04:05.129 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-13 21:04:05.153 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2025-08-13 21:04:05.170 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-08-13 21:04:05.307 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-13 21:04:05.322 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-08-13 21:04:05.511 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@61fa0584
+2025-08-13 21:04:05.512 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-08-13 21:04:05.535 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-13 21:04:05.536 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-08-13 21:04:05.543 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-13 21:04:06.158 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-13 21:04:06.215 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-13 21:04:06.435 [restartedMain] DEBUG r.a.u.f.p.security.JwtRequestFilter - Filter 'jwtRequestFilter' configured for use
+2025-08-13 21:04:06.473 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-08-13 21:04:06.473 [restartedMain] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-08-13 21:04:06.605 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-08-13 21:04:06.922 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-13 21:04:07.126 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+2025-08-13 21:04:07.233 [restartedMain] DEBUG o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtRequestFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-08-13 21:04:07.415 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-08-13 21:04:07.510 [restartedMain] INFO  o.a.t.u.net.NioEndpoint.certificate - Connector [https-jsse-nio-8080], TLS virtual host [_default_], certificate type [UNDEFINED] configured from keystore [C:\Users\Win 11\.keystore] using alias [server] with trust store [null]
+2025-08-13 21:04:07.519 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (https) with context path '/'
+2025-08-13 21:04:07.524 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Started PkiSystemApplication in 3.761 seconds (process running for 4.113)
+2025-08-13 21:04:08.087 [RMI TCP Connection(2)-192.168.0.10] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-13 21:04:08.087 [RMI TCP Connection(2)-192.168.0.10] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-13 21:04:08.088 [RMI TCP Connection(2)-192.168.0.10] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-08-13 21:04:10.876 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/users/profile
+2025-08-13 21:04:10.887 [https-jsse-nio-8080-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/certificates
+2025-08-13 21:04:10.899 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/certificates
+2025-08-13 21:04:10.899 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/users/profile
+2025-08-13 21:04:11.060 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/users/profile
+2025-08-13 21:04:11.060 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/certificates
+2025-08-13 21:04:11.068 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-13 21:04:11.068 [https-jsse-nio-8080-exec-10] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.UserController.getCurrentUserProfile(); target is of class [rs.ac.uns.ftn.pkisystem.controller.UserController]
+2025-08-13 21:04:11.083 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-13 21:04:11.083 [https-jsse-nio-8080-exec-10] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.UserController.getCurrentUserProfile(); target is of class [rs.ac.uns.ftn.pkisystem.controller.UserController]
+2025-08-13 21:04:11.102 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/passwords
+2025-08-13 21:04:11.105 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/passwords
+2025-08-13 21:04:11.135 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/passwords
+2025-08-13 21:04:11.141 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing GET /error
+2025-08-13 21:04:11.142 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Secured GET /error
+2025-08-13 21:04:11.146 [https-jsse-nio-8080-exec-3] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 21:04:27.429 [https-jsse-nio-8080-exec-5] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/captcha/generate
+2025-08-13 21:04:27.432 [https-jsse-nio-8080-exec-5] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 21:04:27.433 [https-jsse-nio-8080-exec-5] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/captcha/generate
+2025-08-13 21:04:29.623 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/captcha/generate
+2025-08-13 21:04:29.623 [https-jsse-nio-8080-exec-6] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 21:04:29.624 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/captcha/generate
+2025-08-13 21:04:36.297 [https-jsse-nio-8080-exec-7] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/auth/login
+2025-08-13 21:04:36.298 [https-jsse-nio-8080-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/login
+2025-08-13 21:04:36.299 [https-jsse-nio-8080-exec-8] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 21:04:36.299 [https-jsse-nio-8080-exec-8] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/login
+2025-08-13 21:04:36.503 [https-jsse-nio-8080-exec-8] DEBUG o.s.s.a.d.DaoAuthenticationProvider - Authenticated user
+2025-08-13 21:04:36.587 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/certificates
+2025-08-13 21:04:36.591 [https-jsse-nio-8080-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/certificates
+2025-08-13 21:04:36.604 [https-jsse-nio-8080-exec-4] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/certificates
+2025-08-13 21:04:36.605 [https-jsse-nio-8080-exec-4] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-13 21:04:36.605 [https-jsse-nio-8080-exec-4] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-13 21:04:36.613 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/passwords
+2025-08-13 21:04:36.618 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/passwords
+2025-08-13 21:04:36.634 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/passwords
+2025-08-13 21:04:36.637 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing GET /error
+2025-08-13 21:04:36.637 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Secured GET /error
+2025-08-13 21:04:36.639 [https-jsse-nio-8080-exec-10] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 21:05:01.904 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/passwords
+2025-08-13 21:05:01.906 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/passwords
+2025-08-13 21:05:01.919 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/passwords
+2025-08-13 21:05:01.920 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing GET /error
+2025-08-13 21:05:01.921 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Secured GET /error
+2025-08-13 21:05:01.922 [https-jsse-nio-8080-exec-3] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 21:05:12.405 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/passwords
+2025-08-13 21:05:12.407 [https-jsse-nio-8080-exec-7] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/passwords
+2025-08-13 21:05:12.418 [https-jsse-nio-8080-exec-7] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/passwords
+2025-08-13 21:05:12.420 [https-jsse-nio-8080-exec-7] DEBUG o.s.security.web.FilterChainProxy - Securing GET /error
+2025-08-13 21:05:12.420 [https-jsse-nio-8080-exec-7] DEBUG o.s.security.web.FilterChainProxy - Secured GET /error
+2025-08-13 21:05:12.421 [https-jsse-nio-8080-exec-7] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 21:05:12.851 [https-jsse-nio-8080-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/passwords
+2025-08-13 21:05:12.866 [https-jsse-nio-8080-exec-8] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/passwords
+2025-08-13 21:05:12.867 [https-jsse-nio-8080-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing GET /error
+2025-08-13 21:05:12.867 [https-jsse-nio-8080-exec-8] DEBUG o.s.security.web.FilterChainProxy - Secured GET /error
+2025-08-13 21:05:12.869 [https-jsse-nio-8080-exec-8] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 21:05:16.337 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/certificates
+2025-08-13 21:05:16.339 [https-jsse-nio-8080-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/certificates
+2025-08-13 21:05:16.357 [https-jsse-nio-8080-exec-4] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/certificates
+2025-08-13 21:05:16.358 [https-jsse-nio-8080-exec-4] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-13 21:05:16.358 [https-jsse-nio-8080-exec-4] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-13 21:05:16.602 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/users/profile
+2025-08-13 21:05:16.606 [https-jsse-nio-8080-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/users/profile
+2025-08-13 21:05:16.621 [https-jsse-nio-8080-exec-4] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/users/profile
+2025-08-13 21:05:16.622 [https-jsse-nio-8080-exec-4] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.UserController.getCurrentUserProfile(); target is of class [rs.ac.uns.ftn.pkisystem.controller.UserController]
+2025-08-13 21:05:16.622 [https-jsse-nio-8080-exec-4] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.UserController.getCurrentUserProfile(); target is of class [rs.ac.uns.ftn.pkisystem.controller.UserController]
+2025-08-13 21:05:16.648 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/certificates
+2025-08-13 21:05:16.660 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/certificates
+2025-08-13 21:05:16.661 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-13 21:05:16.661 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-13 21:05:16.670 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/certificates/ca
+2025-08-13 21:05:16.672 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/certificates/ca
+2025-08-13 21:05:16.683 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/certificates/ca
+2025-08-13 21:05:16.683 [https-jsse-nio-8080-exec-2] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCACertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-13 21:05:16.683 [https-jsse-nio-8080-exec-2] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCACertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-13 21:05:20.821 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/certificates
+2025-08-13 21:05:20.832 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/certificates
+2025-08-13 21:05:20.832 [https-jsse-nio-8080-exec-3] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-13 21:05:20.833 [https-jsse-nio-8080-exec-3] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-13 21:05:20.837 [https-jsse-nio-8080-exec-5] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/passwords
+2025-08-13 21:05:20.839 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/passwords
+2025-08-13 21:05:20.848 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/passwords
+2025-08-13 21:05:20.849 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing GET /error
+2025-08-13 21:05:20.850 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Secured GET /error
+2025-08-13 21:05:20.851 [https-jsse-nio-8080-exec-6] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-13 21:05:32.882 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-08-13 21:05:32.885 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-08-13 21:05:32.889 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-13 21:05:32.891 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-08-13 21:05:32.893 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

@@ -57,6 +57,28 @@ public class AuthService {
 
     public AuthenticationResponse login(AuthenticationRequest request) {
         try {
+
+            System.out.println("=== LOGIN DEBUG START ===");
+            System.out.println("Request email: " + request.getEmail());
+            System.out.println("Request password: " + request.getPassword());
+            System.out.println("Request captcha token: " + request.getCaptchaToken());
+            System.out.println("Request captcha answer: " + request.getCaptchaAnswer());
+
+            // Pronađi korisnika da vidimo šta je u bazi
+            User user = userRepository.findByEmail(request.getEmail()).orElse(null);
+            if (user != null) {
+                System.out.println("User found in database:");
+                System.out.println("DB email: " + user.getEmail());
+                System.out.println("DB password hash: " + user.getPassword());
+                System.out.println("DB activated: " + user.isActivated());
+                System.out.println("DB role: " + user.getRole());
+
+                // Test password match
+                boolean passwordMatches = passwordEncoder.matches(request.getPassword(), user.getPassword());
+                System.out.println("Password matches: " + passwordMatches);
+            } else {
+                System.out.println("User NOT found in database!");
+            }
             // Verify CAPTCHA
             if (!captchaService.verifyCaptcha(request.getCaptchaToken(), request.getCaptchaAnswer())) {
                 auditService.logEvent("LOGIN_FAILED", "Invalid CAPTCHA", null, null, request.getEmail());
@@ -68,7 +90,7 @@ public class AuthService {
                     new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
             );
 
-            User user = (User) authentication.getPrincipal();
+
 
             if (!user.isActivated()) {
                 auditService.logEvent("LOGIN_FAILED", "Account not activated", null, null, user.getEmail());

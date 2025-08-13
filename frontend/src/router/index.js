@@ -95,17 +95,27 @@ const router = createRouter({
 
 // Navigation guards
 router.beforeEach((to, from, next) => {
-  const isAuthenticated = store.getters.isAuthenticated
-  const userRole = store.getters.userRole
+  // ISPRAVKA: Koristi namespace-ovane getters
+  const isAuthenticated = store.getters['auth/isAuthenticated']
+  const userRole = store.getters['auth/userRole']
+
+  console.log('Router guard:', { 
+    to: to.path, 
+    isAuthenticated, 
+    userRole,
+    token: localStorage.getItem('token')
+  })
 
   // Check if route requires authentication
   if (to.meta.requiresAuth && !isAuthenticated) {
+    console.log('Not authenticated, redirecting to login')
     next('/login')
     return
   }
 
   // Redirect authenticated users away from auth pages
   if (to.meta.redirectIfAuth && isAuthenticated) {
+    console.log('Already authenticated, redirecting to dashboard')
     next('/dashboard')
     return
   }
@@ -113,6 +123,7 @@ router.beforeEach((to, from, next) => {
   // Check role-based access
   if (to.meta.requiresRole && isAuthenticated) {
     if (!to.meta.requiresRole.includes(userRole)) {
+      console.log('Insufficient role, redirecting to dashboard')
       next('/dashboard')
       return
     }
@@ -121,13 +132,16 @@ router.beforeEach((to, from, next) => {
   // Redirect root path to appropriate page
   if (to.path === '/') {
     if (isAuthenticated) {
+      console.log('Root + authenticated -> dashboard')
       next('/dashboard')
     } else {
+      console.log('Root + not authenticated -> login')
       next('/login')
     }
     return
   }
 
+  console.log('Navigation allowed')
   next()
 })
 

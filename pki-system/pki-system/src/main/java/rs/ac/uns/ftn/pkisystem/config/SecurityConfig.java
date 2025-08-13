@@ -66,6 +66,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/certificates/**").hasAnyRole("ADMIN", "CA_USER", "END_USER")
                         .requestMatchers("/api/users/profile").hasAnyRole("ADMIN", "CA_USER", "END_USER")
                         .requestMatchers("/api/users/tokens").hasAnyRole("ADMIN", "CA_USER", "END_USER")
+                        .requestMatchers("/error").permitAll()
                         .anyRequest().authenticated()
                 );
 
