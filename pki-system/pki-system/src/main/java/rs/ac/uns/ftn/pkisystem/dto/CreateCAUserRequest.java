@@ -4,22 +4,20 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
 public class CreateCAUserRequest {
-    @Email
-    @NotBlank
+    @Email(message = "Valid email is required")
+    @NotBlank(message = "Email is required")
     private String email;
 
-    @NotBlank
+    @NotBlank(message = "First name is required")
     private String firstName;
 
-    @NotBlank
+    @NotBlank(message = "Last name is required")
     private String lastName;
 
-    @NotBlank
+    @NotBlank(message = "Organization is required")
     private String organization;
 
-    public CreateCAUserRequest() {}
-
-    // Getters and setters
+    // Getters and Setters
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
 

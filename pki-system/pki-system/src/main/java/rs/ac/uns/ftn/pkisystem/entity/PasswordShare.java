@@ -1,7 +1,6 @@
 package rs.ac.uns.ftn.pkisystem.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
 @Entity
@@ -11,16 +10,16 @@ public class PasswordShare {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "password_entry_id", nullable = false)
     private PasswordEntry passwordEntry;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @Column(columnDefinition = "TEXT", nullable = false)
-    private String encryptedPassword; // Encrypted with user's public key
+    private String encryptedPassword;
 
     @Column(updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();

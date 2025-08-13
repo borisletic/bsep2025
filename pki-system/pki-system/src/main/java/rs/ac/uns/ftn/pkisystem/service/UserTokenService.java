@@ -9,6 +9,7 @@ import rs.ac.uns.ftn.pkisystem.entity.User;
 import rs.ac.uns.ftn.pkisystem.entity.UserToken;
 import rs.ac.uns.ftn.pkisystem.repository.UserTokenRepository;
 import rs.ac.uns.ftn.pkisystem.security.JwtUtil;
+import rs.ac.uns.ftn.pkisystem.security.SecurityUtils;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -25,16 +26,19 @@ public class UserTokenService {
     @Autowired
     private JwtUtil jwtUtil;
 
+    @Autowired
+    private AuditService auditService;
+
     public void saveToken(User user, String jti, String token) {
-        LocalDateTime expiresAt = LocalDateTime.now().plusDays(1); // 24 hours
+        LocalDateTime expiresAt = jwtUtil.getExpirationAsLocalDateTime(token);
 
         UserToken userToken = new UserToken(user, jti, expiresAt);
 
-        // Set device information (this would be extracted from request in real implementation)
-        // For now, setting basic info
+        // TODO: Extract device information from request headers
         userToken.setDeviceType("Web");
         userToken.setBrowser("Unknown");
         userToken.setOperatingSystem("Unknown");
+        userToken.setIpAddress("Unknown");
 
         userTokenRepository.save(userToken);
     }
@@ -49,43 +53,64 @@ public class UserTokenService {
         if (tokenOpt.isPresent()) {
             UserToken token = tokenOpt.get();
             token.setLastActivity(LocalDateTime.now());
-            token.setIpAddress(getClientIpAddress(request));
-            token.setUserAgent(request.getHeader("User-Agent"));
+
+            // Update IP address from request
+            String ipAddress = getClientIpAddress(request);
+            token.setIpAddress(ipAddress);
+
             userTokenRepository.save(token);
         }
     }
 
-    public List<UserTokenDTO> getActiveTokensForUser(User user, String currentJti) {
-        List<UserToken> activeTokens = userTokenRepository.findActiveTokensByUser(user, LocalDateTime.now());
+    public List<UserTokenDTO> getUserTokens() {
+        User currentUser = SecurityUtils.getCurrentUser()
+                .orElseThrow(() -> new SecurityException("User not authenticated"));
 
-        return activeTokens.stream().map(token -> {
-            UserTokenDTO dto = new UserTokenDTO();
-            dto.setId(token.getId());
-            dto.setTokenId(token.getTokenId());
-            dto.setIpAddress(token.getIpAddress());
-            dto.setDeviceType(token.getDeviceType());
-            dto.setBrowser(token.getBrowser());
-            dto.setOperatingSystem(token.getOperatingSystem());
-            dto.setLocation(token.getLocation());
-            dto.setLastActivity(token.getLastActivity());
-            dto.setCreatedAt(token.getCreatedAt());
-            dto.setExpiresAt(token.getExpiresAt());
-            dto.setRevoked(token.isRevoked());
-            dto.setCurrent(token.getTokenId().equals(currentJti));
-            return dto;
-        }).collect(Collectors.toList());
+        List<UserToken> tokens = userTokenRepository.findByUserAndRevokedFalse(currentUser);
+
+        return tokens.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
     }
 
-    public void revokeToken(String jti) {
-        userTokenRepository.revokeToken(jti);
+    public void revokeToken(String tokenId) {
+        User currentUser = SecurityUtils.getCurrentUser()
+                .orElseThrow(() -> new SecurityException("User not authenticated"));
+
+        UserToken token = userTokenRepository.findByTokenId(tokenId)
+                .orElseThrow(() -> new IllegalArgumentException("Token not found"));
+
+        if (!token.getUser().equals(currentUser)) {
+            throw new SecurityException("Access denied");
+        }
+
+        token.setRevoked(true);
+        userTokenRepository.save(token);
+
+        auditService.logEvent("TOKEN_REVOKED", "User token revoked", "TOKEN", token.getId());
     }
 
-    public void revokeAllTokensForUser(User user) {
-        userTokenRepository.revokeAllTokensForUser(user);
+    public void revokeAllUserTokens(User user) {
+        List<UserToken> tokens = userTokenRepository.findByUserAndRevokedFalse(user);
+        tokens.forEach(token -> token.setRevoked(true));
+        userTokenRepository.saveAll(tokens);
+
+        auditService.logEvent("ALL_TOKENS_REVOKED", "All user tokens revoked", "USER", user.getId());
     }
 
-    public void cleanupExpiredTokens() {
-        userTokenRepository.deleteExpiredTokens(LocalDateTime.now());
+    private UserTokenDTO convertToDTO(UserToken token) {
+        UserTokenDTO dto = new UserTokenDTO();
+        dto.setId(token.getId());
+        dto.setTokenId(token.getTokenId());
+        dto.setDeviceType(token.getDeviceType());
+        dto.setBrowser(token.getBrowser());
+        dto.setOperatingSystem(token.getOperatingSystem());
+        dto.setIpAddress(token.getIpAddress());
+        dto.setCreatedAt(token.getCreatedAt());
+        dto.setLastActivity(token.getLastActivity());
+        dto.setExpiresAt(token.getExpiresAt());
+        dto.setCurrent(false); // TODO: Determine if this is the current token
+        return dto;
     }
 
     private String getClientIpAddress(HttpServletRequest request) {
@@ -93,96 +118,12 @@ public class UserTokenService {
         if (xForwardedFor != null && !xForwardedFor.isEmpty()) {
             return xForwardedFor.split(",")[0].trim();
         }
+
+        String xRealIp = request.getHeader("X-Real-IP");
+        if (xRealIp != null && !xRealIp.isEmpty()) {
+            return xRealIp;
+        }
+
         return request.getRemoteAddr();
-    }
-
-    // Dodati ove metode u postojeći UserTokenService.java
-
-    public void revokeAllOtherTokensForUser(User user, String currentJti) {
-        List<UserToken> allTokens = userTokenRepository.findActiveTokensByUser(user, LocalDateTime.now());
-
-        for (UserToken token : allTokens) {
-            if (!token.getTokenId().equals(currentJti)) {
-                token.setRevoked(true);
-                userTokenRepository.save(token);
-            }
-        }
-    }
-
-    public void saveTokenWithDeviceInfo(User user, String jti, String token, HttpServletRequest request) {
-        LocalDateTime expiresAt = LocalDateTime.now().plusDays(1); // 24 hours
-
-        UserToken userToken = new UserToken(user, jti, expiresAt);
-
-        // Extract device information from request
-        String userAgent = request.getHeader("User-Agent");
-        userToken.setUserAgent(userAgent);
-        userToken.setIpAddress(getClientIpAddress(request));
-
-        // Parse user agent to get device info
-        DeviceInfo deviceInfo = parseUserAgent(userAgent);
-        userToken.setDeviceType(deviceInfo.getDeviceType());
-        userToken.setBrowser(deviceInfo.getBrowser());
-        userToken.setOperatingSystem(deviceInfo.getOperatingSystem());
-
-        userTokenRepository.save(userToken);
-    }
-
-    private DeviceInfo parseUserAgent(String userAgent) {
-        if (userAgent == null) {
-            return new DeviceInfo("Unknown", "Unknown", "Unknown");
-        }
-
-        String deviceType = "Desktop";
-        String browser = "Unknown";
-        String os = "Unknown";
-
-        // Simple user agent parsing
-        if (userAgent.contains("Mobile") || userAgent.contains("Android") || userAgent.contains("iPhone")) {
-            deviceType = "Mobile";
-        } else if (userAgent.contains("Tablet") || userAgent.contains("iPad")) {
-            deviceType = "Tablet";
-        }
-
-        if (userAgent.contains("Chrome")) {
-            browser = "Chrome";
-        } else if (userAgent.contains("Firefox")) {
-            browser = "Firefox";
-        } else if (userAgent.contains("Safari") && !userAgent.contains("Chrome")) {
-            browser = "Safari";
-        } else if (userAgent.contains("Edge")) {
-            browser = "Edge";
-        }
-
-        if (userAgent.contains("Windows")) {
-            os = "Windows";
-        } else if (userAgent.contains("Mac")) {
-            os = "macOS";
-        } else if (userAgent.contains("Linux")) {
-            os = "Linux";
-        } else if (userAgent.contains("Android")) {
-            os = "Android";
-        } else if (userAgent.contains("iOS")) {
-            os = "iOS";
-        }
-
-        return new DeviceInfo(deviceType, browser, os);
-    }
-
-    // Helper class for device information
-    private static class DeviceInfo {
-        private final String deviceType;
-        private final String browser;
-        private final String operatingSystem;
-
-        public DeviceInfo(String deviceType, String browser, String operatingSystem) {
-            this.deviceType = deviceType;
-            this.browser = browser;
-            this.operatingSystem = operatingSystem;
-        }
-
-        public String getDeviceType() { return deviceType; }
-        public String getBrowser() { return browser; }
-        public String getOperatingSystem() { return operatingSystem; }
     }
 }

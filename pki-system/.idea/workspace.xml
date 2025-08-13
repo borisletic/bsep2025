@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1ae07ce3-7090-4878-99ae-f4a4798bc096" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pki-system/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/PkiSystemApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/PkiSystemApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/config/ApplicationConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/config/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/controller/AdminController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/controller/AuthController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/controller/CaptchaController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/controller/CertificateController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/controller/PasswordManagerController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/controller/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/controller/UserTokenController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/dto/ApiResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/dto/AuthenticationRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/dto/AuthenticationResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/dto/CaptchaResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/dto/CaptchaVerifyRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/dto/CertificateDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/dto/CertificateRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/dto/CertificateTemplateDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/dto/CertificateTemplateRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/dto/CreateCAUserRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/dto/PasswordChangeRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/dto/PasswordEntryDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/dto/PasswordEntryRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/dto/PasswordResetRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/dto/RegistrationRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/dto/RevokeCertificateRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/dto/SharePasswordRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/dto/UserDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/dto/UserTokenDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/entity/AuditLog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/entity/Certificate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/entity/CertificateTemplate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/entity/CertificateType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/entity/PasswordEntry.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/entity/PasswordShare.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/entity/RevocationReason.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/entity/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/entity/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/entity/UserToken.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/exception/CertificateOperationException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/exception/GlobalExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/exception/InvalidTokenException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/exception/ResourceNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/exception/UserAlreadyExistsException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/exception/UserNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/repository/AuditLogRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/repository/CertificateRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/repository/CertificateTemplateRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/repository/PasswordEntryRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/repository/PasswordShareRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/repository/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/repository/UserTokenRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/scheduler/ScheduledTasks.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/security/AuditEventType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/security/InputSanitizer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/security/JwtAuthenticationEntryPoint.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/security/JwtRequestFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/security/JwtUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/security/PasswordStrengthValidator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/security/RateLimitingFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/security/SecurityUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/service/AuditService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/service/AuthService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/service/CaptchaService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/service/CertificateService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/service/EmailService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/service/KeystoreManagerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/service/PasswordManagerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/service/UserDetailsServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/java/rs/ac/uns/ftn/pkisystem/service/UserTokenService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/pki-system/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/resources/keystore/server.p12" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/resources/logback-spring.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/resources/templates/activation-email.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/resources/templates/ca-user-welcome-email.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pki-system/src/main/resources/templates/password-reset-email.html" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="31EPD5cZ9E4MoSpKtHKlRrNlZTW" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Win 11/Desktop/bsep2025/pki-system&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.23892.409" />
+        <option value="bundled-js-predefined-d6986cc7102b-e03c56caf84a-JavaScript-IU-252.23892.409" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1ae07ce3-7090-4878-99ae-f4a4798bc096" name="Changes" comment="" />
+      <created>1755086135953</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1755086135953</updated>
+      <workItem from="1755086137155" duration="40000" />
+      <workItem from="1755086187464" duration="5000" />
+      <workItem from="1755086300953" duration="17000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

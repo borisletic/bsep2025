@@ -10,33 +10,17 @@ public class AuditLog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
+    @Column(nullable = false)
     private String eventType;
 
     @Column(columnDefinition = "TEXT")
-    private String eventDescription;
+    private String description;
 
+    private String userEmail;
     private String ipAddress;
-
-    @Column(columnDefinition = "TEXT")
     private String userAgent;
-
     private String resourceType;
     private Long resourceId;
-
-    @Column(columnDefinition = "JSON")
-    private String oldValues;
-
-    @Column(columnDefinition = "JSON")
-    private String newValues;
-
-    private boolean success = true;
-
-    @Column(columnDefinition = "TEXT")
-    private String errorMessage;
 
     @Column(updatable = false)
     private LocalDateTime timestamp = LocalDateTime.now();
@@ -44,18 +28,24 @@ public class AuditLog {
     // Constructors
     public AuditLog() {}
 
+    public AuditLog(String eventType, String description, String userEmail) {
+        this.eventType = eventType;
+        this.description = description;
+        this.userEmail = userEmail;
+    }
+
     // Getters and Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
-    public User getUser() { return user; }
-    public void setUser(User user) { this.user = user; }
-
     public String getEventType() { return eventType; }
     public void setEventType(String eventType) { this.eventType = eventType; }
 
-    public String getEventDescription() { return eventDescription; }
-    public void setEventDescription(String eventDescription) { this.eventDescription = eventDescription; }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
+
+    public String getUserEmail() { return userEmail; }
+    public void setUserEmail(String userEmail) { this.userEmail = userEmail; }
 
     public String getIpAddress() { return ipAddress; }
     public void setIpAddress(String ipAddress) { this.ipAddress = ipAddress; }
@@ -68,18 +58,6 @@ public class AuditLog {
 
     public Long getResourceId() { return resourceId; }
     public void setResourceId(Long resourceId) { this.resourceId = resourceId; }
-
-    public String getOldValues() { return oldValues; }
-    public void setOldValues(String oldValues) { this.oldValues = oldValues; }
-
-    public String getNewValues() { return newValues; }
-    public void setNewValues(String newValues) { this.newValues = newValues; }
-
-    public boolean isSuccess() { return success; }
-    public void setSuccess(boolean success) { this.success = success; }
-
-    public String getErrorMessage() { return errorMessage; }
-    public void setErrorMessage(String errorMessage) { this.errorMessage = errorMessage; }
 
     public LocalDateTime getTimestamp() { return timestamp; }
     public void setTimestamp(LocalDateTime timestamp) { this.timestamp = timestamp; }

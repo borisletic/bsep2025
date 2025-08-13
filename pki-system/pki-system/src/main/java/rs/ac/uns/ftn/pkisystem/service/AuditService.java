@@ -30,63 +30,25 @@ public class AuditService {
         try {
             AuditLog auditLog = new AuditLog();
             auditLog.setEventType(eventType);
-            auditLog.setEventDescription(description);
+            auditLog.setDescription(description);
+            auditLog.setUserEmail(userEmail);
             auditLog.setResourceType(resourceType);
             auditLog.setResourceId(resourceId);
-            auditLog.setTimestamp(LocalDateTime.now());
-
-            // Get current user if available
-            User currentUser = SecurityUtils.getCurrentUser().orElse(null);
-            if (currentUser != null) {
-                auditLog.setUser(currentUser);
-            }
 
             // Get request information if available
-            HttpServletRequest request = getCurrentRequest();
-            if (request != null) {
+            ServletRequestAttributes requestAttributes =
+                    (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+
+            if (requestAttributes != null) {
+                HttpServletRequest request = requestAttributes.getRequest();
                 auditLog.setIpAddress(getClientIpAddress(request));
                 auditLog.setUserAgent(request.getHeader("User-Agent"));
             }
 
             auditLogRepository.save(auditLog);
         } catch (Exception e) {
-            // Log to system logger as fallback
-            System.err.println("Failed to save audit log: " + e.getMessage());
-        }
-    }
-
-    public void logSecurityEvent(String eventType, String description, boolean success, String errorMessage) {
-        try {
-            AuditLog auditLog = new AuditLog();
-            auditLog.setEventType(eventType);
-            auditLog.setEventDescription(description);
-            auditLog.setSuccess(success);
-            auditLog.setErrorMessage(errorMessage);
-            auditLog.setTimestamp(LocalDateTime.now());
-
-            User currentUser = SecurityUtils.getCurrentUser().orElse(null);
-            if (currentUser != null) {
-                auditLog.setUser(currentUser);
-            }
-
-            HttpServletRequest request = getCurrentRequest();
-            if (request != null) {
-                auditLog.setIpAddress(getClientIpAddress(request));
-                auditLog.setUserAgent(request.getHeader("User-Agent"));
-            }
-
-            auditLogRepository.save(auditLog);
-        } catch (Exception e) {
-            System.err.println("Failed to save security audit log: " + e.getMessage());
-        }
-    }
-
-    private HttpServletRequest getCurrentRequest() {
-        try {
-            ServletRequestAttributes attrs = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-            return attrs != null ? attrs.getRequest() : null;
-        } catch (Exception e) {
-            return null;
+            // Don't let audit failures break the main operation
+            System.err.println("Failed to log audit event: " + e.getMessage());
         }
     }
 
@@ -95,6 +57,12 @@ public class AuditService {
         if (xForwardedFor != null && !xForwardedFor.isEmpty()) {
             return xForwardedFor.split(",")[0].trim();
         }
+
+        String xRealIp = request.getHeader("X-Real-IP");
+        if (xRealIp != null && !xRealIp.isEmpty()) {
+            return xRealIp;
+        }
+
         return request.getRemoteAddr();
     }
 }

@@ -1,3 +1,4 @@
+// src/main/java/rs/ac/uns/ftn/pkisystem/config/ApplicationConfig.java
 package rs.ac.uns.ftn.pkisystem.config;
 
 import org.modelmapper.ModelMapper;

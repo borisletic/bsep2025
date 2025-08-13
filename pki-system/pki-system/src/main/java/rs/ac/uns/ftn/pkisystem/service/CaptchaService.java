@@ -1,96 +1,90 @@
 package rs.ac.uns.ftn.pkisystem.service;
 
 import org.springframework.stereotype.Service;
-import rs.ac.uns.ftn.pkisystem.dto.CaptchaResponse;
 
-import java.time.LocalDateTime;
+import java.security.SecureRandom;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.Random;
-import java.util.UUID;
 
 @Service
 public class CaptchaService {
 
-    private final ConcurrentHashMap<String, CaptchaSession> captchaSessions = new ConcurrentHashMap<>();
-    private final Random random = new Random();
+    private final Map<String, CaptchaChallenge> challenges = new ConcurrentHashMap<>();
+    private final SecureRandom random = new SecureRandom();
 
-    public CaptchaResponse generateCaptcha() {
-        String sessionId = UUID.randomUUID().toString();
-
-        // Generate simple math problem
-        int num1 = random.nextInt(20) + 1;
-        int num2 = random.nextInt(20) + 1;
+    public CaptchaChallenge generateChallenge() {
+        int a = random.nextInt(10) + 1;
+        int b = random.nextInt(10) + 1;
         String operation = random.nextBoolean() ? "+" : "-";
 
-        String challenge;
         int answer;
+        String question;
 
-        if (operation.equals("+")) {
-            challenge = num1 + " + " + num2 + " = ?";
-            answer = num1 + num2;
+        if ("+".equals(operation)) {
+            answer = a + b;
+            question = a + " + " + b + " = ?";
         } else {
-            // Ensure positive result for subtraction
-            if (num1 < num2) {
-                int temp = num1;
-                num1 = num2;
-                num2 = temp;
+            if (a < b) {
+                int temp = a;
+                a = b;
+                b = temp;
             }
-            challenge = num1 + " - " + num2 + " = ?";
-            answer = num1 - num2;
+            answer = a - b;
+            question = a + " - " + b + " = ?";
         }
 
-        CaptchaSession session = new CaptchaSession(
-                challenge,
-                String.valueOf(answer),
-                LocalDateTime.now().plusMinutes(5)
-        );
+        String token = generateToken();
+        CaptchaChallenge challenge = new CaptchaChallenge(token, question, answer);
+        challenges.put(token, challenge);
 
-        captchaSessions.put(sessionId, session);
-
-        // Clean up expired sessions
-        cleanupExpiredSessions();
-
-        return new CaptchaResponse(sessionId, challenge);
+        return challenge;
     }
 
-    public boolean verifyCaptcha(String sessionId, String userAnswer) {
-        CaptchaSession session = captchaSessions.get(sessionId);
-
-        if (session == null) {
+    public boolean verifyCaptcha(String token, String userAnswer) {
+        if (token == null || userAnswer == null) {
             return false;
         }
 
-        if (session.isExpired()) {
-            captchaSessions.remove(sessionId);
+        CaptchaChallenge challenge = challenges.remove(token);
+        if (challenge == null) {
             return false;
         }
 
-        boolean isCorrect = session.getAnswer().equals(userAnswer.trim());
+        if (challenge.isExpired()) {
+            return false;
+        }
 
-        // Remove session after verification (one-time use)
-        captchaSessions.remove(sessionId);
-
-        return isCorrect;
+        try {
+            int answer = Integer.parseInt(userAnswer.trim());
+            return answer == challenge.getAnswer();
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
-    private void cleanupExpiredSessions() {
-        LocalDateTime now = LocalDateTime.now();
-        captchaSessions.entrySet().removeIf(entry -> entry.getValue().isExpired());
+    private String generateToken() {
+        return Long.toHexString(random.nextLong());
     }
 
-    private static class CaptchaSession {
-        private final String challenge;
-        private final String answer;
-        private final LocalDateTime expiresAt;
+    public static class CaptchaChallenge {
+        private final String token;
+        private final String question;
+        private final int answer;
+        private final long createdAt;
 
-        public CaptchaSession(String challenge, String answer, LocalDateTime expiresAt) {
-            this.challenge = challenge;
+        public CaptchaChallenge(String token, String question, int answer) {
+            this.token = token;
+            this.question = question;
             this.answer = answer;
-            this.expiresAt = expiresAt;
+            this.createdAt = System.currentTimeMillis();
         }
 
-        public String getChallenge() { return challenge; }
-        public String getAnswer() { return answer; }
-        public boolean isExpired() { return LocalDateTime.now().isAfter(expiresAt); }
+        public String getToken() { return token; }
+        public String getQuestion() { return question; }
+        public int getAnswer() { return answer; }
+
+        public boolean isExpired() {
+            return System.currentTimeMillis() - createdAt > 300000; // 5 minutes
+        }
     }
 }

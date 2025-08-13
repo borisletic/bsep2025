@@ -4,13 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.context.Context;
-
-import jakarta.mail.MessagingException;
-import jakarta.mail.internet.MimeMessage;
 
 @Service
 public class EmailService {
@@ -18,115 +12,47 @@ public class EmailService {
     @Autowired
     private JavaMailSender mailSender;
 
-    @Autowired
-    private TemplateEngine templateEngine;
-
     @Value("${spring.mail.username}")
     private String fromEmail;
 
-    @Value("${app.frontend.url:https://localhost:3000}")
-    private String frontendUrl;
+    public void sendActivationEmail(String to, String token) {
+        String subject = "PKI System - Account Activation";
+        String message = "Please click the following link to activate your account:\n" +
+                "https://localhost:8080/api/auth/activate/" + token + "\n\n" +
+                "This link will expire in 24 hours.";
 
-    public void sendActivationEmail(String toEmail, String activationToken) {
+        sendEmail(to, subject, message);
+    }
+
+    public void sendPasswordResetEmail(String to, String token) {
+        String subject = "PKI System - Password Reset";
+        String message = "Please click the following link to reset your password:\n" +
+                "https://localhost:3000/reset-password?token=" + token + "\n\n" +
+                "This link will expire in 1 hour.";
+
+        sendEmail(to, subject, message);
+    }
+
+    public void sendTemporaryPasswordEmail(String to, String temporaryPassword) {
+        String subject = "PKI System - Temporary Password";
+        String message = "Your temporary password is: " + temporaryPassword + "\n\n" +
+                "Please change this password upon first login.";
+
+        sendEmail(to, subject, message);
+    }
+
+    private void sendEmail(String to, String subject, String message) {
         try {
-            MimeMessage message = mailSender.createMimeMessage();
-            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+            SimpleMailMessage mailMessage = new SimpleMailMessage();
+            mailMessage.setFrom(fromEmail);
+            mailMessage.setTo(to);
+            mailMessage.setSubject(subject);
+            mailMessage.setText(message);
 
-            Context context = new Context();
-            context.setVariable("activationLink", frontendUrl + "/activate/" + activationToken);
-            context.setVariable("email", toEmail);
-
-            String htmlContent = templateEngine.process("activation-email", context);
-
-            helper.setFrom(fromEmail);
-            helper.setTo(toEmail);
-            helper.setSubject("PKI System - Account Activation");
-            helper.setText(htmlContent, true);
-
-            mailSender.send(message);
-        } catch (MessagingException e) {
-            // Fallback to simple email
-            sendSimpleActivationEmail(toEmail, activationToken);
+            mailSender.send(mailMessage);
+        } catch (Exception e) {
+            // Log error but don't fail the operation
+            System.err.println("Failed to send email: " + e.getMessage());
         }
-    }
-
-    public void sendPasswordResetEmail(String toEmail, String resetToken) {
-        try {
-            MimeMessage message = mailSender.createMimeMessage();
-            MimeMessageHelper helper = new MimeMessageHelper(message, true);
-
-            Context context = new Context();
-            context.setVariable("resetLink", frontendUrl + "/password-reset/" + resetToken);
-            context.setVariable("email", toEmail);
-
-            String htmlContent = templateEngine.process("password-reset-email", context);
-
-            helper.setFrom(fromEmail);
-            helper.setTo(toEmail);
-            helper.setSubject("PKI System - Password Reset");
-            helper.setText(htmlContent, true);
-
-            mailSender.send(message);
-        } catch (MessagingException e) {
-            // Fallback to simple email
-            sendSimplePasswordResetEmail(toEmail, resetToken);
-        }
-    }
-
-    public void sendCAUserWelcomeEmail(String toEmail, String temporaryPassword) {
-        try {
-            MimeMessage message = mailSender.createMimeMessage();
-            MimeMessageHelper helper = new MimeMessageHelper(message, true);
-
-            Context context = new Context();
-            context.setVariable("loginLink", frontendUrl + "/login");
-            context.setVariable("email", toEmail);
-            context.setVariable("temporaryPassword", temporaryPassword);
-
-            String htmlContent = templateEngine.process("ca-user-welcome-email", context);
-
-            helper.setFrom(fromEmail);
-            helper.setTo(toEmail);
-            helper.setSubject("PKI System - CA User Account Created");
-            helper.setText(htmlContent, true);
-
-            mailSender.send(message);
-        } catch (MessagingException e) {
-            // Fallback to simple email
-            sendSimpleCAUserWelcomeEmail(toEmail, temporaryPassword);
-        }
-    }
-
-    private void sendSimpleActivationEmail(String toEmail, String activationToken) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom(fromEmail);
-        message.setTo(toEmail);
-        message.setSubject("PKI System - Account Activation");
-        message.setText("Please activate your account by clicking the following link:\n" +
-                frontendUrl + "/activate/" + activationToken);
-        mailSender.send(message);
-    }
-
-    private void sendSimplePasswordResetEmail(String toEmail, String resetToken) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom(fromEmail);
-        message.setTo(toEmail);
-        message.setSubject("PKI System - Password Reset");
-        message.setText("Please reset your password by clicking the following link:\n" +
-                frontendUrl + "/password-reset/" + resetToken);
-        mailSender.send(message);
-    }
-
-    private void sendSimpleCAUserWelcomeEmail(String toEmail, String temporaryPassword) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom(fromEmail);
-        message.setTo(toEmail);
-        message.setSubject("PKI System - CA User Account Created");
-        message.setText("Your CA user account has been created.\n" +
-                "Email: " + toEmail + "\n" +
-                "Temporary Password: " + temporaryPassword + "\n" +
-                "Please log in and change your password immediately.\n" +
-                "Login URL: " + frontendUrl + "/login");
-        mailSender.send(message);
     }
 }

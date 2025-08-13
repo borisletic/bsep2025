@@ -11,23 +11,10 @@ import java.util.List;
 
 @Repository
 public interface PasswordEntryRepository extends JpaRepository<PasswordEntry, Long> {
-
     List<PasswordEntry> findByOwner(User owner);
 
-    List<PasswordEntry> findBySiteName(String siteName);
-
-    @Query("SELECT pe FROM PasswordEntry pe WHERE pe.owner = :user OR " +
-            "pe.id IN (SELECT ps.passwordEntry.id FROM PasswordShare ps WHERE ps.user = :user)")
-    List<PasswordEntry> findAllAccessibleByUser(@Param("user") User user);
-
-    @Query("SELECT pe FROM PasswordEntry pe WHERE " +
-            "(pe.siteName LIKE %:searchTerm% OR pe.siteUrl LIKE %:searchTerm% OR pe.username LIKE %:searchTerm%) AND " +
-            "(pe.owner = :user OR pe.id IN (SELECT ps.passwordEntry.id FROM PasswordShare ps WHERE ps.user = :user))")
-    List<PasswordEntry> searchAccessibleByUser(@Param("user") User user, @Param("searchTerm") String searchTerm);
-
-    @Query("SELECT COUNT(pe) FROM PasswordEntry pe WHERE pe.owner = :user")
-    long countByOwner(@Param("user") User user);
-
-    @Query("SELECT COUNT(ps) FROM PasswordShare ps WHERE ps.passwordEntry.id = :entryId")
-    long countSharesForEntry(@Param("entryId") Long entryId);
+    @Query("SELECT DISTINCT pe FROM PasswordEntry pe " +
+            "JOIN pe.shares ps " +
+            "WHERE ps.user = :user")
+    List<PasswordEntry> findEntriesSharedWithUser(@Param("user") User user);
 }

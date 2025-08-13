@@ -1,3 +1,4 @@
+// src/main/java/rs/ac/uns/ftn/pkisystem/entity/User.java
 package rs.ac.uns.ftn.pkisystem.entity;
 
 import jakarta.persistence.*;
@@ -112,7 +113,6 @@ public class User implements UserDetails {
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
 
-    @Override
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
 
@@ -159,7 +159,20 @@ public class User implements UserDetails {
     public void setPasswordEntries(List<PasswordEntry> passwordEntries) { this.passwordEntries = passwordEntries; }
 
     @PreUpdate
-    protected void onUpdate() {
+    public void preUpdate() {
         updatedAt = LocalDateTime.now();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        User user = (User) o;
+        return id != null && id.equals(user.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

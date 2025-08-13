@@ -1,3 +1,4 @@
+// src/main/java/rs/ac/uns/ftn/pkisystem/service/UserDetailsServiceImpl.java
 package rs.ac.uns.ftn.pkisystem.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
+
+        if (!user.isActivated()) {
+            throw new UsernameNotFoundException("User account is not activated: " + email);
+        }
 
         return user; // User entity implements UserDetails
     }

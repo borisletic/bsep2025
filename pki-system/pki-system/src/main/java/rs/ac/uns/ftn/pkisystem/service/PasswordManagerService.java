@@ -5,18 +5,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import rs.ac.uns.ftn.pkisystem.dto.PasswordEntryDTO;
 import rs.ac.uns.ftn.pkisystem.dto.PasswordEntryRequest;
+import rs.ac.uns.ftn.pkisystem.dto.PasswordShareDTO;
 import rs.ac.uns.ftn.pkisystem.dto.SharePasswordRequest;
-import rs.ac.uns.ftn.pkisystem.dto.UserDTO;
 import rs.ac.uns.ftn.pkisystem.entity.PasswordEntry;
 import rs.ac.uns.ftn.pkisystem.entity.PasswordShare;
 import rs.ac.uns.ftn.pkisystem.entity.User;
 import rs.ac.uns.ftn.pkisystem.exception.ResourceNotFoundException;
-import rs.ac.uns.ftn.pkisystem.exception.UserNotFoundException;
 import rs.ac.uns.ftn.pkisystem.repository.PasswordEntryRepository;
 import rs.ac.uns.ftn.pkisystem.repository.PasswordShareRepository;
 import rs.ac.uns.ftn.pkisystem.repository.UserRepository;
 import rs.ac.uns.ftn.pkisystem.security.SecurityUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -56,53 +56,59 @@ public class PasswordManagerService {
         PasswordShare ownerShare = new PasswordShare(passwordEntry, currentUser, request.getEncryptedPassword());
         passwordShareRepository.save(ownerShare);
 
-        auditService.logEvent("PASSWORD_ENTRY_CREATED",
-                "Password entry created for site: " + request.getSiteName(),
-                "PASSWORD_ENTRY", passwordEntry.getId());
+        auditService.logEvent("PASSWORD_CREATED",
+                "Password entry created for: " + request.getSiteName(),
+                "PASSWORD", passwordEntry.getId());
 
-        return convertToDTO(passwordEntry, currentUser);
+        return convertToDTO(passwordEntry);
     }
 
     public List<PasswordEntryDTO> getPasswordEntriesForCurrentUser() {
         User currentUser = SecurityUtils.getCurrentUser()
                 .orElseThrow(() -> new SecurityException("User not authenticated"));
 
-        List<PasswordEntry> passwordEntries = passwordEntryRepository.findAllAccessibleByUser(currentUser);
+        // Get owned entries
+        List<PasswordEntry> ownedEntries = passwordEntryRepository.findByOwner(currentUser);
 
-        return passwordEntries.stream()
-                .map(entry -> convertToDTO(entry, currentUser))
+        // Get shared entries
+        List<PasswordEntry> sharedEntries = passwordEntryRepository.findEntriesSharedWithUser(currentUser);
+
+        // Combine and deduplicate
+        List<PasswordEntry> allEntries = new ArrayList<>(ownedEntries);
+        sharedEntries.stream()
+                .filter(entry -> !ownedEntries.contains(entry))
+                .forEach(allEntries::add);
+
+        return allEntries.stream()
+                .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
 
-    public PasswordEntryDTO getPasswordEntryById(Long id) {
-        User currentUser = SecurityUtils.getCurrentUser()
-                .orElseThrow(() -> new SecurityException("User not authenticated"));
-
+    public PasswordEntryDTO getPasswordEntry(Long id) {
         PasswordEntry passwordEntry = passwordEntryRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Password entry not found"));
 
-        // Check if user has access to this entry
-        if (!hasAccessToEntry(passwordEntry, currentUser)) {
+        User currentUser = SecurityUtils.getCurrentUser()
+                .orElseThrow(() -> new SecurityException("User not authenticated"));
+
+        // Check if user has access
+        if (!hasAccessToPasswordEntry(currentUser, passwordEntry)) {
             throw new SecurityException("Access denied to password entry");
         }
 
-        auditService.logEvent("PASSWORD_ENTRY_VIEWED",
-                "Password entry viewed: " + passwordEntry.getSiteName(),
-                "PASSWORD_ENTRY", passwordEntry.getId());
-
-        return convertToDTO(passwordEntry, currentUser);
+        return convertToDTO(passwordEntry);
     }
 
     public PasswordEntryDTO updatePasswordEntry(Long id, PasswordEntryRequest request) {
-        User currentUser = SecurityUtils.getCurrentUser()
-                .orElseThrow(() -> new SecurityException("User not authenticated"));
-
         PasswordEntry passwordEntry = passwordEntryRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Password entry not found"));
 
+        User currentUser = SecurityUtils.getCurrentUser()
+                .orElseThrow(() -> new SecurityException("User not authenticated"));
+
         // Only owner can update
-        if (!passwordEntry.getOwner().getId().equals(currentUser.getId())) {
-            throw new SecurityException("Only owner can update password entry");
+        if (!passwordEntry.getOwner().equals(currentUser)) {
+            throw new SecurityException("Only the owner can update password entry");
         }
 
         passwordEntry.setSiteName(request.getSiteName());
@@ -114,129 +120,141 @@ public class PasswordManagerService {
 
         // Update owner's encrypted password
         PasswordShare ownerShare = passwordShareRepository.findByPasswordEntryAndUser(passwordEntry, currentUser)
-                .orElseThrow(() -> new ResourceNotFoundException("Password share not found"));
+                .orElseThrow(() -> new IllegalStateException("Owner share not found"));
         ownerShare.setEncryptedPassword(request.getEncryptedPassword());
         passwordShareRepository.save(ownerShare);
 
-        auditService.logEvent("PASSWORD_ENTRY_UPDATED",
-                "Password entry updated: " + passwordEntry.getSiteName(),
-                "PASSWORD_ENTRY", passwordEntry.getId());
+        auditService.logEvent("PASSWORD_UPDATED",
+                "Password entry updated: " + request.getSiteName(),
+                "PASSWORD", passwordEntry.getId());
 
-        return convertToDTO(passwordEntry, currentUser);
+        return convertToDTO(passwordEntry);
     }
 
     public void deletePasswordEntry(Long id) {
-        User currentUser = SecurityUtils.getCurrentUser()
-                .orElseThrow(() -> new SecurityException("User not authenticated"));
-
         PasswordEntry passwordEntry = passwordEntryRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Password entry not found"));
 
+        User currentUser = SecurityUtils.getCurrentUser()
+                .orElseThrow(() -> new SecurityException("User not authenticated"));
+
         // Only owner can delete
-        if (!passwordEntry.getOwner().getId().equals(currentUser.getId())) {
-            throw new SecurityException("Only owner can delete password entry");
+        if (!passwordEntry.getOwner().equals(currentUser)) {
+            throw new SecurityException("Only the owner can delete password entry");
         }
 
         passwordEntryRepository.delete(passwordEntry);
 
-        auditService.logEvent("PASSWORD_ENTRY_DELETED",
+        auditService.logEvent("PASSWORD_DELETED",
                 "Password entry deleted: " + passwordEntry.getSiteName(),
-                "PASSWORD_ENTRY", passwordEntry.getId());
+                "PASSWORD", passwordEntry.getId());
     }
 
-    public void sharePassword(Long passwordEntryId, SharePasswordRequest request) {
+    public PasswordEntryDTO sharePassword(Long id, SharePasswordRequest request) {
+        PasswordEntry passwordEntry = passwordEntryRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Password entry not found"));
+
         User currentUser = SecurityUtils.getCurrentUser()
                 .orElseThrow(() -> new SecurityException("User not authenticated"));
-
-        PasswordEntry passwordEntry = passwordEntryRepository.findById(passwordEntryId)
-                .orElseThrow(() -> new ResourceNotFoundException("Password entry not found"));
 
         // Only owner can share
-        if (!passwordEntry.getOwner().getId().equals(currentUser.getId())) {
-            throw new SecurityException("Only owner can share password entry");
+        if (!passwordEntry.getOwner().equals(currentUser)) {
+            throw new SecurityException("Only the owner can share password entry");
         }
 
-        User targetUser = userRepository.findByEmail(request.getUserEmail())
-                .orElseThrow(() -> new UserNotFoundException("User not found: " + request.getUserEmail()));
+        User targetUser = userRepository.findById(request.getUserId())
+                .orElseThrow(() -> new ResourceNotFoundException("Target user not found"));
 
         // Check if already shared
-        if (passwordShareRepository.existsByPasswordEntryAndUser(passwordEntry, targetUser)) {
-            throw new IllegalStateException("Password is already shared with this user");
+        if (passwordShareRepository.findByPasswordEntryAndUser(passwordEntry, targetUser).isPresent()) {
+            throw new IllegalArgumentException("Password is already shared with this user");
         }
 
-        PasswordShare passwordShare = new PasswordShare(passwordEntry, targetUser, request.getEncryptedPassword());
-        passwordShareRepository.save(passwordShare);
+        // Create new share
+        PasswordShare share = new PasswordShare(passwordEntry, targetUser, request.getEncryptedPassword());
+        passwordShareRepository.save(share);
 
         auditService.logEvent("PASSWORD_SHARED",
-                "Password shared with user: " + targetUser.getEmail() + " for site: " + passwordEntry.getSiteName(),
-                "PASSWORD_ENTRY", passwordEntry.getId());
+                "Password shared with: " + targetUser.getEmail(),
+                "PASSWORD", passwordEntry.getId());
+
+        return convertToDTO(passwordEntry);
     }
 
-    public void removePasswordShare(Long passwordEntryId, String userEmail) {
+    public void unsharePassword(Long id, Long userId) {
+        PasswordEntry passwordEntry = passwordEntryRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Password entry not found"));
+
         User currentUser = SecurityUtils.getCurrentUser()
                 .orElseThrow(() -> new SecurityException("User not authenticated"));
 
-        PasswordEntry passwordEntry = passwordEntryRepository.findById(passwordEntryId)
-                .orElseThrow(() -> new ResourceNotFoundException("Password entry not found"));
-
-        // Only owner can remove shares
-        if (!passwordEntry.getOwner().getId().equals(currentUser.getId())) {
-            throw new SecurityException("Only owner can remove password shares");
+        // Only owner can unshare
+        if (!passwordEntry.getOwner().equals(currentUser)) {
+            throw new SecurityException("Only the owner can unshare password entry");
         }
 
-        User targetUser = userRepository.findByEmail(userEmail)
-                .orElseThrow(() -> new UserNotFoundException("User not found: " + userEmail));
+        User targetUser = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("Target user not found"));
+
+        // Cannot unshare from owner
+        if (targetUser.equals(currentUser)) {
+            throw new IllegalArgumentException("Cannot unshare from owner");
+        }
 
         passwordShareRepository.deleteByPasswordEntryAndUser(passwordEntry, targetUser);
 
-        auditService.logEvent("PASSWORD_SHARE_REVOKED",
-                "Password share revoked for user: " + userEmail + " for site: " + passwordEntry.getSiteName(),
-                "PASSWORD_ENTRY", passwordEntry.getId());
+        auditService.logEvent("PASSWORD_UNSHARED",
+                "Password unshared from: " + targetUser.getEmail(),
+                "PASSWORD", passwordEntry.getId());
     }
 
-    public List<PasswordEntryDTO> searchPasswordEntries(String query) {
+    public List<User> getEligibleUsersForSharing() {
         User currentUser = SecurityUtils.getCurrentUser()
                 .orElseThrow(() -> new SecurityException("User not authenticated"));
 
-        List<PasswordEntry> passwordEntries = passwordEntryRepository.searchAccessibleByUser(currentUser, query);
-
-        return passwordEntries.stream()
-                .map(entry -> convertToDTO(entry, currentUser))
+        // Return all users except current user
+        return userRepository.findAll().stream()
+                .filter(user -> !user.equals(currentUser))
+                .filter(User::isActivated)
                 .collect(Collectors.toList());
     }
 
-    private boolean hasAccessToEntry(PasswordEntry passwordEntry, User user) {
-        return passwordEntry.getOwner().getId().equals(user.getId()) ||
-                passwordShareRepository.existsByPasswordEntryAndUser(passwordEntry, user);
+    private boolean hasAccessToPasswordEntry(User user, PasswordEntry passwordEntry) {
+        // Owner has access
+        if (passwordEntry.getOwner().equals(user)) {
+            return true;
+        }
+
+        // Check if password is shared with user
+        return passwordShareRepository.findByPasswordEntryAndUser(passwordEntry, user).isPresent();
     }
 
-    private PasswordEntryDTO convertToDTO(PasswordEntry passwordEntry, User currentUser) {
+    private PasswordEntryDTO convertToDTO(PasswordEntry passwordEntry) {
         PasswordEntryDTO dto = new PasswordEntryDTO();
         dto.setId(passwordEntry.getId());
         dto.setSiteName(passwordEntry.getSiteName());
         dto.setSiteUrl(passwordEntry.getSiteUrl());
         dto.setUsername(passwordEntry.getUsername());
         dto.setDescription(passwordEntry.getDescription());
+        dto.setOwner(userService.convertToDTO(passwordEntry.getOwner()));
         dto.setCreatedAt(passwordEntry.getCreatedAt());
         dto.setUpdatedAt(passwordEntry.getUpdatedAt());
-        dto.setOwner(passwordEntry.getOwner().getId().equals(currentUser.getId()));
-        dto.setOwnerEmail(passwordEntry.getOwner().getEmail());
 
-        // Get encrypted password for current user
-        passwordShareRepository.findByPasswordEntryAndUser(passwordEntry, currentUser)
-                .ifPresent(share -> dto.setEncryptedPassword(share.getEncryptedPassword()));
-
-        // Get list of users this entry is shared with (only for owner)
-        if (dto.isOwner()) {
-            List<User> sharedUsers = passwordShareRepository.findUsersWithAccessToEntry(passwordEntry);
-            List<UserDTO> sharedUserDTOs = sharedUsers.stream()
-                    .filter(user -> !user.getId().equals(currentUser.getId())) // Exclude owner
-                    .map(userService::convertToDTO)
-                    .collect(Collectors.toList());
-            dto.setSharedWith(sharedUserDTOs);
-        }
+        // Convert shares
+        List<PasswordShareDTO> shares = passwordEntry.getShares().stream()
+                .map(this::convertShareToDTO)
+                .collect(Collectors.toList());
+        dto.setShares(shares);
 
         return dto;
     }
-}
 
+    private PasswordShareDTO convertShareToDTO(PasswordShare share) {
+        PasswordShareDTO dto = new PasswordShareDTO();
+        dto.setId(share.getId());
+        dto.setUser(userService.convertToDTO(share.getUser()));
+        dto.setEncryptedPassword(share.getEncryptedPassword());
+        dto.setCreatedAt(share.getCreatedAt());
+        return dto;
+    }
+}

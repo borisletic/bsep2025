@@ -5,29 +5,27 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 public class RegistrationRequest {
-    @Email
-    @NotBlank
+    @Email(message = "Valid email is required")
+    @NotBlank(message = "Email is required")
     private String email;
 
-    @NotBlank
+    @NotBlank(message = "Password is required")
     @Size(min = 8, message = "Password must be at least 8 characters long")
     private String password;
 
-    @NotBlank
+    @NotBlank(message = "Password confirmation is required")
     private String confirmPassword;
 
-    @NotBlank
+    @NotBlank(message = "First name is required")
     private String firstName;
 
-    @NotBlank
+    @NotBlank(message = "Last name is required")
     private String lastName;
 
-    @NotBlank
+    @NotBlank(message = "Organization is required")
     private String organization;
 
-    public RegistrationRequest() {}
-
-    // Getters and setters
+    // Getters and Setters
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
 

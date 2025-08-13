@@ -5,28 +5,21 @@ import java.time.LocalDateTime;
 public class UserTokenDTO {
     private Long id;
     private String tokenId;
-    private String ipAddress;
     private String deviceType;
     private String browser;
     private String operatingSystem;
-    private String location;
-    private LocalDateTime lastActivity;
+    private String ipAddress;
     private LocalDateTime createdAt;
+    private LocalDateTime lastActivity;
     private LocalDateTime expiresAt;
-    private boolean revoked;
-    private boolean current; // Is this the current session?
+    private boolean current;
 
-    public UserTokenDTO() {}
-
-    // Getters and setters
+    // Getters and Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
     public String getTokenId() { return tokenId; }
     public void setTokenId(String tokenId) { this.tokenId = tokenId; }
-
-    public String getIpAddress() { return ipAddress; }
-    public void setIpAddress(String ipAddress) { this.ipAddress = ipAddress; }
 
     public String getDeviceType() { return deviceType; }
     public void setDeviceType(String deviceType) { this.deviceType = deviceType; }
@@ -37,20 +30,17 @@ public class UserTokenDTO {
     public String getOperatingSystem() { return operatingSystem; }
     public void setOperatingSystem(String operatingSystem) { this.operatingSystem = operatingSystem; }
 
-    public String getLocation() { return location; }
-    public void setLocation(String location) { this.location = location; }
-
-    public LocalDateTime getLastActivity() { return lastActivity; }
-    public void setLastActivity(LocalDateTime lastActivity) { this.lastActivity = lastActivity; }
+    public String getIpAddress() { return ipAddress; }
+    public void setIpAddress(String ipAddress) { this.ipAddress = ipAddress; }
 
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
 
+    public LocalDateTime getLastActivity() { return lastActivity; }
+    public void setLastActivity(LocalDateTime lastActivity) { this.lastActivity = lastActivity; }
+
     public LocalDateTime getExpiresAt() { return expiresAt; }
     public void setExpiresAt(LocalDateTime expiresAt) { this.expiresAt = expiresAt; }
-
-    public boolean isRevoked() { return revoked; }
-    public void setRevoked(boolean revoked) { this.revoked = revoked; }
 
     public boolean isCurrent() { return current; }
     public void setCurrent(boolean current) { this.current = current; }

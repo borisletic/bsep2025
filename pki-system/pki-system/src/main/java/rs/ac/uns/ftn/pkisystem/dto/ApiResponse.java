@@ -1,20 +1,11 @@
 package rs.ac.uns.ftn.pkisystem.dto;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApiResponse<T> {
     private boolean success;
     private String message;
     private T data;
-    private String error;
 
     public ApiResponse() {}
-
-    public ApiResponse(boolean success, String message) {
-        this.success = success;
-        this.message = message;
-    }
 
     public ApiResponse(boolean success, String message, T data) {
         this.success = success;
@@ -27,17 +18,14 @@ public class ApiResponse<T> {
     }
 
     public static <T> ApiResponse<T> success(String message) {
-        return new ApiResponse<>(true, message);
+        return new ApiResponse<>(true, message, null);
     }
 
     public static <T> ApiResponse<T> error(String message) {
-        ApiResponse<T> response = new ApiResponse<>();
-        response.setSuccess(false);
-        response.setMessage(message);
-        return response;
+        return new ApiResponse<>(false, message, null);
     }
 
-    // Getters and setters
+    // Getters and Setters
     public boolean isSuccess() { return success; }
     public void setSuccess(boolean success) { this.success = success; }
 
@@ -46,12 +34,4 @@ public class ApiResponse<T> {
 
     public T getData() { return data; }
     public void setData(T data) { this.data = data; }
-
-    public String getError() { return error; }
-    public void setError(String error) { this.error = error; }
-
-    public ApiResponse<T> data(T data) {
-        this.data = data;
-        return this;
-    }
 }

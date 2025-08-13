@@ -10,32 +10,27 @@ public class UserToken {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(unique = true, nullable = false)
-    private String tokenId; // JTI (JWT ID)
-
-    private String ipAddress;
-
-    @Column(columnDefinition = "TEXT")
-    private String userAgent;
-
-    private String deviceType;
-    private String browser;
-    private String operatingSystem;
-    private String location;
-
-    private LocalDateTime lastActivity = LocalDateTime.now();
-
-    @Column(updatable = false)
-    private LocalDateTime createdAt = LocalDateTime.now();
+    @Column(nullable = false, unique = true)
+    private String tokenId; // JWT ID (jti)
 
     @Column(nullable = false)
     private LocalDateTime expiresAt;
 
     private boolean revoked = false;
+
+    private String deviceType;
+    private String browser;
+    private String operatingSystem;
+    private String ipAddress;
+
+    @Column(updatable = false)
+    private LocalDateTime createdAt = LocalDateTime.now();
+
+    private LocalDateTime lastActivity = LocalDateTime.now();
 
     // Constructors
     public UserToken() {}
@@ -56,11 +51,11 @@ public class UserToken {
     public String getTokenId() { return tokenId; }
     public void setTokenId(String tokenId) { this.tokenId = tokenId; }
 
-    public String getIpAddress() { return ipAddress; }
-    public void setIpAddress(String ipAddress) { this.ipAddress = ipAddress; }
+    public LocalDateTime getExpiresAt() { return expiresAt; }
+    public void setExpiresAt(LocalDateTime expiresAt) { this.expiresAt = expiresAt; }
 
-    public String getUserAgent() { return userAgent; }
-    public void setUserAgent(String userAgent) { this.userAgent = userAgent; }
+    public boolean isRevoked() { return revoked; }
+    public void setRevoked(boolean revoked) { this.revoked = revoked; }
 
     public String getDeviceType() { return deviceType; }
     public void setDeviceType(String deviceType) { this.deviceType = deviceType; }
@@ -71,27 +66,16 @@ public class UserToken {
     public String getOperatingSystem() { return operatingSystem; }
     public void setOperatingSystem(String operatingSystem) { this.operatingSystem = operatingSystem; }
 
-    public String getLocation() { return location; }
-    public void setLocation(String location) { this.location = location; }
-
-    public LocalDateTime getLastActivity() { return lastActivity; }
-    public void setLastActivity(LocalDateTime lastActivity) { this.lastActivity = lastActivity; }
+    public String getIpAddress() { return ipAddress; }
+    public void setIpAddress(String ipAddress) { this.ipAddress = ipAddress; }
 
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
 
-    public LocalDateTime getExpiresAt() { return expiresAt; }
-    public void setExpiresAt(LocalDateTime expiresAt) { this.expiresAt = expiresAt; }
-
-    public boolean isRevoked() { return revoked; }
-    public void setRevoked(boolean revoked) { this.revoked = revoked; }
+    public LocalDateTime getLastActivity() { return lastActivity; }
+    public void setLastActivity(LocalDateTime lastActivity) { this.lastActivity = lastActivity; }
 
     public boolean isExpired() {
         return LocalDateTime.now().isAfter(expiresAt);
-    }
-
-    @PreUpdate
-    protected void onUpdate() {
-        lastActivity = LocalDateTime.now();
     }
 }

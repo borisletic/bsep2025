@@ -1,25 +1,18 @@
 package rs.ac.uns.ftn.pkisystem.dto;
 
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class SharePasswordRequest {
-    @Email
-    @NotBlank
-    private String userEmail;
+    @NotNull(message = "User ID is required")
+    private Long userId;
 
-    @NotBlank
-    private String encryptedPassword; // Encrypted with target user's public key
+    @NotBlank(message = "Encrypted password is required")
+    private String encryptedPassword;
 
-    public SharePasswordRequest() {}
-
-    public SharePasswordRequest(String userEmail, String encryptedPassword) {
-        this.userEmail = userEmail;
-        this.encryptedPassword = encryptedPassword;
-    }
-
-    public String getUserEmail() { return userEmail; }
-    public void setUserEmail(String userEmail) { this.userEmail = userEmail; }
+    // Getters and Setters
+    public Long getUserId() { return userId; }
+    public void setUserId(Long userId) { this.userId = userId; }
 
     public String getEncryptedPassword() { return encryptedPassword; }
     public void setEncryptedPassword(String encryptedPassword) { this.encryptedPassword = encryptedPassword; }

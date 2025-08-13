@@ -52,6 +52,9 @@ public class AuthService {
     @Autowired
     private PasswordStrengthValidator passwordValidator;
 
+    @Autowired
+    private UserService userService;
+
     public AuthenticationResponse login(AuthenticationRequest request) {
         try {
             // Verify CAPTCHA
@@ -61,74 +64,75 @@ public class AuthService {
             }
 
             // Authenticate user
-            Authentication auth = authenticationManager.authenticate(
+            Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
             );
 
-            User user = (User) auth.getPrincipal();
+            User user = (User) authentication.getPrincipal();
 
             if (!user.isActivated()) {
-                auditService.logEvent("LOGIN_FAILED", "Account not activated", "USER", user.getId(), user.getEmail());
-                throw new BadCredentialsException("Account not activated");
+                auditService.logEvent("LOGIN_FAILED", "Account not activated", null, null, user.getEmail());
+                throw new BadCredentialsException("Account not activated. Please check your email.");
             }
 
-            // Generate JWT with JTI
-            String jti = jwtUtil.generateJti();
-            String token = jwtUtil.generateTokenWithJti(user, jti);
+            // Generate JWT token
+            String token = jwtUtil.generateToken(user);
+            String jti = jwtUtil.getJtiFromToken(token);
 
-            // Save token information
+            // Save token for session management
             userTokenService.saveToken(user, jti, token);
 
-            auditService.logEvent("LOGIN_SUCCESS", "User logged in successfully", "USER", user.getId(), user.getEmail());
+            auditService.logEvent("LOGIN_SUCCESS", "User logged in successfully", null, null, user.getEmail());
 
-            return new AuthenticationResponse(
-                    token, user.getId(), user.getEmail(), user.getFirstName(),
-                    user.getLastName(), user.getOrganization(), user.getRole(), user.isActivated()
-            );
+            UserDTO userDTO = userService.convertToDTO(user);
+            return new AuthenticationResponse(token, userDTO);
 
         } catch (BadCredentialsException e) {
             auditService.logEvent("LOGIN_FAILED", "Invalid credentials", null, null, request.getEmail());
             throw e;
+        } catch (Exception e) {
+            auditService.logEvent("LOGIN_FAILED", "Login error: " + e.getMessage(), null, null, request.getEmail());
+            throw new RuntimeException("Login failed: " + e.getMessage());
         }
     }
 
     public ApiResponse<String> register(RegistrationRequest request) {
-        // Check if passwords match
+        // Validate input
+        if (userRepository.existsByEmail(request.getEmail())) {
+            throw new UserAlreadyExistsException("User with this email already exists");
+        }
+
         if (!request.getPassword().equals(request.getConfirmPassword())) {
             throw new IllegalArgumentException("Passwords do not match");
         }
 
         // Validate password strength
-        if (!passwordValidator.isPasswordValid(request.getPassword())) {
-            PasswordStrengthValidator.PasswordStrength strength = passwordValidator.checkPasswordStrength(request.getPassword());
-            throw new IllegalArgumentException("Password is too weak: " + strength.getFeedback());
+        PasswordStrengthValidator.ValidationResult validation = passwordValidator.validate(request.getPassword());
+        if (!validation.isValid()) {
+            throw new IllegalArgumentException("Password is not strong enough: " + String.join(", ", validation.getErrors()));
         }
 
-        // Check if user already exists
-        if (userRepository.existsByEmail(request.getEmail())) {
-            throw new UserAlreadyExistsException("User with email " + request.getEmail() + " already exists");
-        }
-
-        // Create new user
-        User user = new User(
-                request.getEmail(),
-                passwordEncoder.encode(request.getPassword()),
-                request.getFirstName(),
-                request.getLastName(),
-                request.getOrganization()
-        );
+        // Create user
+        User user = new User();
+        user.setEmail(request.getEmail());
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setFirstName(request.getFirstName());
+        user.setLastName(request.getLastName());
+        user.setOrganization(request.getOrganization());
+        user.setRole(Role.END_USER);
+        user.setActivated(false);
 
         // Generate activation token
         String activationToken = UUID.randomUUID().toString();
         user.setActivationToken(activationToken);
         user.setActivationTokenExpiry(LocalDateTime.now().plusHours(24));
 
-        userRepository.save(user);
+        user = userRepository.save(user);
 
         // Send activation email
         emailService.sendActivationEmail(user.getEmail(), activationToken);
 
-        auditService.logEvent("USER_CREATED", "New user registered", "USER", user.getId(), user.getEmail());
+        auditService.logEvent("USER_REGISTERED", "New user registered", "USER", user.getId(), user.getEmail());
 
         return ApiResponse.success("Registration successful. Please check your email to activate your account.");
     }
@@ -142,7 +146,7 @@ public class AuthService {
         }
 
         if (user.isActivated()) {
-            throw new IllegalStateException("Account is already activated");
+            throw new IllegalArgumentException("Account is already activated");
         }
 
         user.setActivated(true);
@@ -150,99 +154,85 @@ public class AuthService {
         user.setActivationTokenExpiry(null);
         userRepository.save(user);
 
-        auditService.logEvent("ACCOUNT_ACTIVATED", "Account activated successfully", "USER", user.getId(), user.getEmail());
+        auditService.logEvent("ACCOUNT_ACTIVATED", "Account activated", "USER", user.getId(), user.getEmail());
 
         return ApiResponse.success("Account activated successfully. You can now log in.");
     }
 
     public ApiResponse<String> requestPasswordReset(PasswordResetRequest request) {
         User user = userRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> new UserNotFoundException("User not found with email: " + request.getEmail()));
+                .orElseThrow(() -> new UserNotFoundException("User not found"));
 
-        // Generate password reset token
+        // Generate reset token
         String resetToken = UUID.randomUUID().toString();
         user.setPasswordResetToken(resetToken);
-        user.setPasswordResetTokenExpiry(LocalDateTime.now().plusHours(2));
+        user.setPasswordResetTokenExpiry(LocalDateTime.now().plusHours(1));
         userRepository.save(user);
 
-        // Send password reset email
+        // Send reset email
         emailService.sendPasswordResetEmail(user.getEmail(), resetToken);
 
         auditService.logEvent("PASSWORD_RESET_REQUESTED", "Password reset requested", "USER", user.getId(), user.getEmail());
 
-        return ApiResponse.success("Password reset email sent. Please check your inbox.");
+        return ApiResponse.success("Password reset link sent to your email.");
     }
 
     public ApiResponse<String> changePassword(PasswordChangeRequest request) {
-        // Check if passwords match
+        User user = userRepository.findByPasswordResetToken(request.getToken())
+                .orElseThrow(() -> new InvalidTokenException("Invalid reset token"));
+
+        if (user.getPasswordResetTokenExpiry().isBefore(LocalDateTime.now())) {
+            throw new InvalidTokenException("Reset token has expired");
+        }
+
         if (!request.getNewPassword().equals(request.getConfirmPassword())) {
             throw new IllegalArgumentException("Passwords do not match");
         }
 
         // Validate password strength
-        if (!passwordValidator.isPasswordValid(request.getNewPassword())) {
-            PasswordStrengthValidator.PasswordStrength strength = passwordValidator.checkPasswordStrength(request.getNewPassword());
-            throw new IllegalArgumentException("Password is too weak: " + strength.getFeedback());
+        PasswordStrengthValidator.ValidationResult validation = passwordValidator.validate(request.getNewPassword());
+        if (!validation.isValid()) {
+            throw new IllegalArgumentException("Password is not strong enough: " + String.join(", ", validation.getErrors()));
         }
 
-        User user = userRepository.findByPasswordResetToken(request.getToken())
-                .orElseThrow(() -> new InvalidTokenException("Invalid password reset token"));
-
-        if (user.getPasswordResetTokenExpiry().isBefore(LocalDateTime.now())) {
-            throw new InvalidTokenException("Password reset token has expired");
-        }
-
-        // Update password
         user.setPassword(passwordEncoder.encode(request.getNewPassword()));
         user.setPasswordResetToken(null);
         user.setPasswordResetTokenExpiry(null);
         userRepository.save(user);
 
-        // Revoke all existing tokens for security
-        userTokenService.revokeAllTokensForUser(user);
+        auditService.logEvent("PASSWORD_CHANGED", "Password changed", "USER", user.getId(), user.getEmail());
 
-        auditService.logEvent("PASSWORD_RESET_COMPLETED", "Password reset completed", "USER", user.getId(), user.getEmail());
-
-        return ApiResponse.success("Password changed successfully. Please log in with your new password.");
+        return ApiResponse.success("Password changed successfully.");
     }
 
     public User createCAUser(CreateCAUserRequest request) {
-        // Check if user already exists
         if (userRepository.existsByEmail(request.getEmail())) {
-            throw new UserAlreadyExistsException("User with email " + request.getEmail() + " already exists");
+            throw new UserAlreadyExistsException("User with this email already exists");
         }
 
-        // Generate random password
-        String randomPassword = generateRandomPassword();
+        // Generate temporary password
+        String temporaryPassword = generateTemporaryPassword();
 
-        // Create CA user
-        User caUser = new User(
-                request.getEmail(),
-                passwordEncoder.encode(randomPassword),
-                request.getFirstName(),
-                request.getLastName(),
-                request.getOrganization()
-        );
-        caUser.setRole(Role.CA_USER);
-        caUser.setActivated(true); // CA users are activated immediately
+        User user = new User();
+        user.setEmail(request.getEmail());
+        user.setPassword(passwordEncoder.encode(temporaryPassword));
+        user.setFirstName(request.getFirstName());
+        user.setLastName(request.getLastName());
+        user.setOrganization(request.getOrganization());
+        user.setRole(Role.CA_USER);
+        user.setActivated(true); // CA users are pre-activated
 
-        userRepository.save(caUser);
+        user = userRepository.save(user);
 
-        // Send welcome email with password
-        emailService.sendCAUserWelcomeEmail(caUser.getEmail(), randomPassword);
+        // Send temporary password via email
+        emailService.sendTemporaryPasswordEmail(user.getEmail(), temporaryPassword);
 
-        auditService.logEvent("CA_USER_CREATED", "CA user created", "USER", caUser.getId(), caUser.getEmail());
+        auditService.logEvent("CA_USER_CREATED", "CA user created", "USER", user.getId(), user.getEmail());
 
-        return caUser;
+        return user;
     }
 
-    private String generateRandomPassword() {
-        // Generate a secure random password
-        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
-        StringBuilder password = new StringBuilder();
-        for (int i = 0; i < 12; i++) {
-            password.append(chars.charAt((int) (Math.random() * chars.length())));
-        }
-        return password.toString();
+    private String generateTemporaryPassword() {
+        return UUID.randomUUID().toString().substring(0, 12);
     }
 }

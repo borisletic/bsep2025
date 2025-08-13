@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import rs.ac.uns.ftn.pkisystem.dto.UserDTO;
+import rs.ac.uns.ftn.pkisystem.entity.Role;
 import rs.ac.uns.ftn.pkisystem.entity.User;
 import rs.ac.uns.ftn.pkisystem.exception.ResourceNotFoundException;
 import rs.ac.uns.ftn.pkisystem.repository.UserRepository;
+import rs.ac.uns.ftn.pkisystem.security.SecurityUtils;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,6 +23,12 @@ public class UserService {
     @Autowired
     private AuditService auditService;
 
+    public UserDTO getCurrentUserProfile() {
+        User currentUser = SecurityUtils.getCurrentUser()
+                .orElseThrow(() -> new SecurityException("User not authenticated"));
+        return convertToDTO(currentUser);
+    }
+
     public UserDTO getUserById(Long id) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
@@ -34,9 +42,30 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
+    public List<UserDTO> getEndEntityUsers() {
+        List<User> users = userRepository.findByRole(Role.END_USER);
+        return users.stream()
+                .filter(User::isActivated)
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
     public void deleteUser(Long id) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
+
+        User currentUser = SecurityUtils.getCurrentUser()
+                .orElseThrow(() -> new SecurityException("User not authenticated"));
+
+        // Cannot delete self
+        if (user.equals(currentUser)) {
+            throw new IllegalArgumentException("Cannot delete your own account");
+        }
+
+        // Cannot delete other admins unless you're an admin
+        if (user.getRole() == Role.ADMIN && currentUser.getRole() != Role.ADMIN) {
+            throw new SecurityException("Cannot delete admin user");
+        }
 
         userRepository.delete(user);
         auditService.logEvent("USER_DELETED", "User deleted: " + user.getEmail(), "USER", id);
@@ -55,8 +84,6 @@ public class UserService {
         dto.setUpdatedAt(user.getUpdatedAt());
         return dto;
     }
-
-    // Dodati ovu metodu u postojeći UserService.java
 
     public User findByEmail(String email) {
         return userRepository.findByEmail(email)

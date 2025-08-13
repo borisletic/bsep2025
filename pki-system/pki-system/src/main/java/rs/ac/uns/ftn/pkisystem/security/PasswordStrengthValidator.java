@@ -2,81 +2,95 @@ package rs.ac.uns.ftn.pkisystem.security;
 
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 @Component
 public class PasswordStrengthValidator {
 
     private static final int MIN_LENGTH = 8;
-    private static final Pattern UPPERCASE_PATTERN = Pattern.compile(".*[A-Z].*");
-    private static final Pattern LOWERCASE_PATTERN = Pattern.compile(".*[a-z].*");
-    private static final Pattern DIGIT_PATTERN = Pattern.compile(".*\\d.*");
-    private static final Pattern SPECIAL_CHAR_PATTERN = Pattern.compile(".*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?].*");
+    private static final Pattern LOWERCASE = Pattern.compile("[a-z]");
+    private static final Pattern UPPERCASE = Pattern.compile("[A-Z]");
+    private static final Pattern DIGIT = Pattern.compile("[0-9]");
+    private static final Pattern SPECIAL = Pattern.compile("[^a-zA-Z0-9]");
 
-    public PasswordStrength checkPasswordStrength(String password) {
-        if (password == null || password.length() < MIN_LENGTH) {
-            return new PasswordStrength(StrengthLevel.WEAK, "Password must be at least " + MIN_LENGTH + " characters long");
-        }
+    private static final String[] COMMON_PASSWORDS = {
+            "password", "123456", "123456789", "qwerty", "abc123",
+            "password123", "admin", "letmein", "welcome", "monkey"
+    };
 
+    public ValidationResult validate(String password) {
+        List<String> errors = new ArrayList<>();
         int score = 0;
-        String feedback = "";
 
-        if (password.length() >= MIN_LENGTH) score++;
-        if (UPPERCASE_PATTERN.matcher(password).matches()) {
-            score++;
-        } else {
-            feedback += "Add uppercase letters. ";
+        if (password == null || password.isEmpty()) {
+            errors.add("Password is required");
+            return new ValidationResult(false, 0, errors);
         }
 
-        if (LOWERCASE_PATTERN.matcher(password).matches()) {
-            score++;
+        // Length check
+        if (password.length() < MIN_LENGTH) {
+            errors.add("Password must be at least " + MIN_LENGTH + " characters long");
         } else {
-            feedback += "Add lowercase letters. ";
+            score += 1;
         }
 
-        if (DIGIT_PATTERN.matcher(password).matches()) {
-            score++;
+        // Character variety checks
+        if (!LOWERCASE.matcher(password).find()) {
+            errors.add("Password must contain at least one lowercase letter");
         } else {
-            feedback += "Add numbers. ";
+            score += 1;
         }
 
-        if (SPECIAL_CHAR_PATTERN.matcher(password).matches()) {
-            score++;
+        if (!UPPERCASE.matcher(password).find()) {
+            errors.add("Password must contain at least one uppercase letter");
         } else {
-            feedback += "Add special characters. ";
+            score += 1;
         }
 
-        StrengthLevel level;
-        if (score <= 2) {
-            level = StrengthLevel.WEAK;
-        } else if (score <= 4) {
-            level = StrengthLevel.MEDIUM;
+        if (!DIGIT.matcher(password).find()) {
+            errors.add("Password must contain at least one digit");
         } else {
-            level = StrengthLevel.STRONG;
-            feedback = "Strong password!";
+            score += 1;
         }
 
-        return new PasswordStrength(level, feedback.trim());
+        if (!SPECIAL.matcher(password).find()) {
+            errors.add("Password must contain at least one special character");
+        } else {
+            score += 1;
+        }
+
+        // Common password check
+        for (String common : COMMON_PASSWORDS) {
+            if (password.toLowerCase().contains(common)) {
+                errors.add("Password contains common patterns and is not secure");
+                break;
+            }
+        }
+
+        // Additional length bonus
+        if (password.length() >= 12) {
+            score += 1;
+        }
+
+        boolean isValid = errors.isEmpty() && score >= 4;
+        return new ValidationResult(isValid, score, errors);
     }
 
-    public boolean isPasswordValid(String password) {
-        return checkPasswordStrength(password).getLevel() != StrengthLevel.WEAK;
-    }
+    public static class ValidationResult {
+        private final boolean valid;
+        private final int score;
+        private final List<String> errors;
 
-    public static class PasswordStrength {
-        private final StrengthLevel level;
-        private final String feedback;
-
-        public PasswordStrength(StrengthLevel level, String feedback) {
-            this.level = level;
-            this.feedback = feedback;
+        public ValidationResult(boolean valid, int score, List<String> errors) {
+            this.valid = valid;
+            this.score = score;
+            this.errors = errors;
         }
 
-        public StrengthLevel getLevel() { return level; }
-        public String getFeedback() { return feedback; }
-    }
-
-    public enum StrengthLevel {
-        WEAK, MEDIUM, STRONG
+        public boolean isValid() { return valid; }
+        public int getScore() { return score; }
+        public List<String> getErrors() { return errors; }
     }
 }

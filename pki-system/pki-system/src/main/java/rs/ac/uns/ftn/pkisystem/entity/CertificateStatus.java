@@ -1,4 +1,8 @@
 package rs.ac.uns.ftn.pkisystem.entity;
 
-public class CertificateStatus {
+public enum CertificateStatus {
+    ACTIVE,
+    REVOKED,
+    EXPIRED,
+    SUSPENDED
 }

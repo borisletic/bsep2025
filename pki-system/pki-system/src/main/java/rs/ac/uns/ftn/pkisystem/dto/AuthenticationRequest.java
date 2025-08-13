@@ -4,28 +4,17 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
 public class AuthenticationRequest {
-    @Email
-    @NotBlank
+    @Email(message = "Valid email is required")
+    @NotBlank(message = "Email is required")
     private String email;
 
-    @NotBlank
+    @NotBlank(message = "Password is required")
     private String password;
 
-    @NotBlank
     private String captchaToken;
-
     private String captchaAnswer;
 
-    public AuthenticationRequest() {}
-
-    public AuthenticationRequest(String email, String password, String captchaToken, String captchaAnswer) {
-        this.email = email;
-        this.password = password;
-        this.captchaToken = captchaToken;
-        this.captchaAnswer = captchaAnswer;
-    }
-
-    // Getters and setters
+    // Getters and Setters
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
 

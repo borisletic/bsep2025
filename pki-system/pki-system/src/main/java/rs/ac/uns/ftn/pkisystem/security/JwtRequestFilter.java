@@ -1,5 +1,6 @@
 package rs.ac.uns.ftn.pkisystem.security;
 
+import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -41,26 +42,29 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         if (requestTokenHeader != null && requestTokenHeader.startsWith("Bearer ")) {
             jwtToken = requestTokenHeader.substring(7);
             try {
-                username = jwtUtil.extractUsername(jwtToken);
-                jti = jwtUtil.extractJti(jwtToken);
-            } catch (Exception e) {
-                logger.warn("JWT Token validation failed: " + e.getMessage());
+                username = jwtUtil.getUsernameFromToken(jwtToken);
+                jti = jwtUtil.getJtiFromToken(jwtToken);
+            } catch (IllegalArgumentException e) {
+                logger.error("Unable to get JWT Token");
+            } catch (ExpiredJwtException e) {
+                logger.error("JWT Token has expired");
             }
         }
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
 
-            // Validate token and check if it's not revoked
+            // Check if token is valid and active
             if (jwtUtil.validateToken(jwtToken, userDetails) &&
                     (jti == null || userTokenService.isTokenActive(jti))) {
 
                 UsernamePasswordAuthenticationToken authToken =
-                        new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+                        new UsernamePasswordAuthenticationToken(
+                                userDetails, null, userDetails.getAuthorities());
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authToken);
 
-                // Update last activity for the token
+                // Update last activity
                 if (jti != null) {
                     userTokenService.updateLastActivity(jti, request);
                 }

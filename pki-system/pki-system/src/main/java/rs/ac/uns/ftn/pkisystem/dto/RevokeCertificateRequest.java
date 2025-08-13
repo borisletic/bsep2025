@@ -1,24 +1,11 @@
 package rs.ac.uns.ftn.pkisystem.dto;
 
-import jakarta.validation.constraints.NotNull;
-import rs.ac.uns.ftn.pkisystem.entity.RevocationReason;
+import jakarta.validation.constraints.NotBlank;
 
 public class RevokeCertificateRequest {
-    @NotNull
-    private RevocationReason reason;
+    @NotBlank(message = "Revocation reason is required")
+    private String reason;
 
-    private String description;
-
-    public RevokeCertificateRequest() {}
-
-    public RevokeCertificateRequest(RevocationReason reason, String description) {
-        this.reason = reason;
-        this.description = description;
-    }
-
-    public RevocationReason getReason() { return reason; }
-    public void setReason(RevocationReason reason) { this.reason = reason; }
-
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
+    public String getReason() { return reason; }
+    public void setReason(String reason) { this.reason = reason; }
 }
