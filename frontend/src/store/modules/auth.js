@@ -2,63 +2,61 @@ import api from '@/services/api'
 
 const state = {
   user: null,
-  token: localStorage.getItem('token') || null,
+  token: localStorage.getItem('token'),
   isAuthenticated: !!localStorage.getItem('token'),
   loading: false,
   error: null
 }
 
 const getters = {
-  currentUser: state => state.user,
-  token: state => state.token,
   isAuthenticated: state => state.isAuthenticated,
+  currentUser: state => state.user,
   userRole: state => state.user?.role || null,
+  token: state => state.token,
   isLoading: state => state.loading,
   error: state => state.error
 }
 
 const mutations = {
-  SET_USER(state, user) {
-    state.user = user
-  },
-  SET_TOKEN(state, token) {
-    state.token = token
-    state.isAuthenticated = !!token
-    if (token) {
-      localStorage.setItem('token', token)
-    } else {
-      localStorage.removeItem('token')
-    }
-  },
   SET_LOADING(state, loading) {
     state.loading = loading
   },
   SET_ERROR(state, error) {
     state.error = error
   },
+  SET_AUTH_SUCCESS(state, { token, user }) {
+    state.token = token
+    state.user = user
+    state.isAuthenticated = true
+    state.error = null
+    localStorage.setItem('token', token)
+  },
+  SET_USER(state, user) {
+    state.user = user
+  },
   CLEAR_AUTH(state) {
-    state.user = null
     state.token = null
+    state.user = null
     state.isAuthenticated = false
+    state.error = null
     localStorage.removeItem('token')
   }
 }
 
 const actions = {
   async login({ commit }, credentials) {
-    commit('SET_LOADING', true)
-    commit('SET_ERROR', null)
-    
     try {
+      commit('SET_LOADING', true)
+      commit('SET_ERROR', null)
+      
       const response = await api.post('/auth/login', credentials)
       const { token, user } = response.data.data
       
-      commit('SET_TOKEN', token)
-      commit('SET_USER', user)
-      
+      commit('SET_AUTH_SUCCESS', { token, user })
       return response.data
     } catch (error) {
-      commit('SET_ERROR', error.response?.data?.message || 'Login failed')
+      const message = error.response?.data?.message || 'Login failed'
+      commit('SET_ERROR', message)
       throw error
     } finally {
       commit('SET_LOADING', false)
@@ -66,14 +64,15 @@ const actions = {
   },
 
   async register({ commit }, userData) {
-    commit('SET_LOADING', true)
-    commit('SET_ERROR', null)
-    
     try {
+      commit('SET_LOADING', true)
+      commit('SET_ERROR', null)
+      
       const response = await api.post('/auth/register', userData)
       return response.data
     } catch (error) {
-      commit('SET_ERROR', error.response?.data?.message || 'Registration failed')
+      const message = error.response?.data?.message || 'Registration failed'
+      commit('SET_ERROR', message)
       throw error
     } finally {
       commit('SET_LOADING', false)
@@ -81,49 +80,55 @@ const actions = {
   },
 
   async fetchUserProfile({ commit }) {
-    commit('SET_LOADING', true)
-    
     try {
-      const response = await api.get('/auth/profile')
+      const response = await api.get('/users/profile')
       commit('SET_USER', response.data.data)
+      return response.data.data
+    } catch (error) {
+      commit('CLEAR_AUTH')
+      throw error
+    }
+  },
+
+  async logout({ commit }) {
+    commit('CLEAR_AUTH')
+  },
+
+  async requestPasswordReset({ commit }, email) {
+    try {
+      commit('SET_LOADING', true)
+      const response = await api.post('/auth/password-reset', { email })
       return response.data
     } catch (error) {
-      commit('SET_ERROR', error.response?.data?.message || 'Failed to fetch profile')
+      const message = error.response?.data?.message || 'Password reset failed'
+      commit('SET_ERROR', message)
       throw error
     } finally {
       commit('SET_LOADING', false)
     }
   },
 
-  async logout({ commit }) {
-    commit('SET_LOADING', true)
-    
+  async changePassword({ commit }, passwordData) {
     try {
-      await api.post('/auth/logout')
+      commit('SET_LOADING', true)
+      const response = await api.post('/auth/password-change', passwordData)
+      return response.data
     } catch (error) {
-      console.error('Logout API call failed:', error)
+      const message = error.response?.data?.message || 'Password change failed'
+      commit('SET_ERROR', message)
+      throw error
     } finally {
-      commit('CLEAR_AUTH')
       commit('SET_LOADING', false)
     }
   },
 
-  // Initialize auth state on app load
-  initializeAuth({ commit, dispatch }) {
-    const token = localStorage.getItem('token')
-    if (token) {
-      commit('SET_TOKEN', token)
-      // Optionally fetch user profile
-      dispatch('fetchUserProfile').catch(() => {
-        // If profile fetch fails, clear auth
-        commit('CLEAR_AUTH')
-      })
-    }
+  clearError({ commit }) {
+    commit('SET_ERROR', null)
   }
 }
 
 export default {
-  namespaced: true, // Enable namespacing
+  namespaced: true,
   state,
   getters,
   mutations,

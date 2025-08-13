@@ -1,8 +1,7 @@
-import certificateService from '@/services/certificateService'
+import api from '@/services/api'
 
 const state = {
   certificates: [],
-  currentCertificate: null,
   caCertificates: [],
   loading: false,
   error: null
@@ -10,37 +9,27 @@ const state = {
 
 const getters = {
   allCertificates: state => state.certificates,
-  currentCertificate: state => state.currentCertificate,
   caCertificates: state => state.caCertificates,
-  activeCertificates: state => state.certificates.filter(cert => 
-    !cert.revoked && new Date(cert.validTo) > new Date()
-  ),
-  expiringCertificates: state => {
-    const thirtyDaysFromNow = new Date()
-    thirtyDaysFromNow.setDate(thirtyDaysFromNow.getDate() + 30)
-    return state.certificates.filter(cert => 
-      !cert.revoked && 
-      new Date(cert.validTo) > new Date() && 
-      new Date(cert.validTo) <= thirtyDaysFromNow
-    )
-  },
-  revokedCertificates: state => state.certificates.filter(cert => cert.revoked),
   isLoading: state => state.loading,
-  error: state => state.error
+  error: state => state.error,
+  getCertificateById: state => id => state.certificates.find(cert => cert.id === id)
 }
 
 const mutations = {
+  SET_LOADING(state, loading) {
+    state.loading = loading
+  },
+  SET_ERROR(state, error) {
+    state.error = error
+  },
   SET_CERTIFICATES(state, certificates) {
     state.certificates = certificates
-  },
-  SET_CURRENT_CERTIFICATE(state, certificate) {
-    state.currentCertificate = certificate
   },
   SET_CA_CERTIFICATES(state, certificates) {
     state.caCertificates = certificates
   },
   ADD_CERTIFICATE(state, certificate) {
-    state.certificates.unshift(certificate)
+    state.certificates.push(certificate)
   },
   UPDATE_CERTIFICATE(state, updatedCertificate) {
     const index = state.certificates.findIndex(cert => cert.id === updatedCertificate.id)
@@ -50,112 +39,98 @@ const mutations = {
   },
   REMOVE_CERTIFICATE(state, certificateId) {
     state.certificates = state.certificates.filter(cert => cert.id !== certificateId)
-  },
-  SET_LOADING(state, loading) {
-    state.loading = loading
-  },
-  SET_ERROR(state, error) {
-    state.error = error
   }
 }
 
 const actions = {
   async fetchCertificates({ commit }) {
-    commit('SET_LOADING', true)
-    commit('SET_ERROR', null)
     try {
-      const response = await certificateService.getCertificates()
-      commit('SET_CERTIFICATES', response.data)
+      commit('SET_LOADING', true)
+      commit('SET_ERROR', null)
       
-      // Filter CA certificates for dropdown usage
-      const caCertificates = response.data.filter(cert => 
-        (cert.certificateType === 'ROOT' || cert.certificateType === 'INTERMEDIATE') &&
-        !cert.revoked &&
-        new Date(cert.validTo) > new Date()
-      )
-      commit('SET_CA_CERTIFICATES', caCertificates)
+      const response = await api.get('/certificates')
+      commit('SET_CERTIFICATES', response.data.data)
+      return response.data.data
+    } catch (error) {
+      const message = error.response?.data?.message || 'Failed to fetch certificates'
+      commit('SET_ERROR', message)
+      throw error
+    } finally {
+      commit('SET_LOADING', false)
+    }
+  },
+
+  async fetchCACertificates({ commit }) {
+    try {
+      const response = await api.get('/certificates/ca')
+      commit('SET_CA_CERTIFICATES', response.data.data)
+      return response.data.data
+    } catch (error) {
+      const message = error.response?.data?.message || 'Failed to fetch CA certificates'
+      commit('SET_ERROR', message)
+      throw error
+    }
+  },
+
+  async createCertificate({ commit }, certificateData) {
+    try {
+      commit('SET_LOADING', true)
+      commit('SET_ERROR', null)
       
-      return response.data
+      const response = await api.post('/certificates', certificateData)
+      commit('ADD_CERTIFICATE', response.data.data)
+      return response.data.data
     } catch (error) {
-      commit('SET_ERROR', error.response?.data?.message || 'Failed to fetch certificates')
+      const message = error.response?.data?.message || 'Failed to create certificate'
+      commit('SET_ERROR', message)
       throw error
     } finally {
       commit('SET_LOADING', false)
     }
   },
 
-  async fetchCertificate({ commit }, id) {
-    commit('SET_LOADING', true)
-    commit('SET_ERROR', null)
+  async revokeCertificate({ commit }, { id, reason }) {
     try {
-      const response = await certificateService.getCertificate(id)
-      commit('SET_CURRENT_CERTIFICATE', response.data)
-      return response.data
+      commit('SET_LOADING', true)
+      
+      const response = await api.post(`/certificates/${id}/revoke`, { reason })
+      commit('UPDATE_CERTIFICATE', response.data.data)
+      return response.data.data
     } catch (error) {
-      commit('SET_ERROR', error.response?.data?.message || 'Failed to fetch certificate')
+      const message = error.response?.data?.message || 'Failed to revoke certificate'
+      commit('SET_ERROR', message)
       throw error
     } finally {
       commit('SET_LOADING', false)
     }
   },
 
-  async issueCertificate({ commit }, certificateData) {
-    commit('SET_LOADING', true)
-    commit('SET_ERROR', null)
+  async downloadCertificate({ commit }, certificateId) {
     try {
-      const response = await certificateService.issueCertificate(certificateData)
-      commit('ADD_CERTIFICATE', response.data)
-      return response.data
+      const response = await api.get(`/certificates/${certificateId}/download`, {
+        responseType: 'blob'
+      })
+      
+      // Create download link
+      const url = window.URL.createObjectURL(new Blob([response.data]))
+      const link = document.createElement('a')
+      link.href = url
+      link.setAttribute('download', `certificate_${certificateId}.crt`)
+      document.body.appendChild(link)
+      link.click()
+      link.remove()
+      window.URL.revokeObjectURL(url)
+      
+      return true
     } catch (error) {
-      commit('SET_ERROR', error.response?.data?.message || 'Failed to issue certificate')
+      const message = error.response?.data?.message || 'Failed to download certificate'
+      commit('SET_ERROR', message)
       throw error
-    } finally {
-      commit('SET_LOADING', false)
     }
   },
 
-  async uploadCSR({ commit }, formData) {
-    commit('SET_LOADING', true)
+  clearError({ commit }) {
     commit('SET_ERROR', null)
-    try {
-      const response = await certificateService.uploadCSR(formData)
-      commit('ADD_CERTIFICATE', response.data)
-      return response.data
-    } catch (error) {
-      commit('SET_ERROR', error.response?.data?.message || 'Failed to upload CSR')
-      throw error
-    } finally {
-      commit('SET_LOADING', false)
-    }
-  },
-
-  async revokeCertificate({ commit }, { id, revocationData }) {
-    commit('SET_LOADING', true)
-    commit('SET_ERROR', null)
-    try {
-      const response = await certificateService.revokeCertificate(id, revocationData)
-      commit('UPDATE_CERTIFICATE', response.data)
-      return response.data
-    } catch (error) {
-      commit('SET_ERROR', error.response?.data?.message || 'Failed to revoke certificate')
-      throw error
-    } finally {
-      commit('SET_LOADING', false)
-    }
-  },
-
-  async downloadCertificate({ commit }, id) {
-    commit('SET_LOADING', true)
-    commit('SET_ERROR', null)
-    try {
-      const response = await certificateService.downloadCertificate(id)
-      return response
-    } catch (error) {
-      commit('SET_ERROR', error.response?.data?.message || 'Failed to download certificate')
-      throw error
-    } finally {
-      commit('SET_LOADING', false)
-    }
   }
 }
 

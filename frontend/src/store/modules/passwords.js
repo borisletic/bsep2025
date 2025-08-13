@@ -1,117 +1,103 @@
-import passwordService from '@/services/passwordService'
+import api from '@/services/api'
 
 const state = {
-  passwordEntries: [],
-  currentEntry: null,
+  passwords: [],
   loading: false,
   error: null
 }
 
 const getters = {
-  allPasswordEntries: state => state.passwordEntries,
-  currentEntry: state => state.currentEntry,
-  ownedEntries: state => state.passwordEntries.filter(entry => entry.isOwner),
-  sharedEntries: state => state.passwordEntries.filter(entry => !entry.isOwner),
+  allPasswords: state => state.passwords,
   isLoading: state => state.loading,
-  error: state => state.error
+  error: state => state.error,
+  getPasswordById: state => id => state.passwords.find(pass => pass.id === id)
 }
 
 const mutations = {
-  SET_PASSWORD_ENTRIES(state, entries) {
-    state.passwordEntries = entries
-  },
-  SET_CURRENT_ENTRY(state, entry) {
-    state.currentEntry = entry
-  },
-  ADD_PASSWORD_ENTRY(state, entry) {
-    state.passwordEntries.unshift(entry)
-  },
-  UPDATE_PASSWORD_ENTRY(state, updatedEntry) {
-    const index = state.passwordEntries.findIndex(entry => entry.id === updatedEntry.id)
-    if (index !== -1) {
-      state.passwordEntries.splice(index, 1, updatedEntry)
-    }
-  },
-  REMOVE_PASSWORD_ENTRY(state, entryId) {
-    state.passwordEntries = state.passwordEntries.filter(entry => entry.id !== entryId)
-  },
   SET_LOADING(state, loading) {
     state.loading = loading
   },
   SET_ERROR(state, error) {
     state.error = error
+  },
+  SET_PASSWORDS(state, passwords) {
+    state.passwords = passwords
+  },
+  ADD_PASSWORD(state, password) {
+    state.passwords.push(password)
+  },
+  UPDATE_PASSWORD(state, updatedPassword) {
+    const index = state.passwords.findIndex(pass => pass.id === updatedPassword.id)
+    if (index !== -1) {
+      state.passwords.splice(index, 1, updatedPassword)
+    }
+  },
+  REMOVE_PASSWORD(state, passwordId) {
+    state.passwords = state.passwords.filter(pass => pass.id !== passwordId)
   }
 }
 
 const actions = {
-  async fetchPasswordEntries({ commit }) {
-    commit('SET_LOADING', true)
-    commit('SET_ERROR', null)
+  async fetchPasswords({ commit }) {
     try {
-      const response = await passwordService.getPasswordEntries()
-      commit('SET_PASSWORD_ENTRIES', response.data)
-      return response.data
+      commit('SET_LOADING', true)
+      commit('SET_ERROR', null)
+      
+      const response = await api.get('/passwords')
+      commit('SET_PASSWORDS', response.data.data)
+      return response.data.data
     } catch (error) {
-      commit('SET_ERROR', error.response?.data?.message || 'Failed to fetch password entries')
+      const message = error.response?.data?.message || 'Failed to fetch passwords'
+      commit('SET_ERROR', message)
       throw error
     } finally {
       commit('SET_LOADING', false)
     }
   },
 
-  async fetchPasswordEntry({ commit }, id) {
-    commit('SET_LOADING', true)
-    commit('SET_ERROR', null)
+  async createPassword({ commit }, passwordData) {
     try {
-      const response = await passwordService.getPasswordEntry(id)
-      commit('SET_CURRENT_ENTRY', response.data)
-      return response.data
+      commit('SET_LOADING', true)
+      commit('SET_ERROR', null)
+      
+      const response = await api.post('/passwords', passwordData)
+      commit('ADD_PASSWORD', response.data.data)
+      return response.data.data
     } catch (error) {
-      commit('SET_ERROR', error.response?.data?.message || 'Failed to fetch password entry')
+      const message = error.response?.data?.message || 'Failed to create password entry'
+      commit('SET_ERROR', message)
       throw error
     } finally {
       commit('SET_LOADING', false)
     }
   },
 
-  async createPasswordEntry({ commit }, entryData) {
-    commit('SET_LOADING', true)
-    commit('SET_ERROR', null)
+  async updatePassword({ commit }, { id, passwordData }) {
     try {
-      const response = await passwordService.createPasswordEntry(entryData)
-      commit('ADD_PASSWORD_ENTRY', response.data)
-      return response.data
+      commit('SET_LOADING', true)
+      
+      const response = await api.put(`/passwords/${id}`, passwordData)
+      commit('UPDATE_PASSWORD', response.data.data)
+      return response.data.data
     } catch (error) {
-      commit('SET_ERROR', error.response?.data?.message || 'Failed to create password entry')
+      const message = error.response?.data?.message || 'Failed to update password entry'
+      commit('SET_ERROR', message)
       throw error
     } finally {
       commit('SET_LOADING', false)
     }
   },
 
-  async updatePasswordEntry({ commit }, { id, entryData }) {
-    commit('SET_LOADING', true)
-    commit('SET_ERROR', null)
+  async deletePassword({ commit }, passwordId) {
     try {
-      const response = await passwordService.updatePasswordEntry(id, entryData)
-      commit('UPDATE_PASSWORD_ENTRY', response.data)
-      return response.data
+      commit('SET_LOADING', true)
+      
+      await api.delete(`/passwords/${passwordId}`)
+      commit('REMOVE_PASSWORD', passwordId)
+      return true
     } catch (error) {
-      commit('SET_ERROR', error.response?.data?.message || 'Failed to update password entry')
-      throw error
-    } finally {
-      commit('SET_LOADING', false)
-    }
-  },
-
-  async deletePasswordEntry({ commit }, id) {
-    commit('SET_LOADING', true)
-    commit('SET_ERROR', null)
-    try {
-      await passwordService.deletePasswordEntry(id)
-      commit('REMOVE_PASSWORD_ENTRY', id)
-    } catch (error) {
-      commit('SET_ERROR', error.response?.data?.message || 'Failed to delete password entry')
+      const message = error.response?.data?.message || 'Failed to delete password entry'
+      commit('SET_ERROR', message)
       throw error
     } finally {
       commit('SET_LOADING', false)
@@ -119,52 +105,23 @@ const actions = {
   },
 
   async sharePassword({ commit }, { id, shareData }) {
-    commit('SET_LOADING', true)
-    commit('SET_ERROR', null)
     try {
-      await passwordService.sharePassword(id, shareData)
-      // Refresh the entry to get updated share information
-      const response = await passwordService.getPasswordEntry(id)
-      commit('UPDATE_PASSWORD_ENTRY', response.data)
-      return response.data
+      commit('SET_LOADING', true)
+      
+      const response = await api.post(`/passwords/${id}/share`, shareData)
+      commit('UPDATE_PASSWORD', response.data.data)
+      return response.data.data
     } catch (error) {
-      commit('SET_ERROR', error.response?.data?.message || 'Failed to share password')
+      const message = error.response?.data?.message || 'Failed to share password'
+      commit('SET_ERROR', message)
       throw error
     } finally {
       commit('SET_LOADING', false)
     }
   },
 
-  async removePasswordShare({ commit }, { id, userEmail }) {
-    commit('SET_LOADING', true)
+  clearError({ commit }) {
     commit('SET_ERROR', null)
-    try {
-      await passwordService.removePasswordShare(id, userEmail)
-      // Refresh the entry to get updated share information
-      const response = await passwordService.getPasswordEntry(id)
-      commit('UPDATE_PASSWORD_ENTRY', response.data)
-      return response.data
-    } catch (error) {
-      commit('SET_ERROR', error.response?.data?.message || 'Failed to remove password share')
-      throw error
-    } finally {
-      commit('SET_LOADING', false)
-    }
-  },
-
-  async searchPasswordEntries({ commit }, query) {
-    commit('SET_LOADING', true)
-    commit('SET_ERROR', null)
-    try {
-      const response = await passwordService.searchPasswordEntries(query)
-      commit('SET_PASSWORD_ENTRIES', response.data)
-      return response.data
-    } catch (error) {
-      commit('SET_ERROR', error.response?.data?.message || 'Failed to search password entries')
-      throw error
-    } finally {
-      commit('SET_LOADING', false)
-    }
   }
 }
 
