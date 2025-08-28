@@ -7934,3 +7934,344 @@ Caused by: java.security.InvalidAlgorithmParameterException: the trustAnchors pa
 2025-08-13 21:05:32.889 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 2025-08-13 21:05:32.891 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2025-08-13 21:05:32.893 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-08-28 23:10:53.716 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Starting PkiSystemApplication using Java 24.0.1 with PID 24848 (C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system\target\classes started by Win 11 in C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system)
+2025-08-28 23:10:53.716 [restartedMain] DEBUG r.a.u.f.p.PkiSystemApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-28 23:10:53.717 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-28 23:10:53.744 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-08-28 23:10:53.744 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-08-28 23:10:54.268 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-28 23:10:54.304 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 31 ms. Found 6 JPA repository interfaces.
+2025-08-28 23:10:54.705 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (https)
+2025-08-28 23:10:54.712 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-28 23:10:54.712 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-28 23:10:54.738 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-28 23:10:54.738 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 994 ms
+2025-08-28 23:10:54.852 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-28 23:10:54.874 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2025-08-28 23:10:54.890 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-08-28 23:10:55.026 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-28 23:10:55.040 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-08-28 23:10:55.220 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@9e45c4e
+2025-08-28 23:10:55.221 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-08-28 23:10:55.248 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-28 23:10:55.249 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-08-28 23:10:55.257 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-28 23:10:55.770 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-28 23:10:55.819 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-28 23:10:56.036 [restartedMain] DEBUG r.a.u.f.p.security.JwtRequestFilter - Filter 'jwtRequestFilter' configured for use
+2025-08-28 23:10:56.072 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-08-28 23:10:56.072 [restartedMain] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-08-28 23:10:56.204 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-08-28 23:10:56.532 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-28 23:10:56.710 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+2025-08-28 23:10:56.783 [restartedMain] DEBUG o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtRequestFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-08-28 23:10:56.962 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-08-28 23:10:57.066 [restartedMain] INFO  o.a.t.u.net.NioEndpoint.certificate - Connector [https-jsse-nio-8080], TLS virtual host [_default_], certificate type [UNDEFINED] configured from keystore [C:\Users\Win 11\.keystore] using alias [server] with trust store [null]
+2025-08-28 23:10:57.075 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (https) with context path '/'
+2025-08-28 23:10:57.081 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Started PkiSystemApplication in 3.579 seconds (process running for 3.94)
+2025-08-28 23:10:57.317 [RMI TCP Connection(1)-172.19.192.1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-28 23:10:57.317 [RMI TCP Connection(1)-172.19.192.1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-08-28 23:10:57.318 [RMI TCP Connection(1)-172.19.192.1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-08-28 23:11:05.658 [https-jsse-nio-8080-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/certificates
+2025-08-28 23:11:05.658 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/users/profile
+2025-08-28 23:11:05.683 [https-jsse-nio-8080-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/certificates
+2025-08-28 23:11:05.683 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/users/profile
+2025-08-28 23:11:05.839 [https-jsse-nio-8080-exec-4] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/certificates
+2025-08-28 23:11:05.839 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/users/profile
+2025-08-28 23:11:05.847 [https-jsse-nio-8080-exec-2] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.UserController.getCurrentUserProfile(); target is of class [rs.ac.uns.ftn.pkisystem.controller.UserController]
+2025-08-28 23:11:05.847 [https-jsse-nio-8080-exec-4] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:11:05.861 [https-jsse-nio-8080-exec-2] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.UserController.getCurrentUserProfile(); target is of class [rs.ac.uns.ftn.pkisystem.controller.UserController]
+2025-08-28 23:11:05.861 [https-jsse-nio-8080-exec-4] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:11:05.879 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/passwords
+2025-08-28 23:11:05.883 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/passwords
+2025-08-28 23:11:05.899 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/passwords
+2025-08-28 23:11:05.905 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing GET /error
+2025-08-28 23:11:05.906 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Secured GET /error
+2025-08-28 23:11:05.911 [https-jsse-nio-8080-exec-3] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28 23:11:09.670 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/users/profile
+2025-08-28 23:11:09.684 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/users/profile
+2025-08-28 23:11:09.685 [https-jsse-nio-8080-exec-6] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.UserController.getCurrentUserProfile(); target is of class [rs.ac.uns.ftn.pkisystem.controller.UserController]
+2025-08-28 23:11:09.685 [https-jsse-nio-8080-exec-6] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.UserController.getCurrentUserProfile(); target is of class [rs.ac.uns.ftn.pkisystem.controller.UserController]
+2025-08-28 23:11:09.730 [https-jsse-nio-8080-exec-7] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/certificates
+2025-08-28 23:11:09.747 [https-jsse-nio-8080-exec-7] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/certificates
+2025-08-28 23:11:09.748 [https-jsse-nio-8080-exec-7] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:11:09.748 [https-jsse-nio-8080-exec-7] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:11:09.756 [https-jsse-nio-8080-exec-5] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/passwords
+2025-08-28 23:11:09.769 [https-jsse-nio-8080-exec-5] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/passwords
+2025-08-28 23:11:09.770 [https-jsse-nio-8080-exec-5] DEBUG o.s.security.web.FilterChainProxy - Securing GET /error
+2025-08-28 23:11:09.771 [https-jsse-nio-8080-exec-5] DEBUG o.s.security.web.FilterChainProxy - Secured GET /error
+2025-08-28 23:11:09.772 [https-jsse-nio-8080-exec-5] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28 23:11:30.656 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/passwords
+2025-08-28 23:11:30.659 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/passwords
+2025-08-28 23:11:30.673 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/passwords
+2025-08-28 23:11:30.675 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing GET /error
+2025-08-28 23:11:30.676 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Secured GET /error
+2025-08-28 23:11:30.677 [https-jsse-nio-8080-exec-10] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28 23:11:33.738 [https-jsse-nio-8080-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/users/profile
+2025-08-28 23:11:33.740 [https-jsse-nio-8080-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/users/profile
+2025-08-28 23:11:33.756 [https-jsse-nio-8080-exec-4] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/users/profile
+2025-08-28 23:11:33.756 [https-jsse-nio-8080-exec-4] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.UserController.getCurrentUserProfile(); target is of class [rs.ac.uns.ftn.pkisystem.controller.UserController]
+2025-08-28 23:11:33.757 [https-jsse-nio-8080-exec-4] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.UserController.getCurrentUserProfile(); target is of class [rs.ac.uns.ftn.pkisystem.controller.UserController]
+2025-08-28 23:11:33.783 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/passwords
+2025-08-28 23:11:33.797 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/passwords
+2025-08-28 23:11:33.799 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing GET /error
+2025-08-28 23:11:33.799 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Secured GET /error
+2025-08-28 23:11:33.801 [https-jsse-nio-8080-exec-2] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28 23:11:34.670 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/users/profile
+2025-08-28 23:11:34.684 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/users/profile
+2025-08-28 23:11:34.684 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.UserController.getCurrentUserProfile(); target is of class [rs.ac.uns.ftn.pkisystem.controller.UserController]
+2025-08-28 23:11:34.685 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.UserController.getCurrentUserProfile(); target is of class [rs.ac.uns.ftn.pkisystem.controller.UserController]
+2025-08-28 23:11:34.718 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/passwords
+2025-08-28 23:11:34.729 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/passwords
+2025-08-28 23:11:34.731 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing GET /error
+2025-08-28 23:11:34.731 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Secured GET /error
+2025-08-28 23:11:34.733 [https-jsse-nio-8080-exec-3] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28 23:11:40.892 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/certificates
+2025-08-28 23:11:40.894 [https-jsse-nio-8080-exec-7] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/certificates
+2025-08-28 23:11:40.910 [https-jsse-nio-8080-exec-7] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/certificates
+2025-08-28 23:11:40.910 [https-jsse-nio-8080-exec-7] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:11:40.910 [https-jsse-nio-8080-exec-7] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:11:40.919 [https-jsse-nio-8080-exec-5] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/certificates/ca
+2025-08-28 23:11:40.921 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/certificates/ca
+2025-08-28 23:11:40.931 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/certificates/ca
+2025-08-28 23:11:40.932 [https-jsse-nio-8080-exec-9] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCACertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:11:40.932 [https-jsse-nio-8080-exec-9] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCACertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:11:44.444 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/certificates
+2025-08-28 23:11:44.456 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/certificates
+2025-08-28 23:11:44.457 [https-jsse-nio-8080-exec-10] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:11:44.457 [https-jsse-nio-8080-exec-10] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:11:44.462 [https-jsse-nio-8080-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/passwords
+2025-08-28 23:11:44.464 [https-jsse-nio-8080-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/passwords
+2025-08-28 23:11:44.474 [https-jsse-nio-8080-exec-4] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/passwords
+2025-08-28 23:11:44.476 [https-jsse-nio-8080-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing GET /error
+2025-08-28 23:11:44.476 [https-jsse-nio-8080-exec-4] DEBUG o.s.security.web.FilterChainProxy - Secured GET /error
+2025-08-28 23:11:44.477 [https-jsse-nio-8080-exec-4] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28 23:11:59.957 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/certificates
+2025-08-28 23:11:59.960 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/certificates
+2025-08-28 23:11:59.973 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/certificates
+2025-08-28 23:11:59.974 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:11:59.974 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:11:59.981 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/certificates/ca
+2025-08-28 23:11:59.983 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/certificates/ca
+2025-08-28 23:11:59.993 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/certificates/ca
+2025-08-28 23:11:59.993 [https-jsse-nio-8080-exec-6] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCACertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:11:59.994 [https-jsse-nio-8080-exec-6] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCACertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:12:45.253 [https-jsse-nio-8080-exec-5] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/users/profile
+2025-08-28 23:12:45.256 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/users/profile
+2025-08-28 23:12:45.269 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/users/profile
+2025-08-28 23:12:45.270 [https-jsse-nio-8080-exec-9] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.UserController.getCurrentUserProfile(); target is of class [rs.ac.uns.ftn.pkisystem.controller.UserController]
+2025-08-28 23:12:45.270 [https-jsse-nio-8080-exec-9] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.UserController.getCurrentUserProfile(); target is of class [rs.ac.uns.ftn.pkisystem.controller.UserController]
+2025-08-28 23:12:45.318 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/certificates
+2025-08-28 23:12:45.322 [https-jsse-nio-8080-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/certificates
+2025-08-28 23:12:45.335 [https-jsse-nio-8080-exec-8] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/certificates
+2025-08-28 23:12:45.335 [https-jsse-nio-8080-exec-8] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:12:45.336 [https-jsse-nio-8080-exec-8] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:12:45.345 [https-jsse-nio-8080-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/passwords
+2025-08-28 23:12:45.348 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/passwords
+2025-08-28 23:12:45.358 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/passwords
+2025-08-28 23:12:45.360 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing GET /error
+2025-08-28 23:12:45.360 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Secured GET /error
+2025-08-28 23:12:45.361 [https-jsse-nio-8080-exec-2] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28 23:12:54.904 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/certificates
+2025-08-28 23:12:54.908 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/certificates
+2025-08-28 23:12:54.920 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/certificates
+2025-08-28 23:12:54.921 [https-jsse-nio-8080-exec-3] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:12:54.921 [https-jsse-nio-8080-exec-3] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:12:54.930 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/certificates/ca
+2025-08-28 23:12:54.935 [https-jsse-nio-8080-exec-7] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/certificates/ca
+2025-08-28 23:12:54.944 [https-jsse-nio-8080-exec-7] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/certificates/ca
+2025-08-28 23:12:54.945 [https-jsse-nio-8080-exec-7] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCACertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:12:54.945 [https-jsse-nio-8080-exec-7] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCACertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:13:02.124 [https-jsse-nio-8080-exec-5] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/passwords
+2025-08-28 23:13:02.128 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/passwords
+2025-08-28 23:13:02.139 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/passwords
+2025-08-28 23:13:02.141 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /error
+2025-08-28 23:13:02.141 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /error
+2025-08-28 23:13:02.143 [https-jsse-nio-8080-exec-9] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28 23:13:18.291 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/passwords
+2025-08-28 23:13:18.294 [https-jsse-nio-8080-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/passwords
+2025-08-28 23:13:18.306 [https-jsse-nio-8080-exec-8] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/passwords
+2025-08-28 23:13:18.307 [https-jsse-nio-8080-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing GET /error
+2025-08-28 23:13:18.308 [https-jsse-nio-8080-exec-8] DEBUG o.s.security.web.FilterChainProxy - Secured GET /error
+2025-08-28 23:13:18.309 [https-jsse-nio-8080-exec-8] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28 23:13:25.793 [https-jsse-nio-8080-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/passwords
+2025-08-28 23:13:25.797 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/passwords
+2025-08-28 23:13:25.813 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/passwords
+2025-08-28 23:13:25.815 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing GET /error
+2025-08-28 23:13:25.815 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Secured GET /error
+2025-08-28 23:13:25.817 [https-jsse-nio-8080-exec-2] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28 23:13:26.673 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/passwords
+2025-08-28 23:13:26.689 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/passwords
+2025-08-28 23:13:26.690 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing GET /error
+2025-08-28 23:13:26.690 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured GET /error
+2025-08-28 23:13:26.692 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28 23:15:38.130 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/users/profile
+2025-08-28 23:15:38.132 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/users/profile
+2025-08-28 23:15:38.148 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/users/profile
+2025-08-28 23:15:38.148 [https-jsse-nio-8080-exec-3] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.UserController.getCurrentUserProfile(); target is of class [rs.ac.uns.ftn.pkisystem.controller.UserController]
+2025-08-28 23:15:38.148 [https-jsse-nio-8080-exec-3] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.UserController.getCurrentUserProfile(); target is of class [rs.ac.uns.ftn.pkisystem.controller.UserController]
+2025-08-28 23:15:38.161 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/certificates
+2025-08-28 23:15:38.164 [https-jsse-nio-8080-exec-7] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/certificates
+2025-08-28 23:15:38.178 [https-jsse-nio-8080-exec-7] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/certificates
+2025-08-28 23:15:38.178 [https-jsse-nio-8080-exec-7] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:15:38.179 [https-jsse-nio-8080-exec-7] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:15:38.186 [https-jsse-nio-8080-exec-5] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/passwords
+2025-08-28 23:15:38.188 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/passwords
+2025-08-28 23:15:38.197 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/passwords
+2025-08-28 23:15:38.199 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /error
+2025-08-28 23:15:38.199 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /error
+2025-08-28 23:15:38.200 [https-jsse-nio-8080-exec-9] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28 23:15:42.765 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/users/profile
+2025-08-28 23:15:42.777 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/users/profile
+2025-08-28 23:15:42.778 [https-jsse-nio-8080-exec-10] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.UserController.getCurrentUserProfile(); target is of class [rs.ac.uns.ftn.pkisystem.controller.UserController]
+2025-08-28 23:15:42.778 [https-jsse-nio-8080-exec-10] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.UserController.getCurrentUserProfile(); target is of class [rs.ac.uns.ftn.pkisystem.controller.UserController]
+2025-08-28 23:15:42.814 [https-jsse-nio-8080-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/certificates
+2025-08-28 23:15:42.824 [https-jsse-nio-8080-exec-8] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/certificates
+2025-08-28 23:15:42.824 [https-jsse-nio-8080-exec-8] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:15:42.824 [https-jsse-nio-8080-exec-8] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:15:42.831 [https-jsse-nio-8080-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/passwords
+2025-08-28 23:15:42.840 [https-jsse-nio-8080-exec-4] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/passwords
+2025-08-28 23:15:42.841 [https-jsse-nio-8080-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing GET /error
+2025-08-28 23:15:42.841 [https-jsse-nio-8080-exec-4] DEBUG o.s.security.web.FilterChainProxy - Secured GET /error
+2025-08-28 23:15:42.842 [https-jsse-nio-8080-exec-4] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28 23:15:45.933 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/certificates
+2025-08-28 23:15:45.935 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/certificates
+2025-08-28 23:15:45.959 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/certificates
+2025-08-28 23:15:45.960 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:15:45.960 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:15:45.968 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/certificates/ca
+2025-08-28 23:15:45.969 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/certificates/ca
+2025-08-28 23:15:45.980 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/certificates/ca
+2025-08-28 23:15:45.980 [https-jsse-nio-8080-exec-6] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCACertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:15:45.980 [https-jsse-nio-8080-exec-6] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCACertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:17:16.028 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/users/profile
+2025-08-28 23:17:16.032 [https-jsse-nio-8080-exec-7] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/users/profile
+2025-08-28 23:17:16.045 [https-jsse-nio-8080-exec-7] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/users/profile
+2025-08-28 23:17:16.045 [https-jsse-nio-8080-exec-7] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.UserController.getCurrentUserProfile(); target is of class [rs.ac.uns.ftn.pkisystem.controller.UserController]
+2025-08-28 23:17:16.045 [https-jsse-nio-8080-exec-7] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.UserController.getCurrentUserProfile(); target is of class [rs.ac.uns.ftn.pkisystem.controller.UserController]
+2025-08-28 23:17:16.120 [https-jsse-nio-8080-exec-5] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/certificates
+2025-08-28 23:17:16.123 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/certificates
+2025-08-28 23:17:16.131 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/certificates
+2025-08-28 23:17:16.132 [https-jsse-nio-8080-exec-9] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:17:16.132 [https-jsse-nio-8080-exec-9] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:17:16.142 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/certificates/ca
+2025-08-28 23:17:16.144 [https-jsse-nio-8080-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/certificates/ca
+2025-08-28 23:17:16.153 [https-jsse-nio-8080-exec-8] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/certificates/ca
+2025-08-28 23:17:16.153 [https-jsse-nio-8080-exec-8] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCACertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:17:16.153 [https-jsse-nio-8080-exec-8] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCACertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:17:19.188 [https-jsse-nio-8080-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/users/profile
+2025-08-28 23:17:19.200 [https-jsse-nio-8080-exec-4] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/users/profile
+2025-08-28 23:17:19.200 [https-jsse-nio-8080-exec-4] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.UserController.getCurrentUserProfile(); target is of class [rs.ac.uns.ftn.pkisystem.controller.UserController]
+2025-08-28 23:17:19.201 [https-jsse-nio-8080-exec-4] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.UserController.getCurrentUserProfile(); target is of class [rs.ac.uns.ftn.pkisystem.controller.UserController]
+2025-08-28 23:17:19.267 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/certificates
+2025-08-28 23:17:19.280 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/certificates
+2025-08-28 23:17:19.280 [https-jsse-nio-8080-exec-2] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:17:19.281 [https-jsse-nio-8080-exec-2] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:17:19.289 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/certificates/ca
+2025-08-28 23:17:19.301 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/certificates/ca
+2025-08-28 23:17:19.302 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCACertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:17:19.302 [https-jsse-nio-8080-exec-1] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCACertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:17:21.378 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/certificates
+2025-08-28 23:17:21.381 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/certificates
+2025-08-28 23:17:21.390 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/certificates
+2025-08-28 23:17:21.391 [https-jsse-nio-8080-exec-6] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:17:21.391 [https-jsse-nio-8080-exec-6] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:17:21.396 [https-jsse-nio-8080-exec-7] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/passwords
+2025-08-28 23:17:21.401 [https-jsse-nio-8080-exec-5] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/passwords
+2025-08-28 23:17:21.409 [https-jsse-nio-8080-exec-5] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/passwords
+2025-08-28 23:17:21.410 [https-jsse-nio-8080-exec-5] DEBUG o.s.security.web.FilterChainProxy - Securing GET /error
+2025-08-28 23:17:21.410 [https-jsse-nio-8080-exec-5] DEBUG o.s.security.web.FilterChainProxy - Secured GET /error
+2025-08-28 23:17:21.411 [https-jsse-nio-8080-exec-5] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28 23:17:22.679 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/certificates
+2025-08-28 23:17:22.692 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/certificates
+2025-08-28 23:17:22.693 [https-jsse-nio-8080-exec-9] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:17:22.693 [https-jsse-nio-8080-exec-9] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:17:22.701 [https-jsse-nio-8080-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/certificates/ca
+2025-08-28 23:17:22.703 [https-jsse-nio-8080-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/certificates/ca
+2025-08-28 23:17:22.711 [https-jsse-nio-8080-exec-8] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/certificates/ca
+2025-08-28 23:17:22.712 [https-jsse-nio-8080-exec-8] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCACertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:17:22.712 [https-jsse-nio-8080-exec-8] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCACertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:17:24.440 [https-jsse-nio-8080-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/passwords
+2025-08-28 23:17:24.451 [https-jsse-nio-8080-exec-4] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/passwords
+2025-08-28 23:17:24.452 [https-jsse-nio-8080-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing GET /error
+2025-08-28 23:17:24.453 [https-jsse-nio-8080-exec-4] DEBUG o.s.security.web.FilterChainProxy - Secured GET /error
+2025-08-28 23:17:24.454 [https-jsse-nio-8080-exec-4] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28 23:18:57.759 [https-jsse-nio-8080-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/users/profile
+2025-08-28 23:18:57.760 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/users/profile
+2025-08-28 23:18:57.774 [https-jsse-nio-8080-exec-2] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/users/profile
+2025-08-28 23:18:57.775 [https-jsse-nio-8080-exec-2] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.UserController.getCurrentUserProfile(); target is of class [rs.ac.uns.ftn.pkisystem.controller.UserController]
+2025-08-28 23:18:57.775 [https-jsse-nio-8080-exec-2] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.UserController.getCurrentUserProfile(); target is of class [rs.ac.uns.ftn.pkisystem.controller.UserController]
+2025-08-28 23:18:57.797 [https-jsse-nio-8080-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/certificates
+2025-08-28 23:18:57.799 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/certificates
+2025-08-28 23:18:57.811 [https-jsse-nio-8080-exec-3] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/certificates
+2025-08-28 23:18:57.811 [https-jsse-nio-8080-exec-3] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:18:57.812 [https-jsse-nio-8080-exec-3] DEBUG o.s.s.a.m.AuthorizationManagerBeforeMethodInterceptor - Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity rs.ac.uns.ftn.pkisystem.controller.CertificateController.getCertificates(); target is of class [rs.ac.uns.ftn.pkisystem.controller.CertificateController]
+2025-08-28 23:18:57.818 [https-jsse-nio-8080-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/passwords
+2025-08-28 23:18:57.820 [https-jsse-nio-8080-exec-7] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/passwords
+2025-08-28 23:18:57.829 [https-jsse-nio-8080-exec-7] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/passwords
+2025-08-28 23:18:57.831 [https-jsse-nio-8080-exec-7] DEBUG o.s.security.web.FilterChainProxy - Securing GET /error
+2025-08-28 23:18:57.831 [https-jsse-nio-8080-exec-7] DEBUG o.s.security.web.FilterChainProxy - Secured GET /error
+2025-08-28 23:18:57.832 [https-jsse-nio-8080-exec-7] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28 23:19:09.197 [https-jsse-nio-8080-exec-5] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/passwords
+2025-08-28 23:19:09.201 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/passwords
+2025-08-28 23:19:09.213 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/passwords
+2025-08-28 23:19:09.215 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Securing GET /error
+2025-08-28 23:19:09.215 [https-jsse-nio-8080-exec-9] DEBUG o.s.security.web.FilterChainProxy - Secured GET /error
+2025-08-28 23:19:09.217 [https-jsse-nio-8080-exec-9] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-28 23:25:08.866 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 2 class path changes (1 addition, 0 deletions, 1 modification)
+2025-08-28 23:25:08.868 [Thread-5] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-08-28 23:25:08.872 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-08-28 23:25:08.876 [Thread-5] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-28 23:25:08.878 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-08-28 23:25:08.880 [Thread-5] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-08-28 23:25:08.959 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Starting PkiSystemApplication using Java 24.0.1 with PID 24848 (C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system\target\classes started by Win 11 in C:\Users\Win 11\Desktop\bsep2025\pki-system\pki-system)
+2025-08-28 23:25:08.959 [restartedMain] DEBUG r.a.u.f.p.PkiSystemApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-28 23:25:08.959 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - No active profile set, falling back to 1 default profile: "default"
+2025-08-28 23:25:09.143 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-28 23:25:09.159 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 14 ms. Found 6 JPA repository interfaces.
+2025-08-28 23:25:09.264 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (https)
+2025-08-28 23:25:09.265 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-08-28 23:25:09.265 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-28 23:25:09.287 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-08-28 23:25:09.287 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 327 ms
+2025-08-28 23:25:09.344 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-28 23:25:09.345 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-08-28 23:25:09.349 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-28 23:25:09.350 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2025-08-28 23:25:09.361 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3b35b38f
+2025-08-28 23:25:09.361 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2025-08-28 23:25:09.362 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-28 23:25:09.362 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-08-28 23:25:09.362 [restartedMain] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-28 23:25:09.417 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-28 23:25:09.433 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-28 23:25:09.500 [restartedMain] DEBUG r.a.u.f.p.security.JwtRequestFilter - Filter 'jwtRequestFilter' configured for use
+2025-08-28 23:25:09.520 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-08-28 23:25:09.521 [restartedMain] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-08-28 23:25:09.591 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-28 23:25:09.682 [restartedMain] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+2025-08-28 23:25:09.717 [restartedMain] DEBUG o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, JwtRequestFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-08-28 23:25:09.801 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-08-28 23:25:09.859 [restartedMain] INFO  o.a.t.u.net.NioEndpoint.certificate - Connector [https-jsse-nio-8080], TLS virtual host [_default_], certificate type [UNDEFINED] configured from keystore [C:\Users\Win 11\.keystore] using alias [server] with trust store [null]
+2025-08-28 23:25:09.861 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (https) with context path '/'
+2025-08-28 23:25:09.864 [restartedMain] INFO  r.a.u.f.p.PkiSystemApplication - Started PkiSystemApplication in 0.923 seconds (process running for 856.723)
+2025-08-28 23:25:09.865 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-08-28 23:25:16.941 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-08-28 23:25:16.943 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-08-28 23:25:16.945 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-28 23:25:16.945 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2025-08-28 23:25:16.947 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.

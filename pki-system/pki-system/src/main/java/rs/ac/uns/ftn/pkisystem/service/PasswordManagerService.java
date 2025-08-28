@@ -257,4 +257,34 @@ public class PasswordManagerService {
         dto.setCreatedAt(share.getCreatedAt());
         return dto;
     }
+
+    public List<PasswordEntryDTO> searchPasswordEntries(String query) {
+        User currentUser = SecurityUtils.getCurrentUser()
+                .orElseThrow(() -> new SecurityException("User not authenticated"));
+
+        // Get all accessible entries first
+        List<PasswordEntry> ownedEntries = passwordEntryRepository.findByOwner(currentUser);
+        List<PasswordEntry> sharedEntries = passwordEntryRepository.findEntriesSharedWithUser(currentUser);
+
+        // Combine and deduplicate
+        List<PasswordEntry> allEntries = new ArrayList<>(ownedEntries);
+        sharedEntries.stream()
+                .filter(entry -> !ownedEntries.contains(entry))
+                .forEach(allEntries::add);
+
+        // Filter by search query (case insensitive)
+        String lowerQuery = query.toLowerCase().trim();
+        List<PasswordEntry> filteredEntries = allEntries.stream()
+                .filter(entry ->
+                        entry.getSiteName().toLowerCase().contains(lowerQuery) ||
+                                entry.getUsername().toLowerCase().contains(lowerQuery) ||
+                                (entry.getSiteUrl() != null && entry.getSiteUrl().toLowerCase().contains(lowerQuery)) ||
+                                (entry.getDescription() != null && entry.getDescription().toLowerCase().contains(lowerQuery))
+                )
+                .collect(Collectors.toList());
+
+        return filteredEntries.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
 }

@@ -30,6 +30,9 @@ import ProgressBar from 'primevue/progressbar'
 import Chip from 'primevue/chip'
 import Sidebar from 'primevue/sidebar'
 import Steps from 'primevue/steps'
+// ADD THESE MISSING COMPONENTS:
+import Checkbox from 'primevue/checkbox'
+import Tooltip from 'primevue/tooltip'
 
 // CSS imports
 import 'primevue/resources/themes/saga-blue/theme.css'
@@ -70,5 +73,10 @@ app.component('ProgressBar', ProgressBar)
 app.component('Chip', Chip)
 app.component('Sidebar', Sidebar)
 app.component('Steps', Steps)
+// REGISTER THE MISSING COMPONENTS:
+app.component('Checkbox', Checkbox)
+
+// REGISTER THE MISSING DIRECTIVE:
+app.directive('tooltip', Tooltip)
 
 app.mount('#app')
